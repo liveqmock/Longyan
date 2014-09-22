@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Longyan"
+  id="myeclipse.1411367338007"
+  context-root="/Longyan"
+  j2ee-spec="6.0"
+  archive="Longyan.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
