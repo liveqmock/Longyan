@@ -8,6 +8,8 @@ import java.util.Date;
  *
  */
 public class Message {
+	
+	private int id;  //ID
 
 	private int customer_id;   //会员ID
 	
@@ -20,6 +22,14 @@ public class Message {
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getCustomer_id() {
 		return customer_id;

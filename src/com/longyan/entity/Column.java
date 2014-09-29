@@ -8,6 +8,8 @@ import java.util.Date;
  *
  */
 public class Column {
+	
+	private int id;  //ID
 
 	private String name;   //栏目名称
 	
@@ -20,6 +22,14 @@ public class Column {
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;

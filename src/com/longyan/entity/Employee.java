@@ -9,6 +9,8 @@ import java.util.Date;
  */
 public class Employee {
 	
+	private int id;  //ID
+	
 	private String name;  //员工名称
 	
 	private String password;  //登录密码
@@ -27,11 +29,21 @@ public class Employee {
 	
 	private String province;  //籍贯
 	
+	private String email;     //员工邮箱
+	
 	private int right_level = 1; //权限代号
 	
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -127,5 +139,13 @@ public class Employee {
 
 	public void setUtime(Date utime) {
 		this.utime = utime;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

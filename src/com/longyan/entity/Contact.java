@@ -8,6 +8,8 @@ import java.util.Date;
  *
  */
 public class Contact {
+	
+	private int id;  //ID
 
 	private String qq;   //qq
 	
@@ -18,6 +20,14 @@ public class Contact {
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getQq() {
 		return qq;

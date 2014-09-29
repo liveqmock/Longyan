@@ -8,6 +8,8 @@ import java.util.Date;
  *
  */
 public class Template {
+	
+	private int id;  //ID
 
 	private String filename;   //模板文件名（不包含路径）
 	
@@ -18,6 +20,14 @@ public class Template {
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getFilename() {
 		return filename;

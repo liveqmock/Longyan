@@ -8,6 +8,8 @@ import java.util.Date;
  *
  */
 public class FriendLinks {
+	
+	private int id;  //ID
 
 	private String url;  //URL
 	
@@ -16,6 +18,14 @@ public class FriendLinks {
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getUrl() {
 		return url;

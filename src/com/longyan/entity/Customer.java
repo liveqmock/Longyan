@@ -9,6 +9,8 @@ import java.util.Date;
  */
 public class Customer {
 	
+	private int id;  //ID
+	
 	private String username;  //会员名称
 	
 	private String realname;  //会员真实姓名
@@ -25,9 +27,19 @@ public class Customer {
 	
 	private String qq;        //qq
 	
+	private String email;     //会员注册邮箱
+	
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getUsername() {
 		return username;
@@ -107,5 +119,13 @@ public class Customer {
 
 	public void setUtime(Date utime) {
 		this.utime = utime;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

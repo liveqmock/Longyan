@@ -3,14 +3,14 @@ package com.longyan.entity;
 import java.util.Date;
 
 /**
- * 短信记录   短信服务既可以给内部员工群发短信，也可以给会员群发，所以员工ID和会员ID不能都为空
+ * 邮件记录 邮件服务既可以给内部员工群发短信，也可以给会员群发，所以员工ID和会员ID不能都为空
  * @author tracyqiu
  *
  */
-public class SmsSendLog {
+public class MailSendLog {
 	
 	private int id;  //ID
-
+	
 	private int employee_id;   //员工ID
 	
 	private int customer_id;  //会员ID
@@ -19,11 +19,11 @@ public class SmsSendLog {
 	
 	private String phone_number;  //收信人电话
 	
-	private String content; //短信内容
+	private String content; //邮件内容
 	
 	private String send_name;  //发信人名称
 	
-	private int type;   //短信类型  1 验证类型， 0 普通类型
+	private int type;   //邮件类型  1 验证类型， 0 普通类型
 	
 	private Date ctime;       //创建时间
 	

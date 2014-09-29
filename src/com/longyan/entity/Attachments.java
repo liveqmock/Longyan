@@ -9,6 +9,8 @@ import java.util.Date;
  */
 public class Attachments {
 
+	private int id;  //ID
+	
 	private String filename;   //附件文件名（不包含路径）
 	
 	private String path;  //附件文件路径，包含文件名
@@ -20,6 +22,14 @@ public class Attachments {
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getFilename() {
 		return filename;

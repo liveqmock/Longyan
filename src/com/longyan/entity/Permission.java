@@ -8,6 +8,8 @@ import java.util.Date;
  *
  */
 public class Permission {
+	
+	private int id;  //ID
 
 	private int employee_id;  //员工ID
 	
@@ -16,6 +18,14 @@ public class Permission {
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getEmployee_id() {
 		return employee_id;
