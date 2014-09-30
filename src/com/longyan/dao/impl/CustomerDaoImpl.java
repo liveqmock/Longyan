@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.longyan.dao.CustomerDao;
 import com.longyan.entity.Customer;
+import com.longyan.util.MD5;
 
 /**
  * 
@@ -49,7 +50,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		int i = jdbcTemplate.update(sql, new Object[]{
 				customer.getUsername(),
 				customer.getRealname(),
-				customer.getPassword(),
+				MD5.getMD5ofStr(customer.getPassword()),
 				customer.getTelephone(),
 				customer.getSex(),
 				customer.getBirthday(),
@@ -65,28 +66,155 @@ public class CustomerDaoImpl implements CustomerDao {
 		return flag;
 	}
 
+	/**
+	 * 更新会员信息
+	 */
 	@Override
 	public String update(Customer customer) {
-		// TODO Auto-generated method stub
-		return "";
+		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
+		String sql = "update customer set username=?, realname=?, telephone=?, sex=?, birthday=?, address=?, qq=?, email=?, utime=?";
+		List<Customer> customers = findCustomersByEmail(customer.getEmail());
+		
+		if(customers.size() > 0){
+			flag = "2002";
+			return flag;
+		}
+		
+		int i = jdbcTemplate.update(sql, new Object[]{
+				customer.getUsername(),
+				customer.getRealname(),
+				customer.getTelephone(),
+				customer.getSex(),
+				customer.getBirthday(),
+				customer.getAddress(),
+				customer.getQq(),
+				customer.getEmail(),
+				new Date()
+		});
+		
+		if(i > 0){
+			flag = "2001";
+		}
+
+		return flag;
 	}
 
+	/**
+	 * 更新密码
+	 */
+	@Override
+	public String updatePassword(Customer customer, String password) {
+		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
+		String sql = "update customer set password=?, utime=?";
+		List<Customer> customers = findCustomersByEmail(customer.getEmail());
+		
+		if(customers.size() > 0){
+			flag = "2002";
+			return flag;
+		}
+		
+		int i = jdbcTemplate.update(sql, new Object[]{
+			MD5.getMD5ofStr(password),
+			new Date()
+		});
+		
+		if(i > 0){
+			flag = "2001";
+		}
+
+		return flag;
+	}
+	
+	/**
+	 * 根据ID删除会员
+	 */
 	@Override
 	public String delete(Customer customer) {
-		// TODO Auto-generated method stub
-		return "";
+		String flag = "3003"; //3001删除成功；3002 删除的人不存在； 3003 未知原因删除失败
+		String sql = "delete from customer where id=?";
+		
+		List<Customer> customers = findCustomersByEmail(customer.getEmail());
+		
+		if(customers.size() > 0){
+			flag = "3002";
+			return flag;
+		}
+		
+		int i = jdbcTemplate.update(sql, new Object[]{
+			customer.getId()
+		});
+		
+		if(i > 0){
+			flag = "3001";
+		}
+
+		return flag;
 	}
 
+	/**
+	 * 通过ID查找会员
+	 */
 	@Override
 	public Customer findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Customer customer = null;
+		String sql = "select * from customer where id=?";
+		
+		customer = (Customer)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<Customer>() {  
+            @Override  
+            public Customer mapRow(ResultSet rs, int rowNum)  
+                    throws SQLException {  
+            	
+            	Customer cus = new Customer();  
+            	cus.setId(rs.getInt("id"));  
+            	cus.setAddress(rs.getString("address"));
+            	cus.setBirthday(rs.getString("birthday"));
+            	cus.setCtime(rs.getDate("ctime"));
+            	cus.setEmail(rs.getString("email"));
+            	cus.setQq(rs.getString("qq"));
+            	cus.setRealname(rs.getString("realname"));
+            	cus.setSex(rs.getString("sex"));
+            	cus.setTelephone(rs.getString("telephone"));
+            	cus.setUsername(rs.getString("username"));
+            	cus.setUtime(rs.getDate("utime"));
+
+                return cus;  
+            }  
+        });
+		
+		return customer;
 	}
 
+	/**
+	 * 取得所有用户信息
+	 */
 	@Override
 	public List<Customer> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from customer";
+		List<Customer> customers = new ArrayList<Customer>();
+		
+		customers = (List<Customer>)jdbcTemplate.query(sql, new RowMapper<Customer>() {  
+            @Override  
+            public Customer mapRow(ResultSet rs, int rowNum)  
+                    throws SQLException {  
+            	
+            	Customer cus = new Customer();  
+            	cus.setId(rs.getInt("id"));  
+            	cus.setAddress(rs.getString("address"));
+            	cus.setBirthday(rs.getString("birthday"));
+            	cus.setCtime(rs.getDate("ctime"));
+            	cus.setEmail(rs.getString("email"));
+            	cus.setQq(rs.getString("qq"));
+            	cus.setRealname(rs.getString("realname"));
+            	cus.setSex(rs.getString("sex"));
+            	cus.setTelephone(rs.getString("telephone"));
+            	cus.setUsername(rs.getString("username"));
+            	cus.setUtime(rs.getDate("utime"));
+
+                return cus;  
+            }  
+        });
+		
+		return customers;
 	}
 
 	/**

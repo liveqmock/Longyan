@@ -25,6 +25,13 @@ public interface CustomerDao {
 	public String update(Customer customer);
 	
 	/**
+	 * 更新会员信息
+	 * @param customer
+	 * @return
+	 */
+	public String updatePassword(Customer customer, String password);
+	
+	/**
 	 * 删除会员信息
 	 * @param customer
 	 * @return
