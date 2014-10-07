@@ -48,16 +48,16 @@ public class CustomerDaoImpl implements CustomerDao {
 			return flag;
 		}
 		int i = jdbcTemplate.update(sql, new Object[]{
-				customer.getUsername(),
-				customer.getRealname(),
-				MD5.getMD5ofStr(customer.getPassword()),
-				customer.getTelephone(),
-				customer.getSex(),
-				customer.getBirthday(),
-				customer.getAddress(),
-				customer.getQq(),
-				customer.getEmail(),
-				new Date()
+			customer.getUsername(),
+			customer.getRealname(),
+			MD5.getMD5ofStr(customer.getPassword()),
+			customer.getTelephone(),
+			customer.getSex(),
+			customer.getBirthday(),
+			customer.getAddress(),
+			customer.getQq(),
+			customer.getEmail(),
+			new Date()
 		});
 		
 		if(i > 0){
@@ -75,21 +75,21 @@ public class CustomerDaoImpl implements CustomerDao {
 		String sql = "update customer set username=?, realname=?, telephone=?, sex=?, birthday=?, address=?, qq=?, email=?, utime=?";
 		List<Customer> customers = findCustomersByEmail(customer.getEmail());
 		
-		if(customers.size() > 0){
+		if(customers.size() <= 0){
 			flag = "2002";
 			return flag;
 		}
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
-				customer.getUsername(),
-				customer.getRealname(),
-				customer.getTelephone(),
-				customer.getSex(),
-				customer.getBirthday(),
-				customer.getAddress(),
-				customer.getQq(),
-				customer.getEmail(),
-				new Date()
+			customer.getUsername(),
+			customer.getRealname(),
+			customer.getTelephone(),
+			customer.getSex(),
+			customer.getBirthday(),
+			customer.getAddress(),
+			customer.getQq(),
+			customer.getEmail(),
+			new Date()
 		});
 		
 		if(i > 0){
@@ -108,7 +108,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		String sql = "update customer set password=?, utime=?";
 		List<Customer> customers = findCustomersByEmail(customer.getEmail());
 		
-		if(customers.size() > 0){
+		if(customers.size() <= 0){
 			flag = "2002";
 			return flag;
 		}
@@ -135,7 +135,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		List<Customer> customers = findCustomersByEmail(customer.getEmail());
 		
-		if(customers.size() > 0){
+		if(customers.size() <= 0){
 			flag = "3002";
 			return flag;
 		}
@@ -161,22 +161,8 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		customer = (Customer)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<Customer>() {  
             @Override  
-            public Customer mapRow(ResultSet rs, int rowNum)  
-                    throws SQLException {  
-            	
-            	Customer cus = new Customer();  
-            	cus.setId(rs.getInt("id"));  
-            	cus.setAddress(rs.getString("address"));
-            	cus.setBirthday(rs.getString("birthday"));
-            	cus.setCtime(rs.getDate("ctime"));
-            	cus.setEmail(rs.getString("email"));
-            	cus.setQq(rs.getString("qq"));
-            	cus.setRealname(rs.getString("realname"));
-            	cus.setSex(rs.getString("sex"));
-            	cus.setTelephone(rs.getString("telephone"));
-            	cus.setUsername(rs.getString("username"));
-            	cus.setUtime(rs.getDate("utime"));
-
+            public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Customer cus = setCustomerProperties(rs); 
                 return cus;  
             }  
         });
@@ -194,25 +180,29 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		customers = (List<Customer>)jdbcTemplate.query(sql, new RowMapper<Customer>() {  
             @Override  
-            public Customer mapRow(ResultSet rs, int rowNum)  
-                    throws SQLException {  
-            	
-            	Customer cus = new Customer();  
-            	cus.setId(rs.getInt("id"));  
-            	cus.setAddress(rs.getString("address"));
-            	cus.setBirthday(rs.getString("birthday"));
-            	cus.setCtime(rs.getDate("ctime"));
-            	cus.setEmail(rs.getString("email"));
-            	cus.setQq(rs.getString("qq"));
-            	cus.setRealname(rs.getString("realname"));
-            	cus.setSex(rs.getString("sex"));
-            	cus.setTelephone(rs.getString("telephone"));
-            	cus.setUsername(rs.getString("username"));
-            	cus.setUtime(rs.getDate("utime"));
-
-                return cus;  
+            public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Customer cus = setCustomerProperties(rs); 
+            	return cus;
             }  
         });
+		
+		return customers;
+	}
+	
+	/**
+	 * 根据名字模糊查询
+	 */
+	@Override
+	public List<Customer> findByName(String name) {
+		List<Customer> customers = new ArrayList<Customer>();
+		String sql = "select * from customer where realname like %?%";
+		customers = (List<Customer>) jdbcTemplate.query(sql, new RowMapper<Customer>() {  
+	        @Override  
+	        public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
+	        	Customer cus = setCustomerProperties(rs); 
+	            return cus;  
+	        }  
+	    }); 
 		
 		return customers;
 	}
@@ -223,19 +213,40 @@ public class CustomerDaoImpl implements CustomerDao {
 	 * @param email
 	 * @return
 	 */
-	public List<Customer> findCustomersByEmail(String email){
+	private List<Customer> findCustomersByEmail(String email){
 		List<Customer> customers = new ArrayList<Customer>();
 		String sql = "select * from customer where email=?";
 		customers = (List<Customer>) jdbcTemplate.query(sql, new RowMapper<Customer>() {  
-                    @Override  
-                    public Customer mapRow(ResultSet rs, int rowNum)  
-                            throws SQLException {  
-                    	Customer customer = new Customer();  
-                    	customer.setId(rs.getInt("id"));
-                        return customer;  
-                    }  
-                }); 
+            @Override  
+            public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Customer cus = setCustomerProperties(rs); 
+                return cus; 
+            }  
+        }); 
 		
 		return customers;
+	}
+	
+	/**
+	 * 设置会员信息
+	 * @param rs
+	 * @return
+	 * @throws SQLException 
+	 */
+	private Customer setCustomerProperties(ResultSet rs) throws SQLException{
+		Customer cus = new Customer();  
+		
+		cus.setId(rs.getInt("id"));
+		cus.setAddress(rs.getString("address"));
+    	cus.setBirthday(rs.getString("birthday"));
+    	cus.setEmail(rs.getString("email"));
+    	cus.setQq(rs.getString("qq"));
+    	cus.setRealname(rs.getString("realname"));
+    	cus.setSex(rs.getString("sex"));
+    	cus.setTelephone(rs.getString("telephone"));
+    	cus.setUsername(rs.getString("username"));
+    	cus.setCtime(rs.getDate("ctime"));
+    	cus.setUtime(rs.getDate("utime"));
+        return cus;
 	}
 }

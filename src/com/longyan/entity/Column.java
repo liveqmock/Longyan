@@ -10,6 +10,8 @@ import java.util.Date;
 public class Column {
 	
 	private int id;  //ID
+	
+	private int site_id;  //站点ID
 
 	private String name;   //栏目名称
 	
@@ -29,6 +31,14 @@ public class Column {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getSite_id() {
+		return site_id;
+	}
+
+	public void setSite_id(int site_id) {
+		this.site_id = site_id;
 	}
 
 	public String getName() {

@@ -50,4 +50,11 @@ public interface CustomerDao {
 	 * @return
 	 */
 	public List<Customer> findAll();
+	
+	/**
+	 * 根据名字查找相关会员
+	 * @param name
+	 * @return
+	 */
+	public List<Customer> findByName(String name);
 }
