@@ -38,7 +38,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	@Override
 	public String insert(MailSendLog mailSendLog) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into mailSendLog(employee_id, customer_id, recieve_name, phone_number, title, content, send_name, type, ctime) values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into mail_send_log(employee_id, customer_id, recieve_name, phone_number, title, content, send_name, type, ctime) values(?,?,?,?,?,?,?,?,?)";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			mailSendLog.getEmployee_id(),
@@ -64,7 +64,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	@Override
 	public String update(MailSendLog mailSendLog) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update mailSendLog employee_id=?, customer_id=?, recieve_name=?, phone_number=?, title=?, content=?, send_name=?, type=?, utime=?";
+		String sql = "update mail_send_log employee_id=?, customer_id=?, recieve_name=?, phone_number=?, title=?, content=?, send_name=?, type=?, utime=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			mailSendLog.getEmployee_id(),
@@ -90,7 +90,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	@Override
 	public String delete(MailSendLog mailSendLog) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from mailSendLog where id=?";
+		String sql = "delete from mail_send_log where id=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			mailSendLog.getId()
@@ -106,7 +106,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from mailSendLog where id in (?)";
+		String sql = "delete from mail_send_log where id in (?)";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{ ids });
 		
@@ -120,7 +120,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	@Override
 	public MailSendLog findById(Integer id) {
 		MailSendLog mailSendLog = null;
-		String sql = "select * from mailSendLog where id=?";
+		String sql = "select * from mail_send_log where id=?";
 		
 		mailSendLog = (MailSendLog)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<MailSendLog>() {  
             @Override  
@@ -138,7 +138,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	 */
 	@Override
 	public List<MailSendLog> findAll() {
-		String sql = "select * from mailSendLog";
+		String sql = "select * from mail_send_log";
 		List<MailSendLog> mailSendLogs = new ArrayList<MailSendLog>();
 		
 		mailSendLogs = (List<MailSendLog>)jdbcTemplate.query(sql, new RowMapper<MailSendLog>() {  
@@ -157,7 +157,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	 */
 	@Override
 	public List<MailSendLog> findByName(String name) {
-		String sql = "select * from mailSendLog where title like %?%";
+		String sql = "select * from mail_send_log where title like %?%";
 		List<MailSendLog> mailSendLogs = new ArrayList<MailSendLog>();
 		
 		mailSendLogs = (List<MailSendLog>)jdbcTemplate.query(sql, new Object[]{name}, new RowMapper<MailSendLog>() {  
@@ -176,7 +176,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	 */
 	@Override
 	public List<MailSendLog> findByDate(Date startDate, Date endDate) {
-		String sql = "select * from mailSendLog where ctime between ? and ?";
+		String sql = "select * from mail_send_log where ctime between ? and ?";
 		List<MailSendLog> mailSendLogs = new ArrayList<MailSendLog>();
 		
 		mailSendLogs = (List<MailSendLog>)jdbcTemplate.query(sql, new Object[]{startDate, endDate}, new RowMapper<MailSendLog>() {  

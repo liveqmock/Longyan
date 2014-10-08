@@ -38,7 +38,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	@Override
 	public String insert(FriendLinks friendLinks) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into friendLinks(url, name, ctime) values(?,?,?)";
+		String sql = "insert into friend_links(url, name, ctime) values(?,?,?)";
 
 		int i = jdbcTemplate.update(sql, new Object[]{
 			friendLinks.getUrl(),
@@ -58,7 +58,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	@Override
 	public String update(FriendLinks friendLinks) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update friendLinks set url=?, name=?, utime=?";
+		String sql = "update friend_links set url=?, name=?, utime=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			friendLinks.getUrl(),
@@ -78,7 +78,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	@Override
 	public String delete(FriendLinks friendLinks) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from friendLinks where id=?";
+		String sql = "delete from friend_links where id=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			friendLinks.getId()
@@ -94,7 +94,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from friendLinks where id in (?)";
+		String sql = "delete from friend_links where id in (?)";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{ ids });
 		
@@ -108,7 +108,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	@Override
 	public FriendLinks findById(Integer id) {
 		FriendLinks friendLinks = null;
-		String sql = "select * from friendLinks where id=?";
+		String sql = "select * from friend_links where id=?";
 		
 		friendLinks = (FriendLinks)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<FriendLinks>() {  
             @Override  
@@ -126,7 +126,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	 */
 	@Override
 	public List<FriendLinks> findAll() {
-		String sql = "select * from friendLinks";
+		String sql = "select * from friend_links";
 		List<FriendLinks> friendLinkses = new ArrayList<FriendLinks>();
 		
 		friendLinkses = (List<FriendLinks>)jdbcTemplate.query(sql, new RowMapper<FriendLinks>() {  
@@ -145,7 +145,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	 */
 	@Override
 	public List<FriendLinks> findByName(String name) {
-		String sql = "select * from friendLinks where name like %?%";
+		String sql = "select * from friend_links where name like %?%";
 		List<FriendLinks> friendLinkses = new ArrayList<FriendLinks>();
 		
 		friendLinkses = (List<FriendLinks>)jdbcTemplate.query(sql, new Object[]{name}, new RowMapper<FriendLinks>() {  
