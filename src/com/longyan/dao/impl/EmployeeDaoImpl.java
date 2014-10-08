@@ -154,6 +154,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 		return flag;
 	}
+	
+	@Override
+	public String deleteMore(String ids) {
+		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
+		String sql = "delete from employee where id in (?)";
+		
+		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		
+		if(i > 0){
+			flag = "3001";
+		}
+
+		return flag;
+	}
 
 	/**
 	 * 通过ID查找员工
@@ -256,4 +270,5 @@ public class EmployeeDaoImpl implements EmployeeDao {
     	
         return employee;
 	}
+
 }

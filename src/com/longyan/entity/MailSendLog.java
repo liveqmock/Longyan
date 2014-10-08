@@ -19,6 +19,8 @@ public class MailSendLog {
 	
 	private String phone_number;  //收信人电话
 	
+	private String title;     //邮件title
+	
 	private String content; //邮件内容
 	
 	private String send_name;  //发信人名称
@@ -67,6 +69,14 @@ public class MailSendLog {
 
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getContent() {

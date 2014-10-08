@@ -45,4 +45,11 @@ public interface AttachmentsDao {
 	 * @return
 	 */
 	public String delete(Attachments attachments);
+	
+	/**
+	 * 删除多条记录
+	 * @param ids
+	 * @return
+	 */
+	public String deleteMore(String ids);
 }

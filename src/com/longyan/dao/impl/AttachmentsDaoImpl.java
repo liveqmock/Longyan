@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import com.longyan.dao.AttachmentsDao;
 import com.longyan.entity.Attachments;
-import com.longyan.entity.Employee;
 
 /**
  * 附件处理
@@ -150,6 +149,23 @@ public class AttachmentsDaoImpl implements AttachmentsDao{
 		int i = jdbcTemplate.update(sql, new Object[]{
 			attachments.getId()
 		});
+		
+		if(i > 0){
+			flag = "3001";
+		}
+
+		return flag;
+	}
+	
+	/**
+	 * 删除多个附件
+	 */
+	@Override
+	public String deleteMore(String ids) {
+		String flag = "3003"; //3001删除成功；3002 删除的附件不存在； 3003 未知原因删除失败
+		String sql = "delete from attachments where id in (?)";
+		
+		int i = jdbcTemplate.update(sql, new Object[]{ ids });
 		
 		if(i > 0){
 			flag = "3001";

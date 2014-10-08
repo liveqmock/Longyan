@@ -19,6 +19,8 @@ public class Message {
 	
 	private String content;  //留言内容
 	
+	private int status;   //留言是否已回复  0未回复  1已回复
+	
 	private Date ctime;       //创建时间
 	
 	private Date utime;       //更新时间
@@ -61,6 +63,14 @@ public class Message {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public Date getCtime() {

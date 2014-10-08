@@ -33,6 +33,13 @@ public interface ColumnDao {
 	public String delete(Column column);
 	
 	/**
+	 * 删除多条记录
+	 * @param ids
+	 * @return
+	 */
+	public String deleteMore(String ids);
+	
+	/**
 	 * 根据ID查找栏目
 	 * @param id
 	 * @return

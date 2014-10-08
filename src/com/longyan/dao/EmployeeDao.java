@@ -39,6 +39,13 @@ public interface EmployeeDao {
 	public String delete(Employee employee);
 	
 	/**
+	 * 删除多条记录
+	 * @param ids
+	 * @return
+	 */
+	public String deleteMore(String ids);
+	
+	/**
 	 * 根据ID查找员工
 	 * @param id
 	 * @return

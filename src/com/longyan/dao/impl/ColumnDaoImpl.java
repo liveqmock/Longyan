@@ -116,6 +116,23 @@ public class ColumnDaoImpl implements ColumnDao {
 
 		return flag;
 	}
+	
+	/**
+	 * 批量删除栏目
+	 */
+	@Override
+	public String deleteMore(String ids) {
+		String flag = "3003"; //3001删除成功；3002 删除的人不存在； 3003 未知原因删除失败
+		String sql = "delete from column where id in (?)";
+		
+		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		
+		if(i > 0){
+			flag = "3001";
+		}
+
+		return flag;
+	}
 
 	/**
 	 * 通过ID获取栏目

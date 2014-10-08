@@ -150,6 +150,20 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		return flag;
 	}
+	
+	@Override
+	public String deleteMore(String ids) {
+		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
+		String sql = "delete from customer where id in (?)";
+		
+		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		
+		if(i > 0){
+			flag = "3001";
+		}
+
+		return flag;
+	}
 
 	/**
 	 * 通过ID查找会员
@@ -249,4 +263,5 @@ public class CustomerDaoImpl implements CustomerDao {
     	cus.setUtime(rs.getDate("utime"));
         return cus;
 	}
+
 }

@@ -62,4 +62,13 @@ public class AttachmentsService {
 	public String delAttachmentsById(Attachments attachments){
 		return attachmentsDaoImpl.delete(attachments);
 	}
+	
+	/**
+	 * 批量删除附件
+	 * @param ids
+	 * @return
+	 */
+	public String delMoreAttachment(String ids){
+		return attachmentsDaoImpl.deleteMore(ids);
+	}
 }

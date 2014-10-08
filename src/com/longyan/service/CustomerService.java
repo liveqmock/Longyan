@@ -46,6 +46,15 @@ public class CustomerService {
 	}
 	
 	/**
+	 * 批量删除会员信息
+	 * @param ids
+	 * @return
+	 */
+	public String delMoreCustomer(String ids){
+		return customerDaoImpl.deleteMore(ids);
+	}
+	
+	/**
 	 * 更新会员信息，不能修改密码
 	 * @param customer
 	 * @return

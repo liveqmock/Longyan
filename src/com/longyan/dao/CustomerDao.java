@@ -39,6 +39,13 @@ public interface CustomerDao {
 	public String delete(Customer customer);
 	
 	/**
+	 * 删除多条记录
+	 * @param ids
+	 * @return
+	 */
+	public String deleteMore(String ids);
+	
+	/**
 	 * 根据ID查找会员
 	 * @param id
 	 * @return

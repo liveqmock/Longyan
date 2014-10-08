@@ -46,6 +46,15 @@ public class EmployeeService {
 	}
 	
 	/**
+	 * 批量删除员工信息
+	 * @param ids
+	 * @return
+	 */
+	public String delMoreEmployee(String ids){
+		return employeeDaoImpl.deleteMore(ids);
+	}
+	
+	/**
 	 * 更新员工信息，不能修改密码
 	 * @param employee
 	 * @return

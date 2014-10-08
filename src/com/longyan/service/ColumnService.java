@@ -80,4 +80,13 @@ public class ColumnService {
 	public List<Column> getColumnsBySiteId(Integer site_id){
 		return columnDaoImpl.findBySiteId(site_id);
 	}
+	
+	/**
+	 * 批量删除栏目
+	 * @param ids
+	 * @return
+	 */
+	public String delMoreColumn(String ids){
+		return columnDaoImpl.deleteMore(ids);
+	}
 }

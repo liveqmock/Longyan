@@ -13,9 +13,9 @@ public class Content {
 
 	private String title;   //内容名称
 	
-	private String code;  //栏目代码
+	private String code;  //内容 代码
 	
-	private int template_id;   //没有二级内容的栏目会对应一个模板文件
+	private int template_id;   //每个二级内容的栏目会对应一个模板文件
 	
 	private int column_id;    //所属栏目
 	
