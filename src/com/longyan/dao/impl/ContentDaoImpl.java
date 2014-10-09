@@ -38,7 +38,7 @@ public class ContentDaoImpl implements ContentDao {
 	@Override
 	public String insert(Content content) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，二级内容已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into content(title, code, template_id,column_id, create_user, ctime) values(?,?,?,?,?,?)";
+		String sql = "insert into content(title, code, template_id, img_url, column_id, create_user, ctime) values(?,?,?,?,?,?,?)";
 		Content col = getContentByCode(content.getCode());
 		
 		if(col != null){
@@ -49,6 +49,7 @@ public class ContentDaoImpl implements ContentDao {
 			content.getTitle(),
 			content.getCode(),
 			content.getTemplate_id(),
+			content.getImg_url(),
 			content.getColumn_id(),
 			content.getCreate_user(),
 			new Date()
@@ -66,7 +67,7 @@ public class ContentDaoImpl implements ContentDao {
 	@Override
 	public String update(Content content) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update content set title=?, code=?, template_id=?, column_id=?, create_user=?, utime=?";
+		String sql = "update content set title=?, code=?, template_id=?, img_url=?, column_id=?, create_user=?, utime=?";
 		Content col = getContentByCode(content.getCode());
 		
 		if(col == null){
@@ -78,6 +79,7 @@ public class ContentDaoImpl implements ContentDao {
 			content.getTitle(),
 			content.getCode(),
 			content.getTemplate_id(),
+			content.getImg_url(),
 			content.getColumn_id(),
 			content.getCreate_user(),
 			new Date()
@@ -192,7 +194,7 @@ public class ContentDaoImpl implements ContentDao {
 	}
 
 	/**
-	 * 获取某个站点下的所有二级内容
+	 * 获取某个栏目下的所有二级内容
 	 */
 	@Override
 	public List<Content> findByColumnId(Integer column_id) {
@@ -246,6 +248,7 @@ public class ContentDaoImpl implements ContentDao {
 		content.setTitle(rs.getString("title"));
 		content.setColumn_id(rs.getInt("column_id"));
 		content.setTemplate_id(rs.getInt("template_id"));
+		content.setImg_url(rs.getString("img_url"));
 		content.setUtime(rs.getDate("utime"));
 		return content;
 	}

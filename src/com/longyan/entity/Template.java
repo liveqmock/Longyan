@@ -10,6 +10,10 @@ import java.util.Date;
 public class Template {
 	
 	private int id;  //ID
+	
+	private int column_id;   //模板所属栏目ID
+	
+	private int content_id;  //模板所属内容列表ID
 
 	private String filename;   //模板文件名（不包含路径）
 	
@@ -27,6 +31,22 @@ public class Template {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getColumn_id() {
+		return column_id;
+	}
+
+	public void setColumn_id(int column_id) {
+		this.column_id = column_id;
+	}
+
+	public int getContent_id() {
+		return content_id;
+	}
+
+	public void setContent_id(int content_id) {
+		this.content_id = content_id;
 	}
 
 	public String getFilename() {

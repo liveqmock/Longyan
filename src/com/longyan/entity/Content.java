@@ -17,6 +17,8 @@ public class Content {
 	
 	private int template_id;   //每个二级内容的栏目会对应一个模板文件
 	
+	private String img_url;   //图片地址
+	
 	private int column_id;    //所属栏目
 	
 	private String create_user;  //创建人
@@ -55,6 +57,14 @@ public class Content {
 
 	public void setTemplate_id(int template_id) {
 		this.template_id = template_id;
+	}
+
+	public String getImg_url() {
+		return img_url;
+	}
+
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
 	}
 
 	public int getColumn_id() {
