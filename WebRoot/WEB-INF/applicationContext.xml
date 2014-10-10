@@ -28,10 +28,10 @@
 	<!-- 开启组件扫描 -->
 	<context:component-scan base-package="com.longyan" />
 
-	<!-- 指定数据库配置文件的位置 -->
-	<!-- <context:property-placeholder location="classpath:jdbc.properties" 
-		/> -->
-
+	<aop:aspectj-autoproxy/>
+	
+	<mvc:annotation-driven />
+	
 	<!-- 指定数据源，解析数据库配置文件，并设置数据源的属性 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
@@ -49,20 +49,14 @@
 		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
 		<property name="acquireIncrement" value="1" />
 	</bean>
-
+	
 	<!-- 配置jdbc的模板类JdbcTemplate -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<!-- 设置freeMarker的配置文件路径 -->
-	<bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-	    <property name="location" value="classpath:freemarker.properties"/>
-	</bean>
-	 
 	<!-- 配置freeMarker的模板路径 -->
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-	    <!--property name="freemarkerSettings" ref="freemarkerConfiguration"/-->
 	    <property name="templateLoaderPath">
 	        <value>/WEB-INF/view/</value>
 	    </property>
@@ -81,16 +75,9 @@
 	    <property name="viewNames" value="*.ftl"/>
 	    <property name="contentType" value="text/html; charset=utf-8"/>
 	    <property name="cache" value="true" />
-	    <property name="prefix" value="" />
-	    <property name="suffix" value="" />
+	    <property name="prefix" value="/WEB-INF/view/" />
+	    <property name="suffix" value=".ftl" />
 	    <property name="order" value="2"/>
 	</bean>
-
-	<!--2.配置Spring针对JPA的事务 -->
-	<!-- <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager"> 
-		<property name="entityManagerFactory" ref="entityManagerFactory" /> </bean> -->
-
-	<!-- 通过注解的方式，进行事务管理 -->
-	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
 
 </beans> 

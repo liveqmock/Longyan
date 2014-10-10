@@ -1,6 +1,7 @@
 package com.longyan.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 
 import com.longyan.service.EmployeeService;
@@ -12,7 +13,8 @@ import com.longyan.service.EmployeeService;
  */
 @Controller
 public class EmployeeController {
-	@Autowired
+	
+	@Resource(name="employeeService")
 	private EmployeeService employeeService;
 
 	public EmployeeService getEmployeeService() {

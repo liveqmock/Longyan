@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LogonRightFilter extends HttpServlet implements Filter {
+public class LoginRightFilter extends HttpServlet implements Filter {
 	private static final long serialVersionUID = 1L;
 
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2) throws IOException, ServletException {
