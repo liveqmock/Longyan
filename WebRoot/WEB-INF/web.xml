@@ -5,30 +5,30 @@
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name></display-name>
 	
+	<!-- 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!--contextConfigLocation在 ContextLoaderListener类中的默认值是 /WEB-INF/applicationContext.xml -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<!-- <param-value>/WEB-INF/applicationContext.xml</param-value> -->
 		<param-value>classpath:applicationContext*.xml</param-value>
 	</context-param>
+	-->
 	
 	<!-- Spring MVC配置 -->
 	<servlet>
-	    <servlet-name>spring</servlet-name>
+	    <servlet-name>spring2</servlet-name>
 	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	    <!-- 可以自定义servlet.xml配置文件的位置和名称，默认为WEB-INF目录下，名称为[<servlet-name>]-servlet.xml，如spring-servlet.xml-->
 	    <init-param>
 	        <param-name>contextConfigLocation</param-name>
-	        <param-value>classpath:applicationContext*.xml</param-value>
+	        <param-value>/WEB-INF/applicationContext.xml</param-value>
 	    </init-param>
 	    <load-on-startup>1</load-on-startup>
 	</servlet>
 	 
 	<servlet-mapping>
-	    <servlet-name>spring</servlet-name>
+	    <servlet-name>spring2</servlet-name>
 	    <url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
