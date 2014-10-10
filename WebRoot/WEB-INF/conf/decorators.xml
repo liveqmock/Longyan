@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/decorators">
+	<excludes>
+		<pattern>/css/*</pattern>
+        <pattern>/img/*</pattern>
+        <pattern>/js/*</pattern>
+        <pattern>/*.ajax</pattern>
+		<pattern>/*.jsp</pattern>
+        <pattern>/decorators/*</pattern>
+        <pattern>/admin/login*</pattern>
+        <pattern>/page/register*</pattern>
+        <pattern>/page/comment*</pattern>
+	</excludes>
+
+	<decorator name="admin" page="admin_common.ftl">
+        <pattern>/*</pattern>
+	</decorator>
+	
+	<decorator name="page" page="page_common.ftl">
+        <pattern>/*</pattern>
+	</decorator>	
+	
+</decorators>
