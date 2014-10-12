@@ -139,10 +139,10 @@ public class ColumnDaoImpl implements ColumnDao {
 	 */
 	@Override
 	public Column findById(Integer id) {
-		Column column = null;
+		List<Column> column = null;
 		String sql = "select * from column where id=?";
 		
-		column = (Column)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<Column>() {  
+		column = (List<Column>)jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<Column>() {  
             @Override  
             public Column mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Column col = setColumnProperties(rs); 
@@ -150,7 +150,7 @@ public class ColumnDaoImpl implements ColumnDao {
             }  
         });
 		
-		return column;
+		return column.size() > 0 ? column.get(0) : null;
 	}
 
 	/**
@@ -217,9 +217,9 @@ public class ColumnDaoImpl implements ColumnDao {
 	 */
 	private Column getColumnByCode(String code){
 		if(code == "") return null;
-		Column column = null;
+		List<Column> column = null;
 		String sql = "select * from column where code=?";
-		column = (Column)jdbcTemplate.queryForObject(sql, new Object[]{code}, new RowMapper<Column>() {  
+		column = (List<Column>)jdbcTemplate.query(sql, new Object[]{code}, new RowMapper<Column>() {  
             @Override  
             public Column mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Column col = setColumnProperties(rs); 
@@ -227,7 +227,7 @@ public class ColumnDaoImpl implements ColumnDao {
             }  
         });
 		
-		return column;
+		return column.size() > 0 ? column.get(0) : null;
 	}
 	
 	/**

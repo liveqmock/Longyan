@@ -3,6 +3,7 @@ package com.longyan.dao.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -76,9 +77,9 @@ public class ReplyDaoImpl implements ReplyDao {
 	 */
 	public Reply findByMessageId(Integer message_id){
 		if(message_id == null) return null;
-		Reply reply = null;
+		List<Reply> reply = null;
 		String sql = "select * from reply where message_id=?";
-		reply = (Reply)jdbcTemplate.queryForObject(sql, new Object[]{message_id}, new RowMapper<Reply>() {  
+		reply = (List<Reply>)jdbcTemplate.query(sql, new Object[]{message_id}, new RowMapper<Reply>() {  
             @Override  
             public Reply mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Reply con = setReplyProperties(rs); 
@@ -86,7 +87,7 @@ public class ReplyDaoImpl implements ReplyDao {
             }  
         });
 		
-		return reply;
+		return reply.size() > 0 ? reply.get(0) : null;
 	}
 	
 	/**

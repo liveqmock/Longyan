@@ -138,10 +138,10 @@ public class MessageDaoImpl implements MessageDao {
 
 	@Override
 	public Message findById(Integer id) {
-		Message message = null;
+		List<Message> message = null;
 		String sql = "select * from message where id=?";
 		
-		message = (Message)jdbcTemplate.queryForObject(sql, new Object[]{ id }, new RowMapper<Message>() {  
+		message = (List<Message>)jdbcTemplate.query(sql, new Object[]{ id }, new RowMapper<Message>() {  
             @Override  
             public Message mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Message con = setMessageProperties(rs); 
@@ -149,7 +149,7 @@ public class MessageDaoImpl implements MessageDao {
             }  
         });
 		
-		return message;
+		return message.size() > 0 ? message.get(0) : null;
 	}
 
 	/**

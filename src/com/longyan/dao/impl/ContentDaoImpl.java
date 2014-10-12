@@ -141,10 +141,10 @@ public class ContentDaoImpl implements ContentDao {
 	 */
 	@Override
 	public Content findById(Integer id) {
-		Content content = null;
+		List<Content> content = null;
 		String sql = "select * from content where id=?";
 		
-		content = (Content)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<Content>() {  
+		content = (List<Content>)jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<Content>() {  
             @Override  
             public Content mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Content col = setContentProperties(rs); 
@@ -152,7 +152,7 @@ public class ContentDaoImpl implements ContentDao {
             }  
         });
 		
-		return content;
+		return content.size() > 0 ? content.get(0) : null;
 	}
 
 	/**
@@ -219,9 +219,9 @@ public class ContentDaoImpl implements ContentDao {
 	 */
 	private Content getContentByCode(String code){
 		if(code == "") return null;
-		Content content = null;
+		List<Content> content = null;
 		String sql = "select * from content where code=?";
-		content = (Content)jdbcTemplate.queryForObject(sql, new Object[]{code}, new RowMapper<Content>() {  
+		content = (List<Content>)jdbcTemplate.query(sql, new Object[]{code}, new RowMapper<Content>() {  
             @Override  
             public Content mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Content col = setContentProperties(rs); 
@@ -229,7 +229,7 @@ public class ContentDaoImpl implements ContentDao {
             }  
         });
 		
-		return content;
+		return content.size() > 0 ? content.get(0) : null;
 	}
 	
 	/**

@@ -107,10 +107,10 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 
 	@Override
 	public FriendLinks findById(Integer id) {
-		FriendLinks friendLinks = null;
+		List<FriendLinks> friendLinks = null;
 		String sql = "select * from friend_links where id=?";
 		
-		friendLinks = (FriendLinks)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<FriendLinks>() {  
+		friendLinks = (List<FriendLinks>)jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<FriendLinks>() {  
             @Override  
             public FriendLinks mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	FriendLinks con = setFriendLinksProperties(rs); 
@@ -118,7 +118,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
             }  
         });
 		
-		return friendLinks;
+		return friendLinks.size() > 0 ? friendLinks.get(0) : null;
 	}
 
 	/**

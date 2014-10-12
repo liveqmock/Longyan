@@ -119,10 +119,10 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 
 	@Override
 	public MailSendLog findById(Integer id) {
-		MailSendLog mailSendLog = null;
+		List<MailSendLog> mailSendLog = null;
 		String sql = "select * from mail_send_log where id=?";
 		
-		mailSendLog = (MailSendLog)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<MailSendLog>() {  
+		mailSendLog = (List<MailSendLog>)jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<MailSendLog>() {  
             @Override  
             public MailSendLog mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	MailSendLog con = setMailSendLogProperties(rs); 
@@ -130,7 +130,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
             }  
         });
 		
-		return mailSendLog;
+		return mailSendLog.size() > 0 ? mailSendLog.get(0) : null ;
 	}
 
 	/**

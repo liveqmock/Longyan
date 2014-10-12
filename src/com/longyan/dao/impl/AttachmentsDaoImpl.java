@@ -97,9 +97,9 @@ public class AttachmentsDaoImpl implements AttachmentsDao{
 		if(path == ""){
 			return null;
 		}
-		Attachments attachments = null;
+		List<Attachments> attachments = null;
 		String sql = "select * from attachments where path=?";
-		attachments = (Attachments)jdbcTemplate.queryForObject(sql, new Object[]{path}, new RowMapper<Attachments>() {  
+		attachments = (List<Attachments>)jdbcTemplate.query(sql, new Object[]{path}, new RowMapper<Attachments>() {  
             @Override  
             public Attachments mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Attachments att = setAttachmentsProperties(rs); 
@@ -107,7 +107,7 @@ public class AttachmentsDaoImpl implements AttachmentsDao{
             }  
         });
 		
-		return attachments;
+		return attachments.size() > 0 ? attachments.get(0) : null;
 	}
 	
 	/**

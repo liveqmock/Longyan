@@ -13,11 +13,11 @@
 	</excludes>
 
 	<decorator name="admin" page="admin_common.ftl">
-        <pattern>/*</pattern>
+        <pattern>/admin/filter/*</pattern>
 	</decorator>
 	
 	<decorator name="page" page="page_common.ftl">
-        <pattern>/*</pattern>
+        <pattern>/page/*</pattern>
 	</decorator>	
 	
 </decorators>

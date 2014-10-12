@@ -3,6 +3,7 @@ package com.longyan.dao.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -119,9 +120,9 @@ public class TemplateDaoImpl implements TemplateDao {
 	 */
 	private Template getTemplateByFileName(String filename){
 		if(filename == "") return null;
-		Template template = null;
+		List<Template> template = null;
 		String sql = "select * from template where filename=?";
-		template = (Template)jdbcTemplate.queryForObject(sql, new Object[]{ filename }, new RowMapper<Template>() {  
+		template = (List<Template>)jdbcTemplate.query(sql, new Object[]{ filename }, new RowMapper<Template>() {  
             @Override  
             public Template mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Template con = setTemplateProperties(rs); 
@@ -129,7 +130,7 @@ public class TemplateDaoImpl implements TemplateDao {
             }  
         });
 		
-		return template;
+		return template.size() > 0 ? template.get(0) : null;
 	}
 	
 	/**
@@ -138,9 +139,9 @@ public class TemplateDaoImpl implements TemplateDao {
 	@Override
 	public Template findByColumnId(Integer column_id) {
 		if(column_id == null) return null;
-		Template template = null;
+		List<Template> template = null;
 		String sql = "select * from template where column_id=?";
-		template = (Template)jdbcTemplate.queryForObject(sql, new Object[]{ column_id }, new RowMapper<Template>() {  
+		template = (List<Template>)jdbcTemplate.query(sql, new Object[]{ column_id }, new RowMapper<Template>() {  
             @Override  
             public Template mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Template con = setTemplateProperties(rs); 
@@ -148,7 +149,7 @@ public class TemplateDaoImpl implements TemplateDao {
             }  
         });
 		
-		return template;
+		return template.size() > 0 ? template.get(0) : null;
 	}
 
 	/**
@@ -157,9 +158,9 @@ public class TemplateDaoImpl implements TemplateDao {
 	@Override
 	public Template findByContentId(Integer content_id) {
 		if(content_id == null) return null;
-		Template template = null;
+		List<Template> template = null;
 		String sql = "select * from template where column_id=?";
-		template = (Template)jdbcTemplate.queryForObject(sql, new Object[]{ content_id }, new RowMapper<Template>() {  
+		template = (List<Template>)jdbcTemplate.query(sql, new Object[]{ content_id }, new RowMapper<Template>() {  
             @Override  
             public Template mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Template con = setTemplateProperties(rs); 
@@ -167,7 +168,7 @@ public class TemplateDaoImpl implements TemplateDao {
             }  
         });
 		
-		return template;
+		return template.size() > 0 ? template.get(0) : null;
 	}
 	
 	/**

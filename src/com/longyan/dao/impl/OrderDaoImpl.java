@@ -126,10 +126,10 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	public Order findById(Integer id) {
-		Order order = null;
+		List<Order> order = null;
 		String sql = "select * from order where id=?";
 		
-		order = (Order)jdbcTemplate.queryForObject(sql, new Object[]{ id }, new RowMapper<Order>() {  
+		order = (List<Order>)jdbcTemplate.query(sql, new Object[]{ id }, new RowMapper<Order>() {  
             @Override  
             public Order mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Order con = setOrderProperties(rs); 
@@ -137,7 +137,7 @@ public class OrderDaoImpl implements OrderDao {
             }  
         });
 		
-		return order;
+		return order.size() > 0 ? order.get(0) : null;
 	}
 
 	/**

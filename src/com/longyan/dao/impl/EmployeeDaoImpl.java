@@ -174,10 +174,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	 */
 	@Override
 	public Employee findById(Integer id) {
-		Employee employee = null;
+		List<Employee> employee = null;
 		String sql = "select * from employee where id=?";
 		
-		employee = (Employee)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<Employee>() {  
+		employee = (List<Employee>)jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<Employee>() {  
             @Override  
             public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Employee emp = setEmployeeProperties(rs); 
@@ -185,7 +185,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             }  
         });
 		
-		return employee;
+		return employee.size() > 0 ? employee.get(0) : null;
 	}
 
 	/**
@@ -232,9 +232,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	 * @return
 	 */
 	private Employee findEmployeeByIdCard(String id_card){
-		Employee employee = null;
+		List<Employee> employee = null;
 		String sql = "select * from employee where id_card=?";
-		employee = jdbcTemplate.queryForObject(sql, new Object[]{ id_card }, new RowMapper<Employee>() {  
+		employee = (List<Employee>) jdbcTemplate.query(sql, new Object[]{ id_card }, new RowMapper<Employee>() {  
             @Override  
             public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Employee emp = setEmployeeProperties(rs); 
@@ -242,7 +242,27 @@ public class EmployeeDaoImpl implements EmployeeDao {
             }  
         }); 
 		
-		return employee;
+		return employee.size() > 0 ? employee.get(0) : null;
+	}
+	
+	/**
+	 * 登录验证
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public Employee checkLogin(String username, String password){
+		List<Employee> employee = null;
+		String sql = "select * from employee where name=? and password=?";
+		employee = (List<Employee>) jdbcTemplate.query(sql, new Object[]{ username, password }, new RowMapper<Employee>() {  
+            @Override  
+            public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Employee emp = setEmployeeProperties(rs); 
+                return emp; 
+            }  
+        }); 
+		
+		return employee.size() > 0 ? employee.get(0) : null;
 	}
 	
 	/**

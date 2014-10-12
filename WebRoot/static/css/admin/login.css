@@ -1,0 +1,96 @@
+@import url(../page-init.css);
+@import url(../common.css);
+
+.loginPageBody {
+	background: url(/Longyan/static/img/admin/login/loginbodybg.gif) repeat-x left center #d6dedf;
+}
+.loginWrapbg {
+	background: url(/Longyan/static/img/admin/login/loginimgbg.jpg) no-repeat center center;
+	height: 100%;
+}
+.loginCt {
+	width: 442px;
+	height: 440px;
+	margin: 0 auto;
+	margin-top: -260px;
+}
+.welcome {
+	color: #2477b3;
+	font-family: "微软雅黑", Tahoma, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 6px 0;
+	padding-top: 10px;
+	padding-left: 20px;
+	letter-spacing: 1px;
+	text-align: center;
+}
+.loginBar {
+	width: 345px;
+	padding-top: 80px;
+	padding-left: 50px;
+	font-size: 14px;
+}
+.loginBar .tip {
+	text-align: center;
+	color: red;
+	visibility: hidden;
+}
+.fieldWrap {
+	text-align: left;
+	width: 300px;
+	height: 30px;
+	padding-top: 10px;
+	overflow: hidden;
+}
+
+.lable {
+	padding-top: 3px;
+	width: 90px;
+	float: left;
+	color: #333333;
+	font-size: 14px;
+	text-align: right;
+}
+
+.inputWrap {
+	line-height: 16px;
+	border: none;
+	width: 200px;
+	float: left;
+	background: url(/Longyan/static/img/admin/login/loginInputWrapbg.gif) no-repeat left top;
+}
+
+.inputWrap .inputText {
+	width: 192px;
+	height: 20px;
+	font-size: 14px;
+	padding-left: 6px;
+	margin-top: 0px;
+	padding-top: 4px;
+	background: transparent none;
+	border-width: 0;
+}
+
+#loginBtnWrap {
+	padding: 12px 0px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+#loginBtn {
+	background: url(/Longyan/static/img/admin/login/loginbtn.gif) no-repeat 0 0;
+	width: 100px;
+	height: 34px;
+	color: #ffffff;
+	font-size: 14px;
+	line-height: 32px;
+	text-align: center;
+	word-spacing: 1px;
+	letter-spacing: 6px;
+}
+
+.copyright {
+	padding-top: 10px;
+	text-align: center;
+}

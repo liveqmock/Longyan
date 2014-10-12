@@ -1,0 +1,44 @@
+/**  一些公用的css组件  **/
+div, blockquote, q, iframe, form, dl, dt, dd, h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+}
+
+div, p, table, th, td, font {
+	font-size: 1em;
+	font-family: inherit;
+	line-height: inherit;
+}
+
+a {
+	color: #08d;
+	text-decoration: none;
+	border: 0;
+	background-color: transparent;
+}
+
+input.inputText {
+	color: #336699;
+	background: url(/Longyan/static/img/admin/text_bg.gif) #F7FAFC repeat-x left top;
+	border: 1px solid #6688AA;
+	border-color: #9ab #cde #cde #abc;
+	padding: 3px 2px 3px;
+	vertical-align: middle;
+}
+
+input[type="text"], input[type="password"] {
+	color: #336699;
+	background: url(/Longyan/static/img/admin/text_bg.gif) #F7FAFC repeat-x left top;
+	border: 1px solid #6688AA;
+	border-color: #9ab #cde #cde #abc;
+	padding: 3px 2px 3px;
+	vertical-align: middle;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+.inline-block {
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+}

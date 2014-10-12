@@ -98,4 +98,14 @@ public class EmployeeService {
 	public List<Employee> getEmployeesByName(String name) {
 		return employeeDaoImpl.findByName(name);
 	}
+	
+	/**
+	 * 登录验证
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public Employee checkLogin(String username, String password){
+		return employeeDaoImpl.checkLogin(username, password);
+	}
 }

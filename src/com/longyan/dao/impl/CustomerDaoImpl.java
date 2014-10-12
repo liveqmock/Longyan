@@ -170,10 +170,10 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	@Override
 	public Customer findById(Integer id) {
-		Customer customer = null;
+		List<Customer> customer = null;
 		String sql = "select * from customer where id=?";
 		
-		customer = (Customer)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<Customer>() {  
+		customer = (List<Customer>)jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<Customer>() {  
             @Override  
             public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Customer cus = setCustomerProperties(rs); 
@@ -181,7 +181,7 @@ public class CustomerDaoImpl implements CustomerDao {
             }  
         });
 		
-		return customer;
+		return customer.size() > 0 ? customer.get(0) : null;
 	}
 
 	/**

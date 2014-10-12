@@ -129,10 +129,10 @@ public class ContactDaoImpl implements ContactDao {
 
 	@Override
 	public Contact findById(Integer id) {
-		Contact contact = null;
+		List<Contact> contact = null;
 		String sql = "select * from contact where id=?";
 		
-		contact = (Contact)jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<Contact>() {  
+		contact = (List<Contact>)jdbcTemplate.query(sql, new Object[]{id}, new RowMapper<Contact>() {  
             @Override  
             public Contact mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Contact con = setContactProperties(rs); 
@@ -140,7 +140,7 @@ public class ContactDaoImpl implements ContactDao {
             }  
         });
 		
-		return contact;
+		return contact.size() > 0 ? contact.get(0) : null;
 	}
 
 	/**
@@ -187,9 +187,9 @@ public class ContactDaoImpl implements ContactDao {
 	 */
 	private Contact getContactByQq(String qq){
 		if(qq == "") return null;
-		Contact contact = null;
+		List<Contact> contact = null;
 		String sql = "select * from contact where qq=?";
-		contact = (Contact)jdbcTemplate.queryForObject(sql, new Object[]{qq}, new RowMapper<Contact>() {  
+		contact = (List<Contact>)jdbcTemplate.query(sql, new Object[]{qq}, new RowMapper<Contact>() {  
             @Override  
             public Contact mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Contact con = setContactProperties(rs); 
@@ -197,7 +197,7 @@ public class ContactDaoImpl implements ContactDao {
             }  
         });
 		
-		return contact;
+		return contact.size() > 0 ? contact.get(0) : null;
 	}
 	
 	/**

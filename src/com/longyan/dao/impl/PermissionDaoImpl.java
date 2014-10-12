@@ -3,6 +3,7 @@ package com.longyan.dao.impl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -86,9 +87,9 @@ public class PermissionDaoImpl implements PermissionDao {
 	@Override
 	public Permission findByEmployeeId(Integer employee_id) {
 		if(employee_id == null) return null;
-		Permission permission = null;
+		List<Permission> permission = null;
 		String sql = "select * from permission where employee_id=?";
-		permission = (Permission)jdbcTemplate.queryForObject(sql, new Object[]{ employee_id }, new RowMapper<Permission>() {  
+		permission = (List<Permission>)jdbcTemplate.query(sql, new Object[]{ employee_id }, new RowMapper<Permission>() {  
             @Override  
             public Permission mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Permission con = setPermissionProperties(rs); 
@@ -96,7 +97,7 @@ public class PermissionDaoImpl implements PermissionDao {
             }  
         });
 		
-		return permission;
+		return permission.size() > 0 ? permission.get(0) : null;
 	}
 	
 	/**

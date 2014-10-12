@@ -1,0 +1,27 @@
+body {
+	background-color: #FFFFFF;
+	color: #555555;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	border: 0 none;
+}
+
+body, input, textarea, select, button {
+	margin: 0;
+	font-size: 12px;
+	font-family: Tahoma, SimSun, sans-serif;
+	-webkit-text-size-adjust: none;
+}
+
+h1,h2,h3,h4,h5,h6,p,span,a,img{ 
+	margin:0; 
+	padding:0; 
+	font-size:12px; 
+	color:#000;
+}
+
+body, td, textarea {
+	line-height: 1.4;
+}
+
