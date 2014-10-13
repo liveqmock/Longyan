@@ -41,6 +41,7 @@
 		</div>
 		<script type="text/javascript" src="/Longyan/static/js/lib/jquery-1.9.1.js"></script>
 		<script type="text/javascript" src="/Longyan/static/js/lib/jquery.MD5.js"></script>
+		<script src="/Longyan/static/js/browser-notice.js" defer></script>
 		<script type="text/javascript" src="/Longyan/static/js/admin/login/login.js"></script>
 	</body>
 </html>

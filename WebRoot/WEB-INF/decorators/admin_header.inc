@@ -4,10 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>欢迎访问龙颜后台系统</title>
 
-	<script src="/Longyan/static/js/lib/jquery-1.9.1.js" defer></script>
-	<script src="/Longyan/static/js/lib/bootstrap.min.js" defer></script>
-	<script src="/Longyan/static/js/lib/jquery.dataTables.js" defer></script>
-	<script src="/Longyan/static/js/lib/jquery.dataTables.tableTools.js" defer></script>
+	<script src="/Longyan/static/js/lib/jquery-1.9.1.js" ></script>
+	<script src="/Longyan/static/js/lib/bootstrap.min.js" ></script>
+	<script src="/Longyan/static/js/lib/jquery.dataTables.js" ></script>
+	<script src="/Longyan/static/js/lib/jquery.dataTables.tableTools.js" ></script>
+	<script src="/Longyan/static/js/admin/main.js" ></script>
 	<link href="/Longyan/static/css/lib/bootstrap.min.css" rel="stylesheet" />
 	<link href="/Longyan/static/css/lib/bootstrap-theme.min.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="/Longyan/static/css/lib/bootstrap-switch.min.css"/>
@@ -20,8 +21,33 @@
 		<div class="navbar-header">
 			 <a class="navbar-brand" href="/Longyan/admin/filter/main">龙颜集团后台</a>
 		</div>
-		<div class="user-bar"> 您好，${username} <a href="/Longyan/admin/logout">退出</a> </div>
+		<div class="user-bar"> 您好，${username} <a class="logout" href="/Longyan/admin/logout">退出</a> </div>
 	</div>
-	<div class="left-nav">左侧菜单</div>
-	<div class=content>
-	${menu}
+	<nav class="navbar navbar-inverse" id="J-top-nav1"></nav>
+	<div class="container" id="J-container">
+		<div class="row" id="J-center">
+			<!-- 左侧导航栏 -->
+			<div class="col-md-2 col-xs-4" id="J-left-nav">
+				<#if right == 0>
+					<a href="/Longyan/admin/filter/permission" class="list-group-item left-nav-item">权限管理</a>
+					<a href="/Longyan/admin/filter/email" class="list-group-item left-nav-item">邮件管理</a>
+					<a href="/Longyan/admin/filter/message" class="list-group-item left-nav-item">留言管理</a>
+					<a href="/Longyan/admin/filter/employee" class="list-group-item left-nav-item">员工管理</a>
+				</#if>
+				<#if right == 0 || right == 3>
+					<a href="/Longyan/admin/filter/customer" class="list-group-item left-nav-item">会员管理</a>
+				</#if>
+				<#if right == 0 || right == 2 || right == 3>
+					<a href="/Longyan/admin/filter/customer" class="list-group-item left-nav-item">订单管理</a>
+				</#if>
+				<#if right == 0 || right == 1 || right == 2 || right == 3>
+					<div class="list-group">		
+						<a class="list-group-item left-nav-item parent-active glyphicon glyphicon-plus system-setting" data-toggle="collapse" data-parent="" href="#menu_system">系统设置</a>
+						<a href="/Longyan/admin/filter/column" class="list-group-item left-nav-item system-item nav-hidden">栏目管理</a>
+						<a href="/Longyan/admin/filter/friendlink" class="list-group-item left-nav-item system-item nav-hidden">友情链接</a>
+						<a href="/Longyan/admin/filter/contact" class="list-group-item left-nav-item system-item nav-hidden">客服管理</a>
+					</div>
+				</#if>
+			</div>
+			<!-- 左侧导航栏结束 -->
+		

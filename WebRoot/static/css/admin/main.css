@@ -1,3 +1,6 @@
+@import url(../common.css);
+@import url(../page-init.css);
+
 #J-top-nav {
 	position: fixed;
 	left: 0;
@@ -8,6 +11,48 @@
 .user-bar {
 	float: right;
 	color: #FFF;
-	padding-top: 10px;
-	margin-right: 35px;
+	padding-top: 16px;
+	margin-right: 18px;
+	margin-top: -50px \0;
+}
+.logout {
+	margin-left: 10px;
+	color: #999;
+}
+#J-container {
+	width: 100%;
+	margin-top: 80px \0;
+}
+#J-center {
+	height: auto;
+	overflow-x: hidden;
+}
+#J-left-nav {
+	padding-bottom: 5px;
+}
+.left-nav-item {
+	display: block;
+	font-size: 14px;
+}
+.system-setting {
+	border-radius: 0 !important;
+	border-top: 0;
+}
+.system-item {
+	padding-left: 35px;
+}
+.nav-hidden {
+	display: none;
+}
+
+/*****************************************************************************/
+#main-page-content {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.welcome-tip {
+	margin-bottom:10px;
+}
+.login-info {
+	margin-bottom:10px;
 }
