@@ -13,8 +13,15 @@
 	<link rel="stylesheet" type="text/css" href="/Longyan/static/css/lib/bootstrap-switch.min.css"/>
 	<link href="/Longyan/static/css/lib/jquery.dataTables.css" rel="stylesheet" />
 	<link href="/Longyan/static/css/lib/jquery.dataTables.tableTools.css" rel="stylesheet" />
+	<link href="/Longyan/static/css/admin/main.css" rel="stylesheet" />
 </head>
 <body>
+	<div class="navbar navbar-inverse avbar-static-top" id="J-top-nav" role="navigation">
+		<div class="navbar-header">
+			 <a class="navbar-brand" href="/Longyan/admin/filter/main">龙颜集团后台</a>
+		</div>
+		<div class="user-bar"> 您好，${username} <a href="/Longyan/admin/logout">退出</a> </div>
+	</div>
 	<div class="left-nav">左侧菜单</div>
 	<div class=content>
 	${menu}

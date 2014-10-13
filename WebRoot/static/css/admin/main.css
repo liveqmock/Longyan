@@ -1,0 +1,13 @@
+#J-top-nav {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+}
+.user-bar {
+	float: right;
+	color: #FFF;
+	padding-top: 10px;
+	margin-right: 35px;
+}

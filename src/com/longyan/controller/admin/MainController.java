@@ -35,10 +35,12 @@ public class MainController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value="/admin/filter/main", method={RequestMethod.GET, RequestMethod.POST})
-	public String main(Model model,
+	public String main(Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		
-		model.addAttribute("menu", "menu1");
+		Employee employee = (Employee)SessionUtil.getSession(response, request);// 登录人
+		
+		model.addAttribute("username", employee.getName());
 		System.out.println("到达主页面");
 		return "admin/filter/main";
 	}

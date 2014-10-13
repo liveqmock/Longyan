@@ -15,7 +15,6 @@ public class SessionUtil {
 	/**
 	 * 判断是否已登录
 	 * 
-	 * @param sessionId
 	 * @param response
 	 * @param request
 	 * @return
@@ -40,5 +39,19 @@ public class SessionUtil {
 
 		HttpSession session = request.getSession(true);
 		session.setAttribute("user", user);
+	}
+	
+	/**
+	 * 清除session
+	 * 
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	public static void clearSession(HttpServletResponse response, 
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("user", null);
 	}
 }

@@ -42,6 +42,8 @@ public class LoginController {
 		return "admin/login";
 	}
 	
+	/**登录验证
+	 */
 	@RequestMapping("/admin/loginCheck")
 	public @ResponseBody String loginCheck(Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
@@ -60,5 +62,20 @@ public class LoginController {
 		}
 		
 		return jsonObject.toString();
+	}
+	
+	/**
+	 * 登出操作
+	 * @param model
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/admin/logout", method={RequestMethod.GET, RequestMethod.POST})
+	public void login(Model model, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		SessionUtil.clearSession(response, request);
+		response.sendRedirect(request.getContextPath() + "/admin/login");
 	}
 }
