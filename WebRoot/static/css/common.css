@@ -28,7 +28,6 @@ input.inputText {
 
 input[type="text"], input[type="password"] {
 	color: #336699;
-	background: url(/Longyan/static/img/admin/text_bg.gif) #F7FAFC repeat-x left top;
 	border: 1px solid #6688AA;
 	border-color: #9ab #cde #cde #abc;
 	padding: 3px 2px 3px;
@@ -41,4 +40,8 @@ input[type="text"], input[type="password"] {
 	display: inline-block;
 	vertical-align: middle;
 	overflow: hidden;
+}
+
+.tool-bar a {
+	margin-left: 10px;
 }

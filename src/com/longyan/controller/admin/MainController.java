@@ -44,6 +44,7 @@ public class MainController {
 	public String main(Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 
+		String dim = ""; //声明访问页面
 		Employee employee = (Employee) SessionUtil.getSession(response, request);// 登录人
 		String ip = getIpAddr(request); // 获取登录ID地址
 		IPUtil ipUtil = new IPUtil();
@@ -64,6 +65,7 @@ public class MainController {
 		model.addAttribute("right", right);
 		model.addAttribute("addr", addr);
 		model.addAttribute("time", time);
+		model.addAttribute("dim", dim);
 		
 		System.out.println("到达主页面");
 		return "admin/filter/main";

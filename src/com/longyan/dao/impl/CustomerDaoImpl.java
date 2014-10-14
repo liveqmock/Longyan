@@ -72,7 +72,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public String update(Customer customer) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update customer set username=?, realname=?, telephone=?, sex=?, birthday=?, address=?, qq=?, email=?, utime=?";
+		String sql = "update customer set username=?, realname=?, telephone=?, sex=?, birthday=?, address=?, qq=?, email=?, utime=? where id=?";
 		List<Customer> customers = findCustomersByEmail(customer.getEmail());
 		
 		if(customers.size() <= 0){
@@ -89,7 +89,8 @@ public class CustomerDaoImpl implements CustomerDao {
 			customer.getAddress(),
 			customer.getQq(),
 			customer.getEmail(),
-			new Date()
+			new Date(),
+			customer.getId()
 		});
 		
 		if(i > 0){
@@ -105,7 +106,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public String updatePassword(Customer customer, String password) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update customer set password=?, utime=?";
+		String sql = "update customer set password=?, utime=? where id=?";
 		List<Customer> customers = findCustomersByEmail(customer.getEmail());
 		
 		if(customers.size() <= 0){
@@ -115,6 +116,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			MD5.getMD5ofStr(password),
+			customer.getId(),
 			new Date()
 		});
 		
@@ -189,7 +191,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	@Override
 	public List<Customer> findAll() {
-		String sql = "select * from customer";
+		String sql = "select * from customer order by ctime desc";
 		List<Customer> customers = new ArrayList<Customer>();
 		
 		customers = (List<Customer>)jdbcTemplate.query(sql, new RowMapper<Customer>() {  
@@ -209,7 +211,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public List<Customer> findByName(String name) {
 		List<Customer> customers = new ArrayList<Customer>();
-		String sql = "select * from customer where realname like %?%";
+		String sql = "select * from customer where realname like %?% order by ctime desc";
 		customers = (List<Customer>) jdbcTemplate.query(sql, new RowMapper<Customer>() {  
 	        @Override  
 	        public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
@@ -229,7 +231,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	private List<Customer> findCustomersByEmail(String email){
 		List<Customer> customers = new ArrayList<Customer>();
-		String sql = "select * from customer where email=?";
+		String sql = "select * from customer where email=? order by ctime desc";
 		customers = (List<Customer>) jdbcTemplate.query(sql, new RowMapper<Customer>() {  
             @Override  
             public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
