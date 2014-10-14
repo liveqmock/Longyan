@@ -9,9 +9,10 @@
 	<script src="/Longyan/static/js/lib/jquery.dataTables.js" ></script>
 	<script src="/Longyan/static/js/lib/jquery.dataTables.tableTools.js" ></script>
 	<script src="/Longyan/static/js/admin/main.js" ></script>
+	
 	<link href="/Longyan/static/css/lib/bootstrap.min.css" rel="stylesheet" />
 	<link href="/Longyan/static/css/lib/bootstrap-theme.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="/Longyan/static/css/lib/bootstrap-switch.min.css"/>
+	<link href="/Longyan/static/css/lib/bootstrap-switch.min.css" rel="stylesheet"/>
 	<link href="/Longyan/static/css/lib/jquery.dataTables.css" rel="stylesheet" />
 	<link href="/Longyan/static/css/lib/jquery.dataTables.tableTools.css" rel="stylesheet" />
 	<link href="/Longyan/static/css/admin/main.css" rel="stylesheet" />
