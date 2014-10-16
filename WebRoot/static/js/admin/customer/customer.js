@@ -15,6 +15,8 @@ $(document).ready(function(){
 			me.jQdelCustomer = $('#del-customer');
 			me.jQcustomerInfoPop = $('.customer-info-pop');
 			me.jQclose = $('#close');
+			me.jQsure = $('#sure');
+			me.jQcancel = $('#cancel');
 			
 			me._initEvent();
 			me._initDate();
@@ -27,6 +29,12 @@ $(document).ready(function(){
 			});
 			me.jQclose.on('click', function(){
 				me.jQcustomerInfoPop.hide();
+			});
+			me.jQcancel.on('click', function(){
+				me.jQcustomerInfoPop.hide();
+			});
+			me.jQsure.on('click', function(){
+				me._submitForm();
 			});
 		},
 		_initDate: function(){
@@ -51,6 +59,41 @@ $(document).ready(function(){
 		_addCustomer: function(tar){
 			var me = this;
 			me.jQcustomerInfoPop.show();
+		},
+		_submitForm: function(){
+			var me = this,
+				ret = false,
+				postData = {};
+			
+			ret = $('.validate-table').validate();
+			if(!ret.code) return;
+			
+			for(var i = 0, len = ret.data.length; i < len; i ++){
+				postData[ret.data[i][0]] = ret.data[i][1];
+			}
+			postData.flag = 1;   //管理员操作
+			$.ajax({
+				url: "/Longyan/admin/filter/add-customer",
+				type: 'get',
+				data: postData
+			}).done(function(data){
+				var json = typeof data == 'string' ? JSON.parse(data) : data;
+
+				if(json){
+					if(json.code == 1001){   //通过登录验证
+						window.location.reload();
+					}else{
+						me._showErrorTip('添加失败');
+					}
+				}else {
+					me._showErrorTip('添加失败');
+				}
+			}).fail(function(){
+				me._showErrorTip('添加失败');
+			});
+		},
+		_showErrorTip: function(msg){
+			$('#result').html(msg).show();
 		}
 	};
 	

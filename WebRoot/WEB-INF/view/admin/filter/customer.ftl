@@ -1,5 +1,4 @@
 <link href="/Longyan/static/css/admin/customer.css" rel="stylesheet" />
-<script src="/Longyan/static/js/admin/customer/customer.js" ></script>
 
 <div class="col-xs-10 col-md-10 col-xs-8" id="customer-page-content">
 	<div class="row">
@@ -31,52 +30,67 @@
 				<button type="button" class="close" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 			</div>
 			<div class="content-bd">
-				<table>
+				<table class="validate-table">
 					<tr>
 						<td class="right-align">用户名</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="username" class="required form-control" placeholder="请输入用户名"/></td>
+						<td class="input-wrap"><input type="text" id="username" name="username" class="required form-control" placeholder="请输入用户名"/></td>
+						<td class="err-lable"></td>
 					</tr>
 					<tr>
 						<td class="right-align">真实姓名</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="realname" class="required form-control" placeholder="请输入真实姓名"/></td>
+						<td class="input-wrap"><input type="text" id="realname" name="realname" class="required form-control" placeholder="请输入真实姓名"/></td>
+						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">电话号码</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="telephone" class="required digits form-control" placeholder="请输入电话号码"/></td>
+						<td class="input-wrap"><input type="text" id="telephone" name="telephone" class="required digits form-control" placeholder="请输入电话号码"/></td>
+						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">性别</td>
 						<td class="star">*</td>
 						<td class="input-wrap">
-							<input type="radio" name="sex" value="0">女
-							<input type="radio" name="sex" value="1">男
+							<input type="radio" name="sex" value="0" checked>女
+							<input type="radio" name="sex" value="1" >男
 						</td>
+						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">生日</td>
 						<td class="star"></td>
-						<td class="input-wrap"><input type="text" id="birthday" class="form-control"/></td>
+						<td class="input-wrap"><input type="text" id="birthday" name="birthday" class="form-control"/></td>
+						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">家庭住址</td>
 						<td class="star"></td>
-						<td class="input-wrap"><input type="text" id="address" class="form-control"/></td>
+						<td class="input-wrap"><input type="text" id="address" name="address" class="form-control"/></td>
+						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">qq</td>
 						<td class="star"></td>
-						<td class="input-wrap"><input type="text" id="qq" class="form-control" /></td>
+						<td class="input-wrap"><input type="text" id="qq" name="qq" class="form-control" /></td>
+						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">E-mail</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="email" class="required email form-control"/></td>
+						<td class="input-wrap"><input type="text" id="email" name="email" class="required email form-control"/></td>
+						<td class="err-lable">aaaa</td>
 					</tr>
 				</table>
+				<div class="btn-wrap">
+					<a class="btn btn-success" href="javascript:;" id="sure">提交</a>
+					<a class="btn btn-default" href="javascript:;" id="cancel">取消</a>
+				</div>
+				<label id="result">添加成功</label>
 			</div>
 		</div>
 	</div>
 </div>
+<script src="/Longyan/static/js/admin/customer/customer.js" ></script>
+<script src="/Longyan/static/js/admin/input-validate.js" ></script>

@@ -212,7 +212,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	public List<Customer> findByName(String name) {
 		List<Customer> customers = new ArrayList<Customer>();
 		String sql = "select * from customer where realname like %?% order by ctime desc";
-		customers = (List<Customer>) jdbcTemplate.query(sql, new RowMapper<Customer>() {  
+		customers = (List<Customer>) jdbcTemplate.query(sql, new Object[]{name}, new RowMapper<Customer>() {  
 	        @Override  
 	        public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
 	        	Customer cus = setCustomerProperties(rs); 
@@ -231,8 +231,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	private List<Customer> findCustomersByEmail(String email){
 		List<Customer> customers = new ArrayList<Customer>();
-		String sql = "select * from customer where email=? order by ctime desc";
-		customers = (List<Customer>) jdbcTemplate.query(sql, new RowMapper<Customer>() {  
+		String sql = "select * from customer where email=?";
+		customers = (List<Customer>) jdbcTemplate.query(sql, new Object[]{email}, new RowMapper<Customer>() {  
             @Override  
             public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Customer cus = setCustomerProperties(rs); 

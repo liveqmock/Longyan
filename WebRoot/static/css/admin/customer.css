@@ -45,3 +45,43 @@
 #close {
 	margin-top: -5px;
 }
+.customer-info-pop .content-bd {
+	margin-top: 20px;
+	position: relative;
+}
+.customer-info-pop .content-bd table {
+	width: 100%;
+}
+.content-bd table .right-align {
+	text-align: right;
+	width: 20%;
+}
+.content-bd table .star{
+	color: red;
+	padding-top: 6px;
+	width: 5%;
+}
+.content-bd table .input-wrap {
+	width: 50%;
+}
+table .input-wrap .form-control {
+	width: 250px;
+}
+.btn-wrap {
+	text-align: center;
+	margin-top: 12px;
+}
+.content-bd table .err-lable {
+	width: 25%;
+	text-align: left;
+	color: red;
+	display: none;
+}
+#result {
+	position: absolute;
+	bottom: 0;
+	right: 100px;
+	display: none;
+	color: red;
+}
+

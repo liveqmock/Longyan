@@ -141,7 +141,7 @@ public class CustomerController {
 		
 		String username = new String(request.getParameter("username").getBytes("iso-8859-1"),"utf-8");
 		String realname = new String(request.getParameter("realname").getBytes("iso-8859-1"),"utf-8");
-		String password = request.getParameter("password");
+		int flag = Integer.parseInt(request.getParameter("flag"));   //1表示管理员添加   2表示用户自己注册
 		String telephone = request.getParameter("telephone");
 		String sex = request.getParameter("sex");
 		String birthday = request.getParameter("birthday");
@@ -150,7 +150,7 @@ public class CustomerController {
 		String email = request.getParameter("email");
 		
 		//如果后台管理员新增会员，默认密码为6个1
-		password = password.equals("") ? "111111" : password;
+		String password = flag == 1 ? "111111" : request.getParameter("password");
 		
 		Customer customer = new Customer();
 		customer.setUsername(username);
