@@ -19,7 +19,11 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			biaoge
+			<div class="row">
+				<div class="col-md-12">
+					<table id="table-container" class="DataView"></table>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="customer-info-pop">
@@ -34,52 +38,52 @@
 					<tr>
 						<td class="right-align">用户名</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="username" name="username" class="required form-control" placeholder="请输入用户名"/></td>
+						<td class="input-wrap"><input type="text" id="username" name="username" class="required form-control validate" placeholder="请输入用户名"/></td>
 						<td class="err-lable"></td>
 					</tr>
 					<tr>
 						<td class="right-align">真实姓名</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="realname" name="realname" class="required form-control" placeholder="请输入真实姓名"/></td>
+						<td class="input-wrap"><input type="text" id="realname" name="realname" class="required form-control validate" placeholder="请输入真实姓名"/></td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">电话号码</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="telephone" name="telephone" class="required digits form-control" placeholder="请输入电话号码"/></td>
+						<td class="input-wrap"><input type="text" id="telephone" name="telephone" class="required digits form-control validate" placeholder="请输入电话号码"/></td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">性别</td>
 						<td class="star">*</td>
 						<td class="input-wrap">
-							<input type="radio" name="sex" value="0" checked>女
-							<input type="radio" name="sex" value="1" >男
+							<input type="radio" name="sex" class="validate" value="女">女
+							<input type="radio" name="sex" class="validate" value="男" >男
 						</td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">生日</td>
 						<td class="star"></td>
-						<td class="input-wrap"><input type="text" id="birthday" name="birthday" class="form-control"/></td>
+						<td class="input-wrap"><input type="text" id="birthday" name="birthday" class="form-control validate"/></td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">家庭住址</td>
 						<td class="star"></td>
-						<td class="input-wrap"><input type="text" id="address" name="address" class="form-control"/></td>
+						<td class="input-wrap"><input type="text" id="address" name="address" class="form-control validate"/></td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">qq</td>
 						<td class="star"></td>
-						<td class="input-wrap"><input type="text" id="qq" name="qq" class="form-control" /></td>
+						<td class="input-wrap"><input type="text" id="qq" name="qq" class="form-control validate" /></td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
 						<td class="right-align">E-mail</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="email" name="email" class="required email form-control"/></td>
+						<td class="input-wrap"><input type="text" id="email" name="email" class="required email form-control validate"/></td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 				</table>
@@ -94,3 +98,4 @@
 </div>
 <script src="/Longyan/static/js/admin/customer/customer.js" ></script>
 <script src="/Longyan/static/js/admin/input-validate.js" ></script>
+<script src="/Longyan/static/js/admin/table.js" ></script>

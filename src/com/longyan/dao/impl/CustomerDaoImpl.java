@@ -156,9 +156,9 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from customer where id in (?)";
+		String sql = "delete from customer where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";

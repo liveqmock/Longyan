@@ -64,7 +64,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	@Override
 	public String update(MailSendLog mailSendLog) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update mail_send_log employee_id=?, customer_id=?, recieve_name=?, phone_number=?, title=?, content=?, send_name=?, type=?, utime=?";
+		String sql = "update mail_send_log employee_id=?, customer_id=?, recieve_name=?, phone_number=?, title=?, content=?, send_name=?, type=?, utime=? where id=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			mailSendLog.getEmployee_id(),
@@ -75,7 +75,8 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 			mailSendLog.getContent(),
 			mailSendLog.getSend_name(),
 			mailSendLog.getType(),
-			new Date()
+			new Date(),
+			mailSendLog.getId()
 		});
 		
 		if(i > 0){
@@ -106,9 +107,9 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from mail_send_log where id in (?)";
+		String sql = "delete from mail_send_log where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";
@@ -138,7 +139,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	 */
 	@Override
 	public List<MailSendLog> findAll() {
-		String sql = "select * from mail_send_log";
+		String sql = "select * from mail_send_log order by ctime desc";
 		List<MailSendLog> mailSendLogs = new ArrayList<MailSendLog>();
 		
 		mailSendLogs = (List<MailSendLog>)jdbcTemplate.query(sql, new RowMapper<MailSendLog>() {  
@@ -157,7 +158,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	 */
 	@Override
 	public List<MailSendLog> findByName(String name) {
-		String sql = "select * from mail_send_log where title like %?%";
+		String sql = "select * from mail_send_log where title like %?% order by ctime desc";
 		List<MailSendLog> mailSendLogs = new ArrayList<MailSendLog>();
 		
 		mailSendLogs = (List<MailSendLog>)jdbcTemplate.query(sql, new Object[]{name}, new RowMapper<MailSendLog>() {  
@@ -176,7 +177,7 @@ public class MailSendLogDaoImpl implements MailSendLogDao {
 	 */
 	@Override
 	public List<MailSendLog> findByDate(Date startDate, Date endDate) {
-		String sql = "select * from mail_send_log where ctime between ? and ?";
+		String sql = "select * from mail_send_log where ctime between ? and ? order by ctime desc";
 		List<MailSendLog> mailSendLogs = new ArrayList<MailSendLog>();
 		
 		mailSendLogs = (List<MailSendLog>)jdbcTemplate.query(sql, new Object[]{startDate, endDate}, new RowMapper<MailSendLog>() {  

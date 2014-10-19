@@ -1,0 +1,21 @@
+#table-container_filter {
+	margin-right: 10px;
+	margin-top: 3px;
+}
+
+#table-container .btn {
+	padding: 3px 12px;
+}
+
+table.dataTable thead th, 
+table.dataTable thead td {
+	padding:10px;
+}
+.td-hidden {
+	display: none;
+}
+
+table.DataView tr:hover{
+	background:#eee;
+}
+

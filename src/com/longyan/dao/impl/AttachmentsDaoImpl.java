@@ -66,7 +66,7 @@ public class AttachmentsDaoImpl implements AttachmentsDao{
 	@Override
 	public String update(Attachments attachments) {
 		String flag = "2003"; //2001 更新成功， 2002附件不存在, 2003附件更新失败
-		String sql = "update attachments set filename=?, path=?, create_user=?, column_id=?, utime=?";
+		String sql = "update attachments set filename=?, path=?, create_user=?, column_id=?, utime=? where id=?";
 		
 		Attachments att = getByPath(attachments.getPath());
 		if(att == null){
@@ -79,7 +79,8 @@ public class AttachmentsDaoImpl implements AttachmentsDao{
 			attachments.getPath(),
 			attachments.getCreate_user(),
 			attachments.getColumn_id(),
-			new Date()
+			new Date(),
+			attachments.getId()
 		});
 		
 		if(i > 0){
@@ -163,9 +164,9 @@ public class AttachmentsDaoImpl implements AttachmentsDao{
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 删除的附件不存在； 3003 未知原因删除失败
-		String sql = "delete from attachments where id in (?)";
+		String sql = "delete from attachments where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";

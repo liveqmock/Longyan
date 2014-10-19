@@ -61,7 +61,7 @@ public class MessageDaoImpl implements MessageDao {
 	@Override
 	public String update(Message message) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update message set customer_id=?, customer_phone=?, customer_name=?, content=?, status=?, utime=?";
+		String sql = "update message set customer_id=?, customer_phone=?, customer_name=?, content=?, status=?, utime=? where id=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			message.getCustomer_id(),
@@ -69,7 +69,8 @@ public class MessageDaoImpl implements MessageDao {
 			message.getCustomer_phone(),
 			message.getContent(),
 			message.getStatus(),
-			new Date()
+			new Date(),
+			message.getId()
 		});
 		
 		if(i > 0){
@@ -125,9 +126,9 @@ public class MessageDaoImpl implements MessageDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from message where id in (?)";
+		String sql = "delete from message where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";
@@ -157,7 +158,7 @@ public class MessageDaoImpl implements MessageDao {
 	 */
 	@Override
 	public List<Message> findAll() {
-		String sql = "select * from message";
+		String sql = "select * from message order by ctime desc";
 		List<Message> messages = new ArrayList<Message>();
 		
 		messages = (List<Message>)jdbcTemplate.query(sql, new RowMapper<Message>() {  
@@ -176,7 +177,7 @@ public class MessageDaoImpl implements MessageDao {
 	 */
 	@Override
 	public List<Message> findByName(String name) {
-		String sql = "select * from message where customer_name like %?%";
+		String sql = "select * from message where customer_name like %?% order by ctime desc";
 		List<Message> messages = new ArrayList<Message>();
 		
 		messages = (List<Message>)jdbcTemplate.query(sql, new Object[]{name}, new RowMapper<Message>() {  
@@ -195,7 +196,7 @@ public class MessageDaoImpl implements MessageDao {
 	 */
 	@Override
 	public List<Message> findByCustomerId(Integer customerId) {
-		String sql = "select * from message where customer_id=? and status=1";
+		String sql = "select * from message where customer_id=? and status=1 order by ctime desc";
 		List<Message> messages = new ArrayList<Message>();
 		
 		messages = (List<Message>)jdbcTemplate.query(sql, new Object[]{customerId}, new RowMapper<Message>() {  
@@ -214,10 +215,29 @@ public class MessageDaoImpl implements MessageDao {
 	 */
 	@Override
 	public List<Message> filteByDateAndStatus(Date startDate, Date endDate, Integer status) {
-		String sql = "select * from message where ctime between ? and ? and status=?";
+		String sql = "select * from message where ctime between ? and ? and status=? order by ctime desc";
 		List<Message> messages = new ArrayList<Message>();
 		
 		messages = (List<Message>)jdbcTemplate.query(sql, new Object[]{startDate, endDate, status}, new RowMapper<Message>() {  
+            @Override  
+            public Message mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Message con = setMessageProperties(rs); 
+            	return con;
+            }  
+        });
+		
+		return messages;
+	}
+	
+	/**
+	 * 根据日期区间和留言类别过滤
+	 */
+	@Override
+	public List<Message> filteByDate(Date startDate, Date endDate) {
+		String sql = "select * from message where ctime between ? and ? order by ctime desc";
+		List<Message> messages = new ArrayList<Message>();
+		
+		messages = (List<Message>)jdbcTemplate.query(sql, new Object[]{startDate, endDate}, new RowMapper<Message>() {  
             @Override  
             public Message mapRow(ResultSet rs, int rowNum) throws SQLException {  
             	Message con = setMessageProperties(rs); 
@@ -238,7 +258,7 @@ public class MessageDaoImpl implements MessageDao {
 		Message message = new Message();
 		message.setId(rs.getInt("id"));
 		message.setCustomer_id(rs.getInt("customer_id"));
-		message.setCustomer_name(rs.getInt("customer_name"));
+		message.setCustomer_name(rs.getString("customer_name"));
 		message.setCustomer_phone(rs.getString("customer_phone"));
 		message.setContent(rs.getString("content"));
 		message.setStatus(rs.getInt("status"));

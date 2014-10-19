@@ -15,7 +15,7 @@ public class Message {
 	
 	private String customer_phone;  //会员电话
 	
-	private int customer_name; //会员名字
+	private String customer_name; //会员名字
 	
 	private String content;  //留言内容
 	
@@ -49,11 +49,11 @@ public class Message {
 		this.customer_phone = customer_phone;
 	}
 
-	public int getCustomer_name() {
+	public String getCustomer_name() {
 		return customer_name;
 	}
 
-	public void setCustomer_name(int customer_name) {
+	public void setCustomer_name(String customer_name) {
 		this.customer_name = customer_name;
 	}
 

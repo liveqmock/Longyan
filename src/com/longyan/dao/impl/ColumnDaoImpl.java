@@ -66,7 +66,7 @@ public class ColumnDaoImpl implements ColumnDao {
 	@Override
 	public String update(Column column) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update column set site_id=?, name=?, code=?, template_id=?, create_user=?, utime=?";
+		String sql = "update column set site_id=?, name=?, code=?, template_id=?, create_user=?, utime=? where id=?";
 		Column col = getColumnByCode(column.getCode());
 		
 		if(col == null){
@@ -80,7 +80,8 @@ public class ColumnDaoImpl implements ColumnDao {
 			column.getCode(),
 			column.getTemplate_id(),
 			column.getCreate_user(),
-			new Date()
+			new Date(),
+			column.getId()
 		});
 		
 		if(i > 0){
@@ -123,9 +124,9 @@ public class ColumnDaoImpl implements ColumnDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 删除的人不存在； 3003 未知原因删除失败
-		String sql = "delete from column where id in (?)";
+		String sql = "delete from column where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";
@@ -158,7 +159,7 @@ public class ColumnDaoImpl implements ColumnDao {
 	 */
 	@Override
 	public List<Column> findAll() {
-		String sql = "select * from column";
+		String sql = "select * from column order by ctime desc";
 		List<Column> columns = new ArrayList<Column>();
 		
 		columns = (List<Column>)jdbcTemplate.query(sql, new RowMapper<Column>() {  
@@ -177,7 +178,7 @@ public class ColumnDaoImpl implements ColumnDao {
 	 */
 	@Override
 	public List<Column> findByName(String name) {
-		String sql = "select * from column where name like %?%";
+		String sql = "select * from column where name like %?% order by ctime desc";
 		List<Column> columns = new ArrayList<Column>();
 		
 		columns = (List<Column>)jdbcTemplate.query(sql, new Object[]{name}, new RowMapper<Column>() {  
@@ -196,7 +197,7 @@ public class ColumnDaoImpl implements ColumnDao {
 	 */
 	@Override
 	public List<Column> findBySiteId(Integer site_id) {
-		String sql = "select * from column where site_id=?";
+		String sql = "select * from column where site_id=? order by ctime desc";
 		List<Column> columns = new ArrayList<Column>();
 		
 		columns = (List<Column>)jdbcTemplate.query(sql, new Object[]{site_id}, new RowMapper<Column>() {  

@@ -67,7 +67,7 @@ public class ContentDaoImpl implements ContentDao {
 	@Override
 	public String update(Content content) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update content set title=?, code=?, template_id=?, img_url=?, column_id=?, create_user=?, utime=?";
+		String sql = "update content set title=?, code=?, template_id=?, img_url=?, column_id=?, create_user=?, utime=? where id=?";
 		Content col = getContentByCode(content.getCode());
 		
 		if(col == null){
@@ -82,7 +82,8 @@ public class ContentDaoImpl implements ContentDao {
 			content.getImg_url(),
 			content.getColumn_id(),
 			content.getCreate_user(),
-			new Date()
+			new Date(),
+			content.getId()
 		});
 		
 		if(i > 0){
@@ -125,9 +126,9 @@ public class ContentDaoImpl implements ContentDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from content where id in (?)";
+		String sql = "delete from content where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";
@@ -160,7 +161,7 @@ public class ContentDaoImpl implements ContentDao {
 	 */
 	@Override
 	public List<Content> findAll() {
-		String sql = "select * from content";
+		String sql = "select * from content order by ctime desc";
 		List<Content> contents = new ArrayList<Content>();
 		
 		contents = (List<Content>)jdbcTemplate.query(sql, new RowMapper<Content>() {  
@@ -179,7 +180,7 @@ public class ContentDaoImpl implements ContentDao {
 	 */
 	@Override
 	public List<Content> findByName(String title) {
-		String sql = "select * from content where title like %?%";
+		String sql = "select * from content where title like %?% order by ctime desc";
 		List<Content> contents = new ArrayList<Content>();
 		
 		contents = (List<Content>)jdbcTemplate.query(sql, new Object[]{title}, new RowMapper<Content>() {  
@@ -198,7 +199,7 @@ public class ContentDaoImpl implements ContentDao {
 	 */
 	@Override
 	public List<Content> findByColumnId(Integer column_id) {
-		String sql = "select * from content where column_id=?";
+		String sql = "select * from content where column_id=? order by ctime desc";
 		List<Content> contents = new ArrayList<Content>();
 		
 		contents = (List<Content>)jdbcTemplate.query(sql, new Object[]{column_id}, new RowMapper<Content>() {  

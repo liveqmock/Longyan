@@ -48,7 +48,7 @@ public class ReplyService {
 	 * @param name
 	 * @return
 	 */
-	public Reply getReplysByEmployeeId(Integer id){
+	public Reply getReplysByMessageId(Integer id){
 		return replyDaoImpl.findByMessageId(id);
 	}
 }

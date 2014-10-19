@@ -50,6 +50,7 @@ public class CustomerController {
 		//员工权限控制right_level值说明：0管理员权限，能看所有栏目；1 有系统设置权限； 2 系统设置+订单系统； 3 系统设置+订单系统 + 会员管理。
 		Integer right = employee.getRight_level(); 
 
+		model.addAttribute("username", employee.getName());
 		model.addAttribute("right", right);
 		model.addAttribute("dim", dim);
 		
@@ -79,6 +80,7 @@ public class CustomerController {
 		for(Customer customer:customers){
 			jsonObject = new JSONObject();
 			
+			jsonObject.put("id", customer.getId());
 			jsonObject.put("username", customer.getUsername());
 			jsonObject.put("realname", customer.getRealname());
 			jsonObject.put("telephone", customer.getTelephone());
@@ -139,8 +141,8 @@ public class CustomerController {
 	public @ResponseBody String addCustomer(Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		
-		String username = new String(request.getParameter("username").getBytes("iso-8859-1"),"utf-8");
-		String realname = new String(request.getParameter("realname").getBytes("iso-8859-1"),"utf-8");
+		String username = request.getParameter("username");
+		String realname = request.getParameter("realname");
 		int flag = Integer.parseInt(request.getParameter("flag"));   //1表示管理员添加   2表示用户自己注册
 		String telephone = request.getParameter("telephone");
 		String sex = request.getParameter("sex");
@@ -234,8 +236,8 @@ public class CustomerController {
 			HttpServletResponse response) throws IOException {
 		
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		String username = new String(request.getParameter("username").getBytes("iso-8859-1"),"utf-8");
-		String realname = new String(request.getParameter("realname").getBytes("iso-8859-1"),"utf-8");
+		String username = request.getParameter("username");
+		String realname = request.getParameter("realname");
 		String telephone = request.getParameter("telephone");
 		String sex = request.getParameter("sex");
 		String birthday = request.getParameter("birthday");

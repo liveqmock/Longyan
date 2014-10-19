@@ -74,4 +74,12 @@ public interface MessageDao {
 	 * @return
 	 */
 	public List<Message> filteByDateAndStatus(Date startDate, Date endDate, Integer status);
+	
+	/**
+	 * 按照日期过滤
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
+	public List<Message> filteByDate(Date startDate, Date endDate);
 }

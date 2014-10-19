@@ -25,24 +25,46 @@
 
 	<!--开启注解处理器 -->
 	<context:annotation-config />
+
 	<!-- 开启组件扫描 -->
 	<context:component-scan base-package="com.longyan" />
 
+	<!-- 解决springMVC 中文乱码问题 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<bean class="org.springframework.http.converter.ResourceHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	
 	<aop:aspectj-autoproxy />
 
 	<mvc:annotation-driven />
-	
+
 	<!-- 静态文件资源路径转换 -->
-	<mvc:resources mapping="/static/**" location="/static/"/>
-    <mvc:resources mapping="/js/**" location="/js/"/>
-    <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/img/**" location="/img/"/>
-    <mvc:resources mapping="/swf/**" location="/swf/"/>
+	<mvc:resources mapping="/static/**" location="/static/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/swf/**" location="/swf/" />
 
 	<!-- 指定数据源，解析数据库配置文件，并设置数据源的属性 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/longyan?zeroDateTimeBehavior=convertToNull" />
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/longyan?zeroDateTimeBehavior=convertToNull" />
 		<property name="user" value="root" />
 		<property name="password" value="hyq130130" />
 		<!-- 连接池启动时的初始值 -->
@@ -93,5 +115,5 @@
 		<property name="suffix" value=".ftl" />
 		<property name="order" value="2" />
 	</bean>
-	
+
 </beans> 

@@ -1,0 +1,14 @@
+{
+	"table_fileds": [
+    	{"title":"用户名", "name":"name", "type":"string","align":"right", "sClass": "name"},
+    	{"title":"身份证", "name":"id_card", "type":"string","align":"right", "sClass": "id_card"},
+    	{"title":"电话", "name":"telephone", "type":"string","align":"right", "sClass": "telephone"},
+    	{ "title":"性别", "name":"sex", "type":"string","align":"right", "sClass": "sex"},
+    	{ "title":"QQ号", "name":"qq", "type":"string","align":"right", "sClass": "qq"},
+    	{ "title":"邮箱", "name":"email", "type":"string","align":"right", "sClass": "email"},
+    	{ "title":"生日", "name":"birthday", "type":"string","align":"right", "sClass": "birthday"},
+        { "title":"地址", "name":"address", "type":"string","align":"right", "sClass": "address"},
+        { "title":"籍贯", "name":"province", "type":"string","align":"right", "sClass": "province"},
+        { "title":"权限", "name":"right_level", "type":"string","align":"right", "sClass": "right_level"}
+    ]
+}

@@ -1,0 +1,12 @@
+{
+	"table_fileds": [
+    	{"title":"用户名", "name":"username", "type":"string","align":"right", "sClass": "username"},
+    	{"title":"真实姓名", "name":"realname", "type":"string","align":"right", "sClass": "realname"},
+    	{"title":"电话", "name":"telephone", "type":"string","align":"right", "sClass": "telephone"},
+    	{ "title":"性别", "name":"sex", "type":"string","align":"right", "sClass": "sex"},
+    	{ "title":"QQ号", "name":"qq", "type":"string","align":"right", "sClass": "qq"},
+    	{ "title":"邮箱", "name":"email", "type":"string","align":"right", "sClass": "email"},
+    	{ "title":"生日", "name":"birthday", "type":"string","align":"right", "sClass": "birthday"},
+        { "title":"地址", "name":"address", "type":"string","align":"right", "sClass": "address"}
+    ]
+}

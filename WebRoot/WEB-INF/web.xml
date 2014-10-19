@@ -32,6 +32,20 @@
 	    <url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 编码设置 -->
+	<filter>
+		<filter-name>CharsetEncodingFilter</filter-name>
+		<filter-class>com.longyan.filter.EncodeFilter</filter-class>
+		<init-param>
+			<param-name>charEncode</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharsetEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- 后台系统登录权限验证 -->
 	 <filter>  
 	    <filter-name>SecurityServlet</filter-name>  

@@ -15,7 +15,7 @@ public class Reply {
 	
 	private String reply_content;  //回复内容
 	
-	private int employee_name; //回复员工名字
+	private String employee_name; //回复员工名字
 	
 	private Date ctime;       //创建时间
 	
@@ -45,11 +45,11 @@ public class Reply {
 		this.reply_content = reply_content;
 	}
 
-	public int getEmployee_name() {
+	public String getEmployee_name() {
 		return employee_name;
 	}
 
-	public void setEmployee_name(int employee_name) {
+	public void setEmployee_name(String employee_name) {
 		this.employee_name = employee_name;
 	}
 

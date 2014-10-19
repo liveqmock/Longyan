@@ -1,0 +1,13 @@
+{
+	"table_fileds": [
+    	{"title":"留言者", "name":"customer_name", "type":"string","align":"right", "sClass": "customer_name"},
+    	{"title":"电话", "name":"customer_phone", "type":"string","align":"right", "sClass": "customer_phone"},
+    	{"title":"内容", "name":"content", "type":"string","align":"right", "sClass": "content"},
+    	{ "title":"状态", "name":"status", "type":"string","align":"right", "sClass": "status td-hidden"},
+        { "title":"状态", "name":"status_str", "type":"string","align":"right", "sClass": "status_str"},
+    	{ "title":"留言时间", "name":"ctime", "type":"string","align":"right", "sClass": "ctime"},
+        {"title":"回复人", "name":"reply_emplyoee_name", "type":"string","align":"right", "sClass": "reply_emplyoee_name td-hidden"},
+        {"title":"回复内容", "name":"reply_content", "type":"string","align":"right", "sClass": "reply_content td-hidden"},
+        { "title":"回复时间", "name":"reply_ctime", "type":"string","align":"right", "sClass": "reply_ctime td-hidden"}
+    ]
+}

@@ -62,7 +62,7 @@ public class PermissionDaoImpl implements PermissionDao {
 	@Override
 	public String update(Permission permission) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update permission set column_ids=?, utime=? where employee_id=?";
+		String sql = "update permission set column_ids=?, utime=? where employee_id=? where id=?";
 		Permission con = findByEmployeeId(permission.getEmployee_id());
 		
 		if(con == null){
@@ -72,7 +72,8 @@ public class PermissionDaoImpl implements PermissionDao {
 		int i = jdbcTemplate.update(sql, new Object[]{
 			permission.getColumn_ids(),
 			new Date(),
-			permission.getEmployee_id()
+			permission.getEmployee_id(),
+			permission.getId()
 		});
 		
 		if(i > 0){

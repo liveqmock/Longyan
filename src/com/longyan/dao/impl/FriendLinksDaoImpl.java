@@ -58,12 +58,13 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	@Override
 	public String update(FriendLinks friendLinks) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update friend_links set url=?, name=?, utime=?";
+		String sql = "update friend_links set url=?, name=?, utime=? where id=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			friendLinks.getUrl(),
 			friendLinks.getName(),
-			new Date()
+			new Date(),
+			friendLinks.getId()
 		});
 		
 		if(i > 0){
@@ -94,9 +95,9 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from friend_links where id in (?)";
+		String sql = "delete from friend_links where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";
@@ -126,7 +127,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	 */
 	@Override
 	public List<FriendLinks> findAll() {
-		String sql = "select * from friend_links";
+		String sql = "select * from friend_links order by ctime desc";
 		List<FriendLinks> friendLinkses = new ArrayList<FriendLinks>();
 		
 		friendLinkses = (List<FriendLinks>)jdbcTemplate.query(sql, new RowMapper<FriendLinks>() {  
@@ -145,7 +146,7 @@ public class FriendLinksDaoImpl implements FriendLinksDao {
 	 */
 	@Override
 	public List<FriendLinks> findByName(String name) {
-		String sql = "select * from friend_links where name like %?%";
+		String sql = "select * from friend_links where name like %?% order by ctime desc";
 		List<FriendLinks> friendLinkses = new ArrayList<FriendLinks>();
 		
 		friendLinkses = (List<FriendLinks>)jdbcTemplate.query(sql, new Object[]{name}, new RowMapper<FriendLinks>() {  

@@ -74,7 +74,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public String update(Employee employee) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update employee set name=?, telephone=?, id_card=?, email=?, sex=?, birthday=?, address=?, province=?, right_level=?, qq=?, utime=?";
+		String sql = "update employee set name=?, telephone=?, id_card=?, email=?, sex=?, birthday=?, address=?, province=?, right_level=?, qq=?, utime=? where id=?";
 		Employee emp = findEmployeeByIdCard(employee.getId_card());
 		
 		if(emp == null){
@@ -93,7 +93,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			employee.getProvince(),
 			employee.getRight_level(),
 			employee.getQq(),
-			new Date()
+			new Date(),
+			employee.getId()
 		});
 		
 		if(i > 0){
@@ -158,9 +159,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from employee where id in (?)";
+		String sql = "delete from employee where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";
@@ -193,7 +194,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	 */
 	@Override
 	public List<Employee> findAll() {
-		String sql = "select * from employee";
+		String sql = "select * from employee order by ctime desc";
 		List<Employee> employees = new ArrayList<Employee>();
 		
 		employees = (List<Employee>)jdbcTemplate.query(sql, new RowMapper<Employee>() {  
@@ -213,7 +214,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public List<Employee> findByName(String name) {
 		List<Employee> employees = new ArrayList<Employee>();
-		String sql = "select * from employee where name like %?%";
+		String sql = "select * from employee where name like %?% order by ctime desc";
 		employees = (List<Employee>) jdbcTemplate.query(sql, new RowMapper<Employee>() {  
 	        @Override  
 	        public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {  

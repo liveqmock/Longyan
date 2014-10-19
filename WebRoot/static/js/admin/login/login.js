@@ -47,7 +47,6 @@
 
 				if(json){
 					if(json.code){   //通过登录验证
-						alert('验证成功');
 						window.location.href = '/Longyan/admin/filter/main';
 					}else{
 						showErrorTip(jQtip, '用户名或密码错误');

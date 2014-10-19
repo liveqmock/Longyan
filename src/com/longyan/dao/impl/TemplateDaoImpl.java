@@ -65,7 +65,7 @@ public class TemplateDaoImpl implements TemplateDao {
 	@Override
 	public String update(Template template) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update template set column_id=?, content_id=?, filename=?, path=?, create_user=?, utime=?";
+		String sql = "update template set column_id=?, content_id=?, filename=?, path=?, create_user=?, utime=? where id=?";
 		Template con = getTemplateByFileName(template.getFilename());
 		
 		if(con == null){
@@ -78,7 +78,8 @@ public class TemplateDaoImpl implements TemplateDao {
 			template.getFilename(),
 			template.getPath(),
 			template.getCreate_user(),
-			new Date()
+			new Date(),
+			template.getId()
 		});
 		
 		if(i > 0){

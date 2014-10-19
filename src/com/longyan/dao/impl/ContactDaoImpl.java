@@ -64,7 +64,7 @@ public class ContactDaoImpl implements ContactDao {
 	@Override
 	public String update(Contact contact) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update contact set qq=?, name=?, telephone=?, utime=?";
+		String sql = "update contact set qq=?, name=?, telephone=?, utime=? where id=?";
 		Contact con = getContactByQq(contact.getQq());
 		
 		if(con == null){
@@ -75,7 +75,8 @@ public class ContactDaoImpl implements ContactDao {
 			contact.getQq(),
 			contact.getName(),
 			contact.getTelephone(),
-			new Date()
+			new Date(),
+			contact.getId()
 		});
 		
 		if(i > 0){
@@ -116,7 +117,7 @@ public class ContactDaoImpl implements ContactDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from contact where id in (?)";
+		String sql = "delete from contact where id in (" + ids + ")";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{ ids });
 		
@@ -148,7 +149,7 @@ public class ContactDaoImpl implements ContactDao {
 	 */
 	@Override
 	public List<Contact> findAll() {
-		String sql = "select * from contact";
+		String sql = "select * from contact order by ctime desc";
 		List<Contact> contacts = new ArrayList<Contact>();
 		
 		contacts = (List<Contact>)jdbcTemplate.query(sql, new RowMapper<Contact>() {  
@@ -167,7 +168,7 @@ public class ContactDaoImpl implements ContactDao {
 	 */
 	@Override
 	public List<Contact> findByName(String name) {
-		String sql = "select * from contact where name like %?%";
+		String sql = "select * from contact where name like %?% order by ctime desc";
 		List<Contact> contacts = new ArrayList<Contact>();
 		
 		contacts = (List<Contact>)jdbcTemplate.query(sql, new Object[]{name}, new RowMapper<Contact>() {  

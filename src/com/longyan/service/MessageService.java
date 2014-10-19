@@ -47,6 +47,16 @@ public class MessageService {
 	}
 	
 	/**
+	 * 修改留言回复状态
+	 * @param id
+	 * @param status
+	 * @return
+	 */
+	public String modifyMessageStatus(int id, int status){
+		return messageDaoImpl.updateStatus(id, status);
+	}
+	
+	/**
 	 * 根据留言ID删除留言
 	 * @param message
 	 * @return
@@ -99,5 +109,15 @@ public class MessageService {
 	 */
 	public List<Message> getMessagesByDateAndStatus(Date startDate, Date endDate, Integer status){
 		return messageDaoImpl.filteByDateAndStatus(startDate, endDate, status);
+	}
+	
+	/**
+	 * 根据时间进行过滤
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
+	public List<Message> getMessagesByDate(Date startDate, Date endDate){
+		return messageDaoImpl.filteByDate(startDate, endDate);
 	}
 }

@@ -101,7 +101,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		reply.setId(rs.getInt("id"));
 		reply.setMessage_id(rs.getInt("message_id"));
 		reply.setReply_content(rs.getString("reply_content"));
-		reply.setEmployee_name(rs.getInt("employee_name"));
+		reply.setEmployee_name(rs.getString("employee_name"));
 		reply.setCtime(rs.getDate("ctime"));
 		reply.setUtime(rs.getDate("utime"));
 		

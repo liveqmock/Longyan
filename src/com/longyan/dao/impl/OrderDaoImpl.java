@@ -66,7 +66,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public String update(Order order) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update order set customer_id=?, code=?, goods_name=?, price=?, count=?, discount=?, goods_info=?, remark=?, employee_name=?, employee_id=?, utime";
+		String sql = "update order set customer_id=?, code=?, goods_name=?, price=?, count=?, discount=?, goods_info=?, remark=?, employee_name=?, employee_id=?, utime=? where id=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			order.getCustomer_id(),
@@ -79,7 +79,8 @@ public class OrderDaoImpl implements OrderDao {
 			order.getRemark(),
 			order.getEmployee_name(),
 			order.getEmployee_id(),
-			new Date()
+			new Date(),
+			order.getId()
 		});
 		
 		if(i > 0){
@@ -113,7 +114,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from order where id in (?)";
+		String sql = "delete from order where id in (" + ids + ")";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{ ids });
 		
@@ -145,7 +146,7 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Override
 	public List<Order> findAll() {
-		String sql = "select * from order";
+		String sql = "select * from order order by ctime desc";
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new RowMapper<Order>() {  
@@ -164,7 +165,7 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Override
 	public List<Order> findByName(String goods_name) {
-		String sql = "select * from order where goods_name like %?%";
+		String sql = "select * from order where goods_name like %?% order by ctime desc";
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new Object[]{goods_name}, new RowMapper<Order>() {  
@@ -183,7 +184,7 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Override
 	public List<Order> findByCustomerId(Integer customerId) {
-		String sql = "select * from order where customer_id=?";
+		String sql = "select * from order where customer_id=? order by ctime desc";
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new Object[]{ customerId }, new RowMapper<Order>() {  
@@ -203,7 +204,7 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Override
 	public List<Order> findByDate(Date startDate, Date endDate) {
-		String sql = "select * from order where ctime between ? and ?";
+		String sql = "select * from order where ctime between ? and ? order by ctime desc";
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new Object[]{startDate, endDate}, new RowMapper<Order>() {  
