@@ -168,6 +168,11 @@
 	    						('<a href="javascript:;" class="btn btn-warning look-reply" id="' + field.id + '">查看</a>');
         			};
         			break;
+        		case 'order': 
+        			link = function(field) {
+	    				return '<a href="/Longyan/admin/filter/order-detail?order_id="' + field.id + ' class="btn btn-success order-detail">订单详情</a>';
+        			};
+        			break;
         	}
         	
         	return link;

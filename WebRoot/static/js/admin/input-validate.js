@@ -6,7 +6,7 @@
 (function($){
 	$.extend($.fn, {
 		validate: function(options){
-			var inputs = this.find('.validate'),
+			var items = this.find('.validate'),
 				i = 0,
 				type = "",
 				val = "",
@@ -16,7 +16,7 @@
 				},
 				name = '',
 				item = null,
-				len = inputs.length;
+				len = items.length;
 			
 			if(!len){
 				ret.code = false;
@@ -24,7 +24,7 @@
 			}
 			
 			for(; i < len; i++){
-				item = $(inputs[i]);
+				item = $(items[i]);
 				type = item.attr('type');
 				name = item.attr('name');
 				val = item.val();
@@ -38,6 +38,20 @@
 							item.parent().next().html('').hide();
 						}else {
 							item.parent().next().html('邮箱格式不正确').show();
+							ret.code = false;
+						}
+					}else if(item.hasClass('float')){
+						if(/^([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/.test(val)){
+							item.parent().next().html('').hide();
+						}else {
+							item.parent().next().html('请输入正确的价格').show();
+							ret.code = false;
+						}
+					}else if(item.hasClass('int')){
+						if(/^[1-9]\d*$/.test(val)){
+							item.parent().next().html('').hide();
+						}else {
+							item.parent().next().html('请输入正确个数').show();
 							ret.code = false;
 						}
 					}else {

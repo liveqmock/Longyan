@@ -17,6 +17,8 @@ public class Order {
 	
 	private String goods_name;   //商品名称
 	
+	private float goods_price;  //商品单价
+	
 	private float price;    //订单总价
 	
 	private int count;  //商品个数
@@ -65,6 +67,14 @@ public class Order {
 
 	public void setGoods_name(String goods_name) {
 		this.goods_name = goods_name;
+	}
+
+	public float getGoods_price() {
+		return goods_price;
+	}
+
+	public void setGoods_price(float goods_price) {
+		this.goods_price = goods_price;
 	}
 
 	public float getPrice() {

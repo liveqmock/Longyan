@@ -1,0 +1,12 @@
+{
+	"table_fileds": [
+		{"title":"订单编号", "name":"code", "type":"string","align":"right", "sClass": "code"},
+    	{"title":"会员名", "name":"customer_name", "type":"string","align":"right", "sClass": "customer_name"},
+    	{"title":"商品", "name":"goods_name", "type":"string","align":"right", "sClass": "goods_name"},
+    	{"title":"商品单价", "name":"goods_price", "type":"string","align":"right", "sClass": "goods_price"},
+    	{ "title":"订单总价", "name":"price", "type":"string","align":"right", "sClass": "price"},
+    	{ "title":"商品数量", "name":"count", "type":"string","align":"right", "sClass": "count"},
+    	{ "title":"折扣", "name":"discount", "type":"string","align":"right", "sClass": "discount"},
+    	{ "title":"下单时间", "name":"ctime", "type":"string","align":"right", "sClass": "ctime"}
+    ]
+}

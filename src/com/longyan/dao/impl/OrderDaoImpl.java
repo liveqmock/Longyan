@@ -38,12 +38,13 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public String insert(Order order) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into order(customer_id, code, goods_name, price, count, discount, goods_info, remark, employee_name, employee_id, ctime) values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into order_table(customer_id, code, goods_name, goods_price, price, count, discount, goods_info, remark, employee_name, employee_id, ctime) values(?,?,?,?,?,?,?,?,?,?,?)";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			order.getCustomer_id(),
 			order.getCode(),
 			order.getGoods_name(),
+			order.getGoods_price(),
 			order.getPrice(),
 			order.getCount(),
 			order.getDiscount(),
@@ -66,12 +67,13 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public String update(Order order) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
-		String sql = "update order set customer_id=?, code=?, goods_name=?, price=?, count=?, discount=?, goods_info=?, remark=?, employee_name=?, employee_id=?, utime=? where id=?";
+		String sql = "update order_table set customer_id=?, code=?, goods_name=?, goods_price=?, price=?, count=?, discount=?, goods_info=?, remark=?, employee_name=?, employee_id=?, utime=? where id=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			order.getCustomer_id(),
 			order.getCode(),
 			order.getGoods_name(),
+			order.getGoods_price(),
 			order.getPrice(),
 			order.getCount(),
 			order.getDiscount(),
@@ -95,7 +97,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public String delete(Order order) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from order where id=?";
+		String sql = "delete from order_table where id=?";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			order.getId()
@@ -114,7 +116,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public String deleteMore(String ids) {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
-		String sql = "delete from order where id in (" + ids + ")";
+		String sql = "delete from order_table where id in (" + ids + ")";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{ ids });
 		
@@ -128,7 +130,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public Order findById(Integer id) {
 		List<Order> order = null;
-		String sql = "select * from order where id=?";
+		String sql = "select * from order_table where id=?";
 		
 		order = (List<Order>)jdbcTemplate.query(sql, new Object[]{ id }, new RowMapper<Order>() {  
             @Override  
@@ -146,7 +148,7 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Override
 	public List<Order> findAll() {
-		String sql = "select * from order order by ctime desc";
+		String sql = "select * from order_table order by ctime desc";
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new RowMapper<Order>() {  
@@ -165,7 +167,7 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Override
 	public List<Order> findByName(String goods_name) {
-		String sql = "select * from order where goods_name like %?% order by ctime desc";
+		String sql = "select * from order_table where goods_name like %?% order by ctime desc";
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new Object[]{goods_name}, new RowMapper<Order>() {  
@@ -184,7 +186,7 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Override
 	public List<Order> findByCustomerId(Integer customerId) {
-		String sql = "select * from order where customer_id=? order by ctime desc";
+		String sql = "select * from order_table where customer_id=? order by ctime desc";
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new Object[]{ customerId }, new RowMapper<Order>() {  
@@ -204,7 +206,7 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Override
 	public List<Order> findByDate(Date startDate, Date endDate) {
-		String sql = "select * from order where ctime between ? and ? order by ctime desc";
+		String sql = "select * from order_table where ctime between ? and ? order by ctime desc";
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new Object[]{startDate, endDate}, new RowMapper<Order>() {  
@@ -230,6 +232,7 @@ public class OrderDaoImpl implements OrderDao {
 		order.setCustomer_id(rs.getInt("customer_id"));
 		order.setCode(rs.getString("code"));
 		order.setGoods_name(rs.getString("goods_name"));
+		order.setGoods_price(rs.getFloat("goods_price"));
 		order.setPrice(rs.getFloat("price"));
 		order.setCount(rs.getInt("count"));
 		order.setDiscount(rs.getFloat("discount"));

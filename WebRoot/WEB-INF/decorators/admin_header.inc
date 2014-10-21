@@ -27,7 +27,7 @@
 		<div class="navbar-header">
 			 <a class="navbar-brand" href="/Longyan/admin/filter/main">龙颜集团后台</a>
 		</div>
-		<div class="user-bar"> 您好，${username!""} <a class="logout" href="/Longyan/admin/logout">退出</a> </div>
+		<div class="user-bar"> 您好，<a class="user-info" href="/Longyan/admin/filter/main">${username!""}</a> <a class="logout" href="/Longyan/admin/logout">退出</a> </div>
 	</div>
 	<nav class="navbar navbar-inverse" id="J-top-nav1"></nav>
 	<div class="container" id="J-container">

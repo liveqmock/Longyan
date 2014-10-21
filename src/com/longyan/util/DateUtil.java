@@ -19,7 +19,19 @@ public class DateUtil {
 	 * @return
 	 */
 	public static String getFormateDate(Date date) {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String date_str = df.format(date);
+
+		return date_str;
+	}
+	
+	/**
+	 * 根据时间生成code
+	 * @param date
+	 * @return
+	 */
+	public static String getCodeTime(Date date){
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date_str = df.format(date);
 
 		return date_str;
@@ -41,5 +53,9 @@ public class DateUtil {
 			e.printStackTrace();
 		}
 		return date;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(DateUtil.getCodeTime(new Date()));
 	}
 }

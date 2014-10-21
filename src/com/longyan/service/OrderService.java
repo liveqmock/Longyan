@@ -100,4 +100,13 @@ public class OrderService {
 	public List<Order> getOrdersByDate(Date startDate, Date endDate){
 		return orderDaoImpl.findByDate(startDate, endDate);
 	}
+	
+	/**
+	 * 根据ID取得订单
+	 * @param order_id
+	 * @return
+	 */
+	public Order getOrderById(int order_id){
+		return orderDaoImpl.findById(order_id);
+	}
 }
