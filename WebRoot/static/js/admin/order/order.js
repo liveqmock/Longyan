@@ -19,6 +19,8 @@ $(document).ready(function(){
 			me.jQsure = $('#sure');
 			me.jQcancel = $('#cancel');
 			me.jQtableContainer = $('#table-container');
+			me.jQsearch = $('#search');
+			me.jQcustomerName = $('#customer_name');
 			
 			me._initEvent();
 			me._initDate();
@@ -38,6 +40,12 @@ $(document).ready(function(){
 			});
 			me.jQsure.on('click', function(){
 				me._submitForm();
+			});
+			me.jQsearch.on('click', function(){
+				me._search($(this));
+			});
+			me.jQcustomerName.on('change', function(){
+				me._nameChange($(this));
 			});
 		},
 		_initTable: function(){
@@ -111,7 +119,7 @@ $(document).ready(function(){
 				var json = typeof data == 'string' ? JSON.parse(data) : data;
 
 				if(json){
-					if(json.code == 1001 || json.code == 2001){   //通过登录验证
+					if(json.code == 1001){ 
 						window.location.reload();
 					}else{
 						me._showErrorTip(me.flag == 'add' ? '添加失败' : '修改失败');
@@ -138,6 +146,35 @@ $(document).ready(function(){
 			$('#goods_info', me.jQorderInfoPop).val('');
 			$('#remark', me.jQorderInfoPop).val('');
 			$('.err-lable').hide();
+		},
+		_search: function(tar){
+			var me = this,
+				jQstartDate = $('#start-date'),
+				jQendDate = $('#end-date');
+			
+			if(!jQstartDate.val() || !jQendDate.val()){
+				alert('起始时间或者终止时间不能为空');
+				return;
+			}
+
+			$.ajax({
+				url: '/Longyan/static/conf/order.json'
+			}).done(function(json){
+				me.config = $.extend(true, {}, json);
+				
+				me._initTable('/Longyan/admin/filter/get-order-by-date', {
+					start_date: jQstartDate.val(),
+					end_date: jQendDate.val()
+				});
+			}).fail(function(){
+			});
+		},
+		_nameChange: function(tar){
+			var me = this,
+				timer = 0;
+
+			timer && clearTimeout(timer);
+			
 		}
 	};
 	
