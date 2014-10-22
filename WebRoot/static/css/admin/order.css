@@ -6,10 +6,10 @@
 	margin-left: 5px;
 }
 #add-order {
-	margin-right: 260px;
+	margin-right: 43%;;
 }
 .order-info-pop {
-	-display: none;
+	display: none;
 	position: fixed;
 	z-index: 1000;
 	width: 100%;

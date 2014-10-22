@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.longyan.dao.OrderDao;
 import com.longyan.entity.Order;
+import com.longyan.util.DateUtil;
 /**
  * 订单信息持久层
  * @author tracyqiu
@@ -38,7 +39,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public String insert(Order order) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into order_table(customer_id, code, goods_name, goods_price, price, count, discount, goods_info, remark, employee_name, employee_id, ctime) values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into order_table(customer_id, code, goods_name, goods_price, price, count, discount, goods_info, remark, employee_name, employee_id, ctime) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			order.getCustomer_id(),
@@ -240,8 +241,8 @@ public class OrderDaoImpl implements OrderDao {
 		order.setRemark(rs.getString("remark"));
 		order.setEmployee_name(rs.getString("employee_name"));
 		order.setEmployee_id(rs.getInt("employee_id"));
-		order.setCtime(rs.getDate("ctime"));
-		order.setUtime(rs.getDate("utime"));
+		order.setCtime(rs.getTimestamp("ctime"));
+		order.setUtime(rs.getTimestamp("utime"));
 		
 		return order;
 	}

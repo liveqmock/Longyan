@@ -1,0 +1,18 @@
+.order-info {
+	padding: 15px 35px;
+}
+.order-info p {
+	margin: 10px 0;
+	font-size: 14px;
+}
+.order-info p span {
+	font-weight: bold;
+	font-size: 14px;
+}
+.go-back {
+	display: block;
+	position: absolute;
+	right: 50px;
+	bottom: 40px;
+	font-size: 20px;
+}

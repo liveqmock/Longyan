@@ -89,6 +89,8 @@ public class OrderController {
 		model.addAttribute("right", right);
 		model.addAttribute("dim", dim);
 		model.addAttribute("customer_name", customer.getRealname());
+		model.addAttribute("customer_phone", customer.getTelephone());
+		model.addAttribute("customer_add", customer.getAddress());
 		model.addAttribute("code", order.getCode());
 		model.addAttribute("goods_name", order.getGoods_name());
 		model.addAttribute("goods_price", order.getGoods_price());
@@ -98,7 +100,7 @@ public class OrderController {
 		model.addAttribute("goods_info", order.getGoods_info());
 		model.addAttribute("remark", order.getRemark());
 		model.addAttribute("employee_name", order.getEmployee_name());
-		model.addAttribute("ctime", order.getCtime());
+		model.addAttribute("ctime", DateUtil.getFormateDate(order.getCtime()));
 		
 		System.out.println("到达主页面");
 		return "admin/filter/order-detail";

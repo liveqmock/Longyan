@@ -43,7 +43,7 @@
 						<td class="right-align">会员名</td>
 						<td class="star">*</td>
 						<td class="input-wrap sug-wrap">
-							<input type="text" id="customer_name" name="customer_name" class="required form-control validate" cutomerid="" placeholder="请输入会员名"/>
+							<input type="text" id="customer_name" name="customer_name" class="required form-control validate customer_name" customerid="" placeholder="请输入会员名"/>
 							<div class="customer-sug">
 								<ul class="item-list">
 									<li class="customer-item">Tracy</li>
@@ -77,7 +77,7 @@
 					<tr>
 						<td class="right-align">商品折扣</td>
 						<td class="star">*</td>
-						<td class="input-wrap"><input type="text" id="discount" name="discount" class="form-control float validate" value="1" />折</td>
+						<td class="input-wrap"><input type="text" id="discount" name="discount" class="form-control float validate" value="10" />折</td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>

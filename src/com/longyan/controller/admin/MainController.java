@@ -3,20 +3,15 @@ package com.longyan.controller.admin;
 import java.io.IOException;
 import java.util.Date;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.longyan.entity.Employee;
-import com.longyan.service.EmployeeService;
 import com.longyan.util.IPUtil;
 import com.longyan.util.SessionUtil;
 
@@ -28,8 +23,6 @@ import com.longyan.util.SessionUtil;
  */
 @Controller
 public class MainController {
-	@Resource
-	private EmployeeService employeeService;
 
 	/**
 	 * 跳转到登录页面

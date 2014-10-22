@@ -44,14 +44,14 @@
 						if(/^([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$/.test(val)){
 							item.parent().next().html('').hide();
 						}else {
-							item.parent().next().html('请输入正确的价格').show();
+							item.parent().next().html('请输入正确的数字').show();
 							ret.code = false;
 						}
 					}else if(item.hasClass('int')){
 						if(/^[1-9]\d*$/.test(val)){
 							item.parent().next().html('').hide();
 						}else {
-							item.parent().next().html('请输入正确个数').show();
+							item.parent().next().html('请输入正整数').show();
 							ret.code = false;
 						}
 					}else {

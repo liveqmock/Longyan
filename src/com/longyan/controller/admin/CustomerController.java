@@ -97,6 +97,42 @@ public class CustomerController {
 	}
 	
 	/**
+	 * 根据名字查询用户
+	 * @param model
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/admin/filter/get-customer-by-name")
+	public @ResponseBody String getCustomerByName(Model model, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		String name = request.getParameter("customer_name");
+		if("".equals(name)){
+			return "[]";
+		}
+		
+		List<Customer> customers = customerService.getCustomersByName(name);
+		if(customers.size() == 0){
+			return "[]";
+		}
+		
+		JSONArray jsonArray = new JSONArray(); 
+		JSONObject jsonObject = null;
+		for(Customer customer:customers){
+			jsonObject = new JSONObject();
+			
+			jsonObject.put("id", customer.getId());
+			jsonObject.put("realname", customer.getRealname());
+			
+			jsonArray.add(jsonObject);
+		}
+		
+		return jsonArray.toString();
+	}
+	
+	/**
 	 * 通过ID取得用户
 	 * @param model
 	 * @param request

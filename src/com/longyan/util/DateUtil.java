@@ -55,6 +55,24 @@ public class DateUtil {
 		return date;
 	}
 	
+	/**
+	 * 字符串转换成日期
+	 * 
+	 * @param str
+	 * @return date
+	 */
+	public static Date StrToDate2(String str) {
+
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = null;
+		try {
+			date = format.parse(str);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+	
 	public static void main(String[] args) {
 		System.out.println(DateUtil.getCodeTime(new Date()));
 	}
