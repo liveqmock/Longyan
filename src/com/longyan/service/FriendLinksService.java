@@ -79,4 +79,13 @@ public class FriendLinksService {
 	public List<FriendLinks> getFriendLinksesByName(String name){
 		return friendLinksDaoImpl.findByName(name);
 	}
+	
+	/**
+	 * 通过ID查找
+	 * @param id
+	 * @return
+	 */
+	public FriendLinks getFriendLinksById(Integer id){
+		return friendLinksDaoImpl.findById(id);
+	}
 }

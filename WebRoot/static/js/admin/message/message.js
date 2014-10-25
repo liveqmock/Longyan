@@ -199,6 +199,7 @@ $(document).ready(function(){
 			$('.customer-content', me.jQmessageInfoPop).html(parent.find('.content').html());
 			$('#reply-content', me.jQmessageInfoPop).attr('disabled', false).val('');
 			$('.reply-info').css('visibility', 'hidden');
+			$('.err-lable').hide();
 			me.jQsure.show();
 		},
 		_search: function(tar){

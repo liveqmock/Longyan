@@ -65,12 +65,7 @@ public class ContactDaoImpl implements ContactDao {
 	public String update(Contact contact) {
 		String flag = "2003";   //2001 更新成功；2002  不存在； 2003 其他原因更新失败
 		String sql = "update contact set qq=?, name=?, telephone=?, utime=? where id=?";
-		Contact con = getContactByQq(contact.getQq());
-		
-		if(con == null){
-			flag = "2002";
-			return flag;
-		}
+
 		int i = jdbcTemplate.update(sql, new Object[]{
 			contact.getQq(),
 			contact.getName(),
@@ -93,13 +88,6 @@ public class ContactDaoImpl implements ContactDao {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
 		String sql = "delete from contact where id=?";
 		
-		Contact con = getContactByQq(contact.getQq());
-		
-		if(con == null){
-			flag = "3002";
-			return flag;
-		}
-		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			contact.getId()
 		});
@@ -119,7 +107,7 @@ public class ContactDaoImpl implements ContactDao {
 		String flag = "3003"; //3001删除成功；3002 不存在； 3003 未知原因删除失败
 		String sql = "delete from contact where id in (" + ids + ")";
 		
-		int i = jdbcTemplate.update(sql, new Object[]{ ids });
+		int i = jdbcTemplate.update(sql);
 		
 		if(i > 0){
 			flag = "3001";

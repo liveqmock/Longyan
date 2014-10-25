@@ -1,0 +1,7 @@
+{
+	"table_fileds": [
+    	{"title":"客服名称", "name":"name", "type":"string","align":"right", "sClass": "name"},
+    	{"title":"客服QQ", "name":"qq", "type":"string","align":"right", "sClass": "qq"},
+    	{"title":"客服电话", "name":"telephone", "type":"string","align":"right", "sClass": "telephone"}
+    ]
+}

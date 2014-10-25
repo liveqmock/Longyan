@@ -92,26 +92,28 @@
 						<td class="input-wrap"><input type="text" id="province" name="province" class="required form-control validate"/></td>
 						<td class="err-lable">aaaa</td>
 					</tr>
-					<tr>
-						<td class="right-align">权限</td>
-						<td class="star">*</td>
-						<td class="input-wrap" id="right-td">
-							<select type="select" id="right_level" name="right_level" class="form-control validate">
-								<option value="0">0</option>
-								<option value="1" selected>1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-							</select>
-							<a href="javascript:;" class="right-tip">权限说明</a>
-							<span class="tip-content">
-								0-管理员权限<br />
-								1-有系统设置权限； <br />
-								2-系统设置 + 订单系统； <br />
-								3-系统设置 + 订单系统 + 会员管理。
-							</span>
-						</td>
-						<td class="err-lable">aaaa</td>
-					</tr>
+					<#if right == 0>
+						<tr>
+							<td class="right-align">权限</td>
+							<td class="star">*</td>
+							<td class="input-wrap" id="right-td">
+								<select type="select" id="right_level" name="right_level" class="form-control validate">
+									<option value="0">0</option>
+									<option value="1" selected>1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select>
+								<a href="javascript:;" class="right-tip">权限说明</a>
+								<span class="tip-content">
+									0-管理员权限<br />
+									1-有系统设置权限； <br />
+									2-系统设置 + 订单系统； <br />
+									3-系统设置 + 订单系统 + 会员管理。
+								</span>
+							</td>
+							<td class="err-lable">aaaa</td>
+						</tr>
+					</#if>
 				</table>
 				<div class="btn-wrap">
 					<a class="btn btn-success" href="javascript:;" id="sure">提交</a>

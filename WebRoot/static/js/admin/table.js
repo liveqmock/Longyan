@@ -173,6 +173,18 @@
 	    				return '<a href="/Longyan/admin/filter/order-detail?order_id=' + field.id + '" class="btn btn-success order-detail">订单详情</a>';
         			};
         			break;
+        		case 'contact': 
+        			link = function(field) {
+	    				return '<a href="javascript:;" class="btn btn-success edit-contact" id="' + 
+						field.id + '">编辑</a>';
+        			};
+        			break;
+        		case 'friendLinks': 
+        			link = function(field) {
+	    				return '<a href="javascript:;" class="btn btn-success edit-friendLinks" id="' + 
+						field.id + '">编辑</a>';
+        			};
+        			break;
         	}
         	
         	return link;

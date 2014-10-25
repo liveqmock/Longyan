@@ -1,5 +1,5 @@
 /**
- * 会员管理前端逻辑
+ * 客服管理前端逻辑
  * @author tracyqiu
  */
 
@@ -13,9 +13,9 @@ $(document).ready(function(){
 		},
 		_init: function(){
 			var me = this;
-			me.jQaddCustomer = $('#add-customer');
-			me.jQdelCustomer = $('#del-customer');
-			me.jQcustomerInfoPop = $('.customer-info-pop');
+			me.jQaddContact = $('#add-contact');
+			me.jQdelContact = $('#del-contact');
+			me.jQcontactInfoPop = $('.contact-info-pop');
 			me.jQclose = $('#close');
 			me.jQsure = $('#sure');
 			me.jQcancel = $('#cancel');
@@ -23,65 +23,45 @@ $(document).ready(function(){
 			me.flag = '';   //表示编辑还是新增
 			
 			me._initEvent();
-			me._initDate();
 			me._initTable();
 		},
 		_initEvent: function(){
 			var me = this;
 			
-			me.jQaddCustomer.on('click', function(){
-				me._addCustomer($(this));
+			me.jQaddContact.on('click', function(){
+				me._addContact($(this));
 			});
 			me.jQclose.on('click', function(){
-				me.jQcustomerInfoPop.hide();
+				me.jQcontactInfoPop.hide();
 			});
 			me.jQcancel.on('click', function(){
-				me.jQcustomerInfoPop.hide();
+				me.jQcontactInfoPop.hide();
 			});
 			me.jQsure.on('click', function(){
 				me._submitForm();
 			});
-			me.jQdelCustomer.on('click', function(){
-				me._delCustomer();
+			me.jQdelContact.on('click', function(){
+				me._delContact();
 			});
-			me.jQtableContainer.on('click', '.edit-customer', function(e){
-				me._editCustomer($(e.currentTarget));
+			me.jQtableContainer.on('click', '.edit-contact', function(e){
+				me._editContact($(e.currentTarget));
 			});
 		},
 		_initTable: function(){
 			var me = this;
 
 			$('#table-container').toTable({
-				url: '/Longyan/admin/filter/get-all-customer',
+				url: '/Longyan/admin/filter/get-all-contact',
 				datafields: me.config.table_fileds,
-				tableName: '用户列表',
-				page: 'customer'
+				tableName: '客服列表',
+				page: 'contact'
 			});
 		},
-		_initDate: function(){
-			var me = this,
-				jQbirthday = $('#birthday');
-
-			jQbirthday.datepicker({
-			    showMonthAfterYear: true, // 月在年之后显示
-			    changeMonth: true,     // 允许选择月份
-			    changeYear: true,     // 允许选择年份
-			    dateFormat:'yy-mm-dd',    // 设置日期格式
-			    closeText:'关闭',     // 只有showButtonPanel: true才会显示出来
-			    duration: 'fast',
-			    showAnim:'fadeIn',
-			    buttonImageOnly: true,                // 不把图标显示在按钮上，即去掉按钮
-			    buttonText:'选择日期',
-			    showButtonPanel: true,
-			    showOtherMonths: true
-			    //appendText: '(yyyy-mm-dd)',
-			});
-		},
-		_addCustomer: function(tar){
+		_addContact: function(tar){
 			var me = this;
 			me.flag = 'add';
 			me._resetForm();
-			me.jQcustomerInfoPop.show();
+			me.jQcontactInfoPop.show();
 		},
 		_submitForm: function(){
 			var me = this,
@@ -94,13 +74,13 @@ $(document).ready(function(){
 			for(var i = 0, len = ret.data.length; i < len; i ++){
 				postData[ret.data[i][0]] = ret.data[i][1];
 			}
-			postData.flag = 1;   //管理员操作
+
 			if(me.flag == 'edit'){
 				postData.id = me.id;
 			}
 
 			$.ajax({
-				url: me.flag == 'add' ? "/Longyan/admin/filter/add-customer" : "/Longyan/admin/filter/update-customer",
+				url: me.flag == 'add' ? "/Longyan/admin/filter/add-contact" : "/Longyan/admin/filter/update-contact",
 				type: 'get',
 				data: postData
 			}).done(function(data){
@@ -122,7 +102,7 @@ $(document).ready(function(){
 		_showErrorTip: function(msg){
 			$('#result').html(msg).show();
 		},
-		_delCustomer: function(){
+		_delContact: function(){
 			var me = this,
 				ids = [];
 				jQselectItem = $('#table-container .select-item');
@@ -138,10 +118,10 @@ $(document).ready(function(){
 			
 			if(confirm("确认删除所选项？")){
 				$.ajax({
-					url: "/Longyan/admin/filter/del-customer",
+					url: "/Longyan/admin/filter/del-contact",
 					type: 'get',
 					data: {
-						customerIds: ids.join(',')
+						contactIds: ids.join(',')
 					}
 				}).done(function(data){
 					var json = typeof data == 'string' ? JSON.parse(data) : data;
@@ -160,45 +140,30 @@ $(document).ready(function(){
 				});
 			}
 		},
-		_editCustomer: function(tar){
+		_editContact: function(tar){
 			var me = this,
 				parent = tar.parent().parent();
 
 			me.flag = 'edit';
 			me.id = tar.attr('id');
-			$('#username', me.jQcustomerInfoPop).val(parent.find('.username').html());
-			$('#realname', me.jQcustomerInfoPop).val(parent.find('.realname').html());
-			$('#telephone', me.jQcustomerInfoPop).val(parent.find('.telephone').html());
-			me.jQcustomerInfoPop.find('input[type="radio"]').each(function(i, item){
-				if($(item).val() == parent.find('.sex').html()){
-					item.checked = true;
-				}else {
-					item.checked = false;
-				}
-			});
-			$('#birthday', me.jQcustomerInfoPop).val(parent.find('.birthday').html());
-			$('#address', me.jQcustomerInfoPop).val(parent.find('.address').html());
-			$('#qq', me.jQcustomerInfoPop).val(parent.find('.qq').html());
-			$('#email', me.jQcustomerInfoPop).val(parent.find('.email').html());
+			$('#name', me.jQcontactInfoPop).val(parent.find('.name').html());
+			$('#qq', me.jQcontactInfoPop).val(parent.find('.qq').html());
+			$('#telephone', me.jQcontactInfoPop).val(parent.find('.telephone').html());
 
-			$('.err-lable').hide();
-			me.jQcustomerInfoPop.show();
+			me.jQcontactInfoPop.show();
 		},
 		_resetForm: function(){
 			var me = this;
 
-			$('#username', me.jQcustomerInfoPop).val('');
-			$('#realname', me.jQcustomerInfoPop).val('');
-			$('#telephone', me.jQcustomerInfoPop).val('');
-			$('#birthday', me.jQcustomerInfoPop).val('');
-			$('#address', me.jQcustomerInfoPop).val('');
-			$('#qq', me.jQcustomerInfoPop).val('');
-			$('#email', me.jQcustomerInfoPop).val('');
+			$('#name', me.jQcontactInfoPop).val('');
+			$('#qq', me.jQcontactInfoPop).val('');
+			$('#telephone', me.jQcontactInfoPop).val('');
+			$('.err-lable').hide();
 		}
 	};
 	
 	$.ajax({
-		url: '/Longyan/static/conf/customer.json'
+		url: '/Longyan/static/conf/contact.json'
 	}).done(function(json){
 		Page.run(json);
 	}).fail(function(){

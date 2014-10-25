@@ -1,0 +1,6 @@
+{
+	"table_fileds": [
+    	{"title":"名称", "name":"name", "type":"string","align":"right", "sClass": "name"},
+    	{"title":"链接", "name":"url", "type":"string","align":"right", "sClass": "url"}
+    ]
+}

@@ -189,6 +189,7 @@ $(document).ready(function(){
 			$('#province', me.jQemployeeInfoPop).val(parent.find('.province').html());
 			$("#right_level option[value='" + parent.find('.right_level').html() + "']").attr("selected", true);
 
+			$('.err-lable').hide();
 			me.jQemployeeInfoPop.show();
 		},
 		_resetForm: function(){

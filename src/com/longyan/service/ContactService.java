@@ -79,4 +79,13 @@ public class ContactService {
 	public List<Contact> getContactsByName(String name){
 		return contactDaoImpl.findByName(name);
 	}
+	
+	/**
+	 * 根据ID查找客服
+	 * @param id
+	 * @return
+	 */
+	public Contact getContactById(Integer id){
+		return contactDaoImpl.findById(id);
+	}
 }
