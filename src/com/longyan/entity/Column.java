@@ -19,6 +19,8 @@ public class Column {
 	
 	private int template_id;   //没有二级内容的栏目会对应一个模板文件
 	
+	private String img_url;    //每个栏目对应的banner图url，可以为多个地址，以##分隔。例如  /upload/a.jpg##/upload/b.jpg
+	
 	private String create_user;  //创建人
 	
 	private Date ctime;       //创建时间
@@ -63,6 +65,14 @@ public class Column {
 
 	public void setTemplate_id(int template_id) {
 		this.template_id = template_id;
+	}
+
+	public String getImg_url() {
+		return img_url;
+	}
+
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
 	}
 
 	public String getCreate_user() {

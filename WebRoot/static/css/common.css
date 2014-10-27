@@ -41,7 +41,16 @@ input[type="text"], input[type="password"] {
 	vertical-align: middle;
 	overflow: hidden;
 }
-
+.tool-bar {
+	text-align: right;
+}
+.tool-bar .btn-success,
+.tool-bar .btn-danger{
+	float: left;
+}
 .tool-bar a {
 	margin-left: 10px;
+}
+#search {
+	margin-right: 10px;
 }

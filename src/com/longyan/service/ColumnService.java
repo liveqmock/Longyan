@@ -89,4 +89,12 @@ public class ColumnService {
 	public String delMoreColumn(String ids){
 		return columnDaoImpl.deleteMore(ids);
 	}
+	
+	/**
+	 * 取得所有栏目
+	 * @return
+	 */
+	public List<Column> getAllColumns(){
+		return columnDaoImpl.findAll();
+	}
 }

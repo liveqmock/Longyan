@@ -1,0 +1,8 @@
+{
+	"table_fileds": [
+    	{"title":"名称", "name":"name", "type":"string","align":"right", "sClass": "name"},
+    	{"title":"栏目编码", "name":"code", "type":"string","align":"right", "sClass": "code"},
+    	{"title":"banner图", "name":"img_url", "type":"string","align":"right", "sClass": "img_url"},
+    	{ "title":"创建者", "name":"create_user", "type":"string","align":"right", "sClass": "create_user"}
+    ]
+}

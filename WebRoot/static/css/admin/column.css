@@ -5,10 +5,10 @@
 .tool-bar span {
 	margin-left: 5px;
 }
-#reply-status {
+#site-form {
 	width: 95px;
 }
-.message-info-pop {
+.column-info-pop {
 	display: none;
 	position: fixed;
 	z-index: 1000;
@@ -20,7 +20,7 @@
 	bottom: 0;
 }
 
-.message-info-pop .message-info-pop-bg {
+.column-info-pop .column-info-pop-bg {
 	position: fixed;
 	z-index: 1001;
 	width: 100%;
@@ -32,70 +32,54 @@
 	background-color: #000;
 	opacity: .2;
 }
-.message-info-pop .bd {
+.column-info-pop .bd {
 	position: fixed;
 	width: 500px;
+	height: 400px;
 	top: 50%;
 	left: 50%;
-	margin-top: -158px;
+	margin-top: -200px;
 	margin-left: -250px;
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	z-index: 1002;
 }
-.message-info-pop .bd .hd {
+.column-info-pop .bd .hd {
 	padding: 10px;
 	border-bottom: 1px solid #ccc;
 }
-.message-info-pop .bd .hd span {
+.column-info-pop .bd .hd span {
 	font-size: 14px;
 }
 #close {
 	margin-top: -5px;
 }
-.message-info-pop .content-bd {
-	margin-top: 10px;
+.column-info-pop .content-bd {
+	margin-top: 20px;
 	position: relative;
 }
-.content-bd .message-wrap{
-	padding: 10px;
-	position: relative;
+.column-info-pop .content-bd table {
+	width: 100%;
 }
-.message-wrap .customer-say{
-	font-weight: bold;
-	display: block;
-}
-.message-wrap .customer-content {
-	display: block;
-	width: 465px;
-	margin-left: 8px;
-	margin-top: 5px;
-}
-.content-bd .reply-wrap {
-	padding: 10px;
-}
-.reply-wrap #reply-content {
-	width: 477px;
-	height: 100px;
-	padding: 5px;
-	border-radius: 5px;
-}
-.reply-wrap .reply-info {
-	visibility: hidden;
+.content-bd table .right-align {
 	text-align: right;
-	color: #999;
-	margin-top: 5px;
-	font-size: 12px;
+	width: 20%;
+}
+.content-bd table .star{
+	color: red;
+	padding-top: 6px;
+	width: 5%;
+}
+.content-bd table .input-wrap {
+	width: 50%;
+}
+table .input-wrap .form-control {
+	width: 250px;
 }
 .btn-wrap {
-	text-align: right;
-	margin-top: 6px;
-	padding-right: 12px;
-	margin-bottom: 20px;
-}
-.btn-wrap .btn {
-	padding: 3px 10px;
+	text-align: center;
+	margin-top: 12px;
 }
 .content-bd table .err-lable {
 	width: 25%;
@@ -106,7 +90,8 @@
 #result {
 	position: absolute;
 	bottom: 0;
-	left: 20px;
+	right: 100px;
 	display: none;
 	color: red;
 }
+

@@ -185,6 +185,13 @@
 						field.id + '">编辑</a>';
         			};
         			break;
+        		case 'column': 
+        			link = function(field) {
+	    				return '<a href="javascript:;" class="btn btn-success edit-column" id="' + 
+						field.id + '">编辑</a><a href="javascript:;" class="btn btn-warning edit-template" id="' + 
+						field.id + '">编辑模板</a>';
+        			};
+        			break;
         	}
         	
         	return link;
