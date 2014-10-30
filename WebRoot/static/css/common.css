@@ -3,7 +3,11 @@ div, blockquote, q, iframe, form, dl, dt, dd, h1, h2, h3, h4, h5, h6, p {
 	margin: 0;
 	padding: 0;
 }
-
+ul, ol, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 div, p, table, th, td, font {
 	font-size: 1em;
 	font-family: inherit;

@@ -30,6 +30,15 @@
 				val = item.val();
 				
 				if(item.hasClass('required')){
+					if(item.attr('flag') == 'img-wrap'){
+						if(item.children().length == 0){
+							item.parent().parent().next().html('必须添加banner图').show();
+							ret.code = false;
+						}else {
+							ret.data.push(['img_url', this.getImgsUrl(item)]);
+						}
+						continue;
+					}
 					if(!val){  //数据为空
 						item.parent().next().html('该字段不能为空').show();
 						ret.code = false;
@@ -67,6 +76,18 @@
 			}
 			
 			return ret;
+		},
+		getImgsUrl: function(el){
+			var childs = el.children(),
+				i = 0,
+				len = childs.length,
+				retArr = [];
+
+			for(; i < len; i++){
+				retArr.push($(childs[i]).find('.img-item').attr('href'));
+			}
+
+			return retArr.join('##');
 		}
 	});
 })(jQuery);

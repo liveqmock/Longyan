@@ -47,7 +47,7 @@
 						<td class="right-align">选择站点</td>
 						<td class="star">*</td>
 						<td class="input-wrap">
-							<select id="site_id" class="form-control">
+							<select id="site_id" class="required form-control validate" name="site_id">
 								<option value="1">集团战略</option>
 								<option value="2">新闻中心</option>
 								<option value="3">支柱产业</option>
@@ -70,7 +70,26 @@
 						<td class="right-align">banner图片</td>
 						<td class="star">*</td>
 						<td class="input-wrap">
-							<input type="file" name="img_url" id="img_url" class="validate">
+							<div class="pic-wrap">
+								<ul id="img-list" class="validate required" flag="img-wrap">
+									<li>
+										<a href="http://www.baidu.com" target="_blank" title="点击预览" class="img-item">第一张图</a>
+										<a href="javascript:;" class="img-item-del" id="1">删除</a>
+									</li>
+									<li>
+										<a href="http://www.baidu.com" target="_blank" title="点击预览" class="img-item">第二张图</a>
+										<a href="javascript:;" class="img-item-del" id="2">删除</a>
+									</li>
+									<li>
+										<a href="http://www.baidu.com" target="_blank" title="点击预览" class="img-item">第三张图</a>
+										<a href="javascript:;" class="img-item-del" id="3">删除</a>
+									</li>
+								</ul>
+								
+							</div>
+							<input type="file" name="file" id="img_url">
+							<a href="javascript:;" id="upload" class="btn btn-default">上传</a>
+							<p id="upload-result">正在上传...</p>
 						</td>
 						<td class="err-lable">aaaa</td>
 					</tr>
@@ -87,3 +106,4 @@
 <script src="/Longyan/static/js/admin/column/column.js" ></script>
 <script src="/Longyan/static/js/admin/input-validate.js" ></script>
 <script src="/Longyan/static/js/admin/table.js" ></script>
+<script src="/Longyan/static/js/lib/ajaxfileupload.js" ></script>

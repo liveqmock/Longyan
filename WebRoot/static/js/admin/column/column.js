@@ -21,6 +21,7 @@ $(document).ready(function(){
 			me.jQcancel = $('#cancel');
 			me.jQtableContainer = $('#table-container');
 			me.jQsearch = $('#search');
+			me.jQupload = $('#upload');
 			me.flag = '';   //表示回复还是查看
 			
 			me._initEvent();
@@ -47,11 +48,14 @@ $(document).ready(function(){
 			me.jQtableContainer.on('click', '.edit-column', function(e){
 				me._editColumn($(e.currentTarget));
 			});
-			me.jQtableContainer.on('click', '.look-reply', function(e){
-				me._lookReply($(e.currentTarget));
+			me.jQtableContainer.on('click', '.edit-template', function(e){
+				me._editTemplate($(e.currentTarget));
 			});
 			me.jQsearch.on('click', function(){
 				me._search($(this));
+			});
+			me.jQupload.on('click', function(){
+				me._upload();
 			});
 		},
 		_initTable: function(url, data){
@@ -68,7 +72,7 @@ $(document).ready(function(){
 		},
 		_addColumn: function(tar){
 			var me = this;
-			me.flag = 'reply';
+			me.flag = 'add';
 			me.msgId = tar.attr('id');
 			me._resetForm(tar);
 			me.jQcolumnInfoPop.show();
@@ -155,41 +159,30 @@ $(document).ready(function(){
 
 			me.flag = 'edit';
 			me.id = tar.attr('id');
-			$('#username', me.jQcustomerInfoPop).val(parent.find('.username').html());
-			$('#realname', me.jQcustomerInfoPop).val(parent.find('.realname').html());
-			$('#telephone', me.jQcustomerInfoPop).val(parent.find('.telephone').html());
-			me.jQcustomerInfoPop.find('input[type="radio"]').each(function(i, item){
-				if($(item).val() == parent.find('.sex').html()){
-					item.checked = true;
-				}else {
-					item.checked = false;
-				}
-			});
-			$('#birthday', me.jQcustomerInfoPop).val(parent.find('.birthday').html());
-			$('#address', me.jQcustomerInfoPop).val(parent.find('.address').html());
-			$('#qq', me.jQcustomerInfoPop).val(parent.find('.qq').html());
-			$('#email', me.jQcustomerInfoPop).val(parent.find('.email').html());
+			$("#site_id option[value='" + parent.find('.site_id').html() + "']").attr("selected", true);
+			$('#name', me.jQcolumnInfoPop).val(parent.find('.name').html());
+			$('#code', me.jQcolumnInfoPop).val(parent.find('.code').html());
+			$('#img-list', me.jQcolumnInfoPop).html(me._renderImgs(parent.find('.img_url').html()));
 
 			$('.err-lable').hide();
-			me.jQcustomerInfoPop.show();
+			me.jQcolumnInfoPop.show();
+		},
+		_editTemplate: function(tar){
+			var me = this;
 		},
 		_resetForm: function(tar){
 			var me = this,
 				parent = tar.parent().parent();
 
 			$('#name', me.jQcolumnInfoPop).val('');
-			$('#code', me.jQcolumnInfoPop).val();
+			$('#code', me.jQcolumnInfoPop).val('');
 			$('#img_url', me.jQcolumnInfoPop).val('');
+			$('#img-list', me.jQcolumnInfoPop).html('');
 			$('.err-lable').hide();
 		},
 		_search: function(tar){
 			var me = this,
 				jQsiteForm = $('#site-form');
-			
-			if(!jQstartDate.val() || !jQendDate.val()){
-				alert('起始时间或者终止时间不能为空');
-				return;
-			}
 
 			$.ajax({
 				url: '/Longyan/static/conf/column.json'
@@ -201,7 +194,57 @@ $(document).ready(function(){
 				});
 			}).fail(function(){
 			});
+		},
+		_upload: function(){
+			var me = this,
+				template = '';
 			
+			if(!($('#img_url').val())) {
+				alert('请选择上传文件');
+				return;
+			}
+			$("#upload-result").html('正在上传...').show(); 
+			$.ajaxFileUpload({  
+                url: '/Longyan/admin/filter/upload',  
+                secureuri: false,  
+                fileElementId: 'img_url',  
+                dataType: 'json',  
+                beforeSend: function() {  
+                    $("#upload-result").html('正在上传...').show();  
+                },  
+                success: function(data, status) {  
+                    if (typeof (data.error) != 'undefined') {  
+                    	$("#upload-result").html('上传失败').show();  
+                    } else {  //上传成功
+                    	data = data.trim();
+                    	template = '<li>' + 
+										'<a href="' + data + '" target="_blank" title="点击预览" class="img-item">' + data + '</a>' + 
+										'<a href="javascript:;" class="img-item-del" path="' + data + '" onclick="$(this).parent().remove();">删除</a>' +
+									'</li>';
+                    	$("#upload-result").hide();
+                    	$('#img-list', me.jQcolumnInfoPop).append(template);
+                    } 
+                },  
+                error: function(data, status, e) {  
+                	$("#upload-result").html('上传失败').show(); 
+                }  
+            });
+		},
+		_renderImgs: function(img_urls){
+			var me = this,
+				ret = '',
+				imgArr = [];
+
+			if(!img_urls) return img_urls;
+			imgArr = img_urls.split('##');
+			for(var i = 0, len = imgArr.length; i < len; i++){
+				ret += '<li>' + 
+							'<a href="' + imgArr[i] + '" target="_blank" title="点击预览" class="img-item">' + imgArr[i] + '</a>' + 
+							'<a href="javascript:;" class="img-item-del" path="' + imgArr[i] + '" onclick="$(this).parent().remove();">删除</a>' +
+						'</li>';
+			}
+
+			return ret;
 		}
 	};
 	

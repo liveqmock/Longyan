@@ -128,7 +128,7 @@ public class ColumnController {
 			jsonArray.add(jsonObject);
 		}
 			
-		return jsonObject.toString();
+		return jsonArray.toString();
 	}
 	
 	/**
@@ -145,7 +145,6 @@ public class ColumnController {
 		
 		Employee employee = (Employee) SessionUtil.getSession(response, request);// 登录人
 		Integer site_id = Integer.parseInt(request.getParameter("site_id"));
-		Integer template_id = Integer.parseInt(request.getParameter("template_id"));
 		String name = request.getParameter("name");
 		String code = request.getParameter("code");
 		String img_url = request.getParameter("img_url");
@@ -157,7 +156,6 @@ public class ColumnController {
 		column.setCreate_user(create_user);
 		column.setImg_url(img_url);
 		column.setSite_id(site_id);
-		column.setTemplate_id(template_id);
 		
 		String codeStr = columnService.addColumn(column);
 		String err_msg = "";
@@ -175,7 +173,7 @@ public class ColumnController {
 		}
 		
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("code", code);
+		jsonObject.put("code", codeStr);
 		jsonObject.put("msg", err_msg);
 		
 		return jsonObject.toString();
@@ -232,7 +230,6 @@ public class ColumnController {
 		Employee employee = (Employee) SessionUtil.getSession(response, request);// 登录人
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		Integer site_id = Integer.parseInt(request.getParameter("site_id"));
-		Integer template_id = Integer.parseInt(request.getParameter("template_id"));
 		String name = request.getParameter("name");
 		String code = request.getParameter("code");
 		String img_url = request.getParameter("img_url");
@@ -244,7 +241,6 @@ public class ColumnController {
 		column.setCreate_user(create_user);
 		column.setImg_url(img_url);
 		column.setSite_id(site_id);
-		column.setTemplate_id(template_id);
 		
 		String codeStr = columnService.modifyColumn(column);
 		String err_msg = "";
@@ -262,7 +258,7 @@ public class ColumnController {
 		}
 		
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("code", code);
+		jsonObject.put("code", codeStr);
 		jsonObject.put("msg", err_msg);
 		
 		return jsonObject.toString();
