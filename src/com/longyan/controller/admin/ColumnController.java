@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.longyan.entity.Column;
 import com.longyan.entity.Employee;
 import com.longyan.service.ColumnService;
+import com.longyan.service.PermissionService;
 import com.longyan.util.SessionUtil;
 
 /**
@@ -28,6 +29,9 @@ import com.longyan.util.SessionUtil;
  */
 @Controller
 public class ColumnController {
+	@Resource
+	private PermissionService permissionService; 
+	
 	@Resource
 	private ColumnService columnService; 
 
@@ -52,6 +56,8 @@ public class ColumnController {
 		model.addAttribute("username", employee.getName());
 		model.addAttribute("right", right);
 		model.addAttribute("dim", dim);
+		model.addAttribute("permission", permissionService.getPermissionByEmployeeId(employee.getId()) == null ? 
+				"" : permissionService.getPermissionByEmployeeId(employee.getId()).getColumn_ids());
 		
 		System.out.println("到达主页面");
 		return "admin/filter/column";
@@ -82,6 +88,7 @@ public class ColumnController {
 			jsonObject.put("id", column.getId());
 			jsonObject.put("name", column.getName());
 			jsonObject.put("site_id", column.getSite_id());
+			jsonObject.put("style", column.getStyle());
 			jsonObject.put("code", column.getCode());
 			jsonObject.put("template_id", column.getTemplate_id());
 			jsonObject.put("img_url", column.getImg_url());
@@ -120,6 +127,7 @@ public class ColumnController {
 			jsonObject.put("id", column.getId());
 			jsonObject.put("name", column.getName());
 			jsonObject.put("site_id", column.getSite_id());
+			jsonObject.put("style", column.getStyle());
 			jsonObject.put("code", column.getCode());
 			jsonObject.put("template_id", column.getTemplate_id());
 			jsonObject.put("img_url", column.getImg_url());
@@ -145,6 +153,7 @@ public class ColumnController {
 		
 		Employee employee = (Employee) SessionUtil.getSession(response, request);// 登录人
 		Integer site_id = Integer.parseInt(request.getParameter("site_id"));
+		Integer style = Integer.parseInt(request.getParameter("style"));
 		String name = request.getParameter("name");
 		String code = request.getParameter("code");
 		String img_url = request.getParameter("img_url");
@@ -153,6 +162,7 @@ public class ColumnController {
 		Column column = new Column();
 		column.setName(name);
 		column.setCode(code);
+		column.setStyle(style);
 		column.setCreate_user(create_user);
 		column.setImg_url(img_url);
 		column.setSite_id(site_id);
@@ -230,6 +240,7 @@ public class ColumnController {
 		Employee employee = (Employee) SessionUtil.getSession(response, request);// 登录人
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		Integer site_id = Integer.parseInt(request.getParameter("site_id"));
+		Integer style = Integer.parseInt(request.getParameter("style"));
 		String name = request.getParameter("name");
 		String code = request.getParameter("code");
 		String img_url = request.getParameter("img_url");
@@ -237,6 +248,7 @@ public class ColumnController {
 		
 		Column column = columnService.getColumnById(id);
 		column.setName(name);
+		column.setStyle(style);
 		column.setCode(code);
 		column.setCreate_user(create_user);
 		column.setImg_url(img_url);

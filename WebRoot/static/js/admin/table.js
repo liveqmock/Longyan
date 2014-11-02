@@ -74,6 +74,8 @@
 	                                tempText = v.text(field);
 	                            }else if(v.checkbox){
 	                            	tempText = v.checkbox(field);
+	                            }else if(v.permission){ //权限
+	                            	tempText = me._parsePermission(field);
 	                            }else{
 	                                if(v.format != null) {
 	                                    tempText = null == field[v.name] ? '' : $.formatNumber(field[v.name], {format:v.format});                       
@@ -188,8 +190,21 @@
         		case 'column': 
         			link = function(field) {
 	    				return '<a href="javascript:;" class="btn btn-success edit-column" id="' + 
-						field.id + '">编辑</a><a href="javascript:;" class="btn btn-warning edit-template" id="' + 
+						field.id + '">编辑栏目</a><a href="javascript:;" class="btn btn-warning edit-template" from="column" id="' + 
 						field.id + '">编辑模板</a>';
+        			};
+        			break;
+        		case 'content': 
+        			link = function(field) {
+	    				return '<a href="javascript:;" class="btn btn-success edit-content" id="' + 
+						field.id + '">编辑内容</a><a href="javascript:;" class="btn btn-warning edit-template" from="content" id="' + 
+						field.id + '">编辑模板</a>';
+        			};
+        			break;
+        		case 'permission': 
+        			link = function(field) {
+	    				return '<a href="javascript:;" class="btn btn-success edit-permission" emp_id="' + 
+						field.employee_id + '">更新</a>';
         			};
         			break;
         	}
@@ -207,6 +222,31 @@
         			item.checked = false;
         		}
         	});
+        },
+        _parsePermission: function(field){
+        	var me = this,
+        		columnIds = field.column_ids,
+        		idsArr = columnIds.split('##'),
+        		retArr = [
+        		    '<input type="checkbox" class="column-box" value="column" ' + (me.judgeCheck(idsArr, 'column') ? "checked" : "") + '/>栏目管理',
+        		    '<input type="checkbox" class="column-box" value="content" ' + (me.judgeCheck(idsArr, 'content') ? "checked" : "") + '/>内容管理',
+        		    '<input type="checkbox" class="column-box" value="friendLinks" ' + (me.judgeCheck(idsArr, 'friendLinks') ? "checked" : "") + '/>友情链接',
+        		    '<input type="checkbox" class="column-box" value="contact" ' + (me.judgeCheck(idsArr, 'contact') ? "checked" : "") + '/>客服管理'
+        		];
+        	
+        	return retArr.join('<br />');
+        },
+        judgeCheck: function(arr, like){
+        	var me = this,
+        		i = 0,
+        		len = arr.length;
+        	if(!len) return false;
+        	for(; i < len; i++){
+        		if(arr[i] == like){
+        			return true;
+        		}
+        	}
+        	return false;
         }
 	});
 })(jQuery);

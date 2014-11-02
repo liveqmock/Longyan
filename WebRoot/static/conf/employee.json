@@ -9,6 +9,6 @@
     	{ "title":"生日", "name":"birthday", "type":"string","align":"right", "sClass": "birthday"},
         { "title":"地址", "name":"address", "type":"string","align":"right", "sClass": "address"},
         { "title":"籍贯", "name":"province", "type":"string","align":"right", "sClass": "province"},
-        { "title":"权限", "name":"right_level", "type":"string","align":"right", "sClass": "right_level"}
+        { "title":"权限", "name":"right_level", "type":"string","align":"right", "sClass": "right_level td-hidden"}
     ]
 }

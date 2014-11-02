@@ -48,10 +48,19 @@
 				</#if>
 				<#if right == 0 || right == 1 || right == 2 || right == 3>
 					<div class="list-group">		
-						<a class="list-group-item left-nav-item parent-active glyphicon <#if dim == 'column' || dim == 'friendLinks' || dim == 'contact'>glyphicon-minus<#else>glyphicon-plus</#if> system-setting" data-toggle="collapse" data-parent="" href="#menu_system">系统设置</a>
-						<a href="/Longyan/admin/filter/column" class="list-group-item left-nav-item system-item <#if dim != 'column' && dim != 'friendLinks' && dim != 'contact'>nav-hidden</#if> <#if dim == 'column'>active</#if>">栏目管理</a>
-						<a href="/Longyan/admin/filter/friendLinks" class="list-group-item left-nav-item system-item <#if dim != 'column' && dim != 'friendLinks' && dim != 'contact'>nav-hidden</#if> <#if dim == 'friendLinks'>active</#if>">友情链接</a>
-						<a href="/Longyan/admin/filter/contact" class="list-group-item left-nav-item system-item <#if dim != 'column' && dim != 'friendLinks' && dim != 'contact'>nav-hidden</#if> <#if dim == 'contact'>active</#if>">客服管理</a>
+						<a class="list-group-item left-nav-item parent-active glyphicon <#if dim == 'column' || dim == 'content' || dim == 'friendLinks' || dim == 'contact'>glyphicon-minus<#else>glyphicon-plus</#if> system-setting" data-toggle="collapse" data-parent="" href="#menu_system">系统设置</a>
+						<#if permission?index_of('column') != -1>
+							<a href="/Longyan/admin/filter/column" class="list-group-item left-nav-item system-item <#if dim != 'column' && dim != 'content' && dim != 'friendLinks' && dim != 'contact'>nav-hidden</#if> <#if dim == 'column'>active</#if>">栏目管理</a>
+						</#if>
+						<#if permission?index_of('content') != -1>
+							<a href="/Longyan/admin/filter/content" class="list-group-item left-nav-item system-item <#if dim != 'column' && dim != 'content' && dim != 'friendLinks' && dim != 'contact'>nav-hidden</#if> <#if dim == 'content'>active</#if>">内容管理</a>
+						</#if>
+						<#if permission?index_of('friendLinks') != -1>
+							<a href="/Longyan/admin/filter/friendLinks" class="list-group-item left-nav-item system-item <#if dim != 'column' && dim != 'content' && dim != 'friendLinks' && dim != 'contact'>nav-hidden</#if> <#if dim == 'friendLinks'>active</#if>">友情链接</a>
+						</#if>
+						<#if permission?index_of('contact') != -1>
+							<a href="/Longyan/admin/filter/contact" class="list-group-item left-nav-item system-item <#if dim != 'column' && dim != 'content' && dim != 'friendLinks' && dim != 'contact'>nav-hidden</#if> <#if dim == 'contact'>active</#if>">客服管理</a>
+						</#if>					
 					</div>
 				</#if>
 			</div>

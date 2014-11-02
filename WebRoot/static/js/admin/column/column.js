@@ -160,6 +160,7 @@ $(document).ready(function(){
 			me.flag = 'edit';
 			me.id = tar.attr('id');
 			$("#site_id option[value='" + parent.find('.site_id').html() + "']").attr("selected", true);
+			$("#style option[value='" + parent.find('.style').html() + "']").attr("selected", true);
 			$('#name', me.jQcolumnInfoPop).val(parent.find('.name').html());
 			$('#code', me.jQcolumnInfoPop).val(parent.find('.code').html());
 			$('#img-list', me.jQcolumnInfoPop).html(me._renderImgs(parent.find('.img_url').html()));

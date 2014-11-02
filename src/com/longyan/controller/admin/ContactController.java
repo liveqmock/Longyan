@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.longyan.entity.Contact;
 import com.longyan.entity.Employee;
 import com.longyan.service.ContactService;
+import com.longyan.service.PermissionService;
 import com.longyan.util.SessionUtil;
 
 /**
@@ -28,6 +29,9 @@ import com.longyan.util.SessionUtil;
  */
 @Controller
 public class ContactController {
+	@Resource
+	private PermissionService permissionService; 
+	
 	@Resource
 	private ContactService contactService; 
 
@@ -52,6 +56,8 @@ public class ContactController {
 		model.addAttribute("username", employee.getName());
 		model.addAttribute("right", right);
 		model.addAttribute("dim", dim);
+		model.addAttribute("permission", permissionService.getPermissionByEmployeeId(employee.getId()) == null ? 
+				"" : permissionService.getPermissionByEmployeeId(employee.getId()).getColumn_ids());
 		
 		System.out.println("到达主页面");
 		return "admin/filter/contact";

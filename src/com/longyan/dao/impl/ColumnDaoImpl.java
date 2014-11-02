@@ -38,7 +38,7 @@ public class ColumnDaoImpl implements ColumnDao {
 	@Override
 	public String insert(Column column) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，栏目已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into colum_table(site_id, name, code, template_id, img_url, create_user, ctime) values(?,?,?,?,?,?,?)";
+		String sql = "insert into colum_table(site_id, name, code, style, template_id, img_url, create_user, ctime) values(?,?,?,?,?,?,?,?)";
 		Column col = getColumnByCode(column.getCode());
 		
 		if(col != null){
@@ -49,6 +49,7 @@ public class ColumnDaoImpl implements ColumnDao {
 			column.getSite_id(),
 			column.getName(),
 			column.getCode(),
+			column.getStyle(),
 			column.getTemplate_id(),
 			column.getImg_url(),
 			column.getCreate_user(),
@@ -67,7 +68,7 @@ public class ColumnDaoImpl implements ColumnDao {
 	@Override
 	public String update(Column column) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update colum_table set site_id=?, name=?, code=?, template_id=?, img_url=?, create_user=?, utime=? where id=?";
+		String sql = "update colum_table set site_id=?, name=?, code=?, style=?, template_id=?, img_url=?, create_user=?, utime=? where id=?";
 		Column col = getColumnByCode(column.getCode());
 		
 		if(col == null){
@@ -79,6 +80,7 @@ public class ColumnDaoImpl implements ColumnDao {
 			column.getSite_id(),
 			column.getName(),
 			column.getCode(),
+			column.getStyle(),
 			column.getTemplate_id(),
 			column.getImg_url(),
 			column.getCreate_user(),
@@ -244,6 +246,7 @@ public class ColumnDaoImpl implements ColumnDao {
 		
 		column.setId(rs.getInt("id"));
 		column.setCode(rs.getString("code"));
+		column.setStyle(rs.getInt("style"));
 		column.setCreate_user(rs.getString("create_user"));
 		column.setCtime(rs.getDate("ctime"));
 		column.setName(rs.getString("name"));

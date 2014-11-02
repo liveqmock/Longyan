@@ -55,6 +55,16 @@
 						</td>
 					</tr>
 					<tr>
+						<td class="right-align">栏目样式</td>
+						<td class="star">*</td>
+						<td class="input-wrap">
+							<select id="style" class="required form-control validate" name="style">
+								<option value="1">文本样式</option>
+								<option value="2">图文结合</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
 						<td class="right-align">栏目名称</td>
 						<td class="star">*</td>
 						<td class="input-wrap"><input type="text" id="name" name="name" class="required form-control validate" placeholder="请输入栏目名称"/></td>

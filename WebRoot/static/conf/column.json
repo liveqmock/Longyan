@@ -4,6 +4,7 @@
     	{"title":"栏目编码", "name":"code", "type":"string","align":"right", "sClass": "code"},
     	{"title":"banner图", "name":"img_url", "type":"string","align":"right", "sClass": "img_url"},
     	{"title":"站点ID", "name":"site_id", "type":"string","align":"right", "sClass": "site_id td-hidden"},
+    	{"title":"样式", "name":"style", "type":"string","align":"right", "sClass": "style td-hidden"},
     	{"title":"创建者", "name":"create_user", "type":"string","align":"right", "sClass": "create_user"}
     ]
 }

@@ -20,6 +20,7 @@ import com.longyan.entity.Employee;
 import com.longyan.entity.Message;
 import com.longyan.entity.Reply;
 import com.longyan.service.MessageService;
+import com.longyan.service.PermissionService;
 import com.longyan.service.ReplyService;
 import com.longyan.util.DateUtil;
 import com.longyan.util.SessionUtil;
@@ -32,6 +33,9 @@ import com.longyan.util.SessionUtil;
  */
 @Controller
 public class MessageController {
+	@Resource
+	private PermissionService permissionService; 
+	
 	@Resource
 	private MessageService messageService; 
 	
@@ -59,6 +63,8 @@ public class MessageController {
 		model.addAttribute("username", employee.getName());
 		model.addAttribute("right", right);
 		model.addAttribute("dim", dim);
+		model.addAttribute("permission", permissionService.getPermissionByEmployeeId(employee.getId()) == null ? 
+				"" : permissionService.getPermissionByEmployeeId(employee.getId()).getColumn_ids());
 		
 		System.out.println("到达主页面");
 		return "admin/filter/message";
@@ -122,7 +128,7 @@ public class MessageController {
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping("/admin/filter/add-reply")
+	@RequestMapping("/admin/filter/add-message-reply")
 	public @ResponseBody String addReply(Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		

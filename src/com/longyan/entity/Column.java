@@ -17,6 +17,8 @@ public class Column {
 	
 	private String code;  //栏目代码
 	
+	private int style;  //栏目的前端展现样式1 纯文本样式（默认），2 图文混排样式
+	
 	private int template_id;   //没有二级内容的栏目会对应一个模板文件
 	
 	private String img_url;    //每个栏目对应的banner图url，可以为多个地址，以##分隔。例如  /upload/a.jpg##/upload/b.jpg
@@ -57,6 +59,14 @@ public class Column {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public int getStyle() {
+		return style;
+	}
+
+	public void setStyle(int style) {
+		this.style = style;
 	}
 
 	public int getTemplate_id() {

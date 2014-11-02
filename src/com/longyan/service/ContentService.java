@@ -89,4 +89,12 @@ public class ContentService {
 	public List<Content> getContentsByColumnId(Integer column_id){
 		return contentDaoImpl.findByColumnId(column_id);
 	}
+	
+	/**
+	 * 取得所有二级内容
+	 * @return
+	 */
+	public List<Content> getAllContents(){
+		return contentDaoImpl.findAll();
+	}
 }

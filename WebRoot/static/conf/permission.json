@@ -1,0 +1,8 @@
+{
+	"table_fileds": [
+    	{"title":"姓名", "name":"employee", "type":"string","align":"right", "sClass": "employee"},
+    	{"title":"电话", "name":"telephone", "type":"string","align":"right", "sClass": "telephone"},
+    	{"title":"权限列表", "name":"column_ids", "type":"string","align":"right", "permission": true, "sClass": "column_ids"},
+    	{"title":"员工ID", "name":"employee_id", "type":"string","align":"right", "sClass": "employee_id td-hidden"}
+    ]
+}

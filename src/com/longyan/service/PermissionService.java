@@ -48,7 +48,7 @@ public class PermissionService {
 	 * @param name
 	 * @return
 	 */
-	public Permission getPermissionsByEmployeeId(Integer id){
+	public Permission getPermissionByEmployeeId(Integer id){
 		return permissionDaoImpl.findByEmployeeId(id);
 	}
 }

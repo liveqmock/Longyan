@@ -115,7 +115,7 @@ $(document).ready(function(){
 			}
 
 			$.ajax({
-				url: "/Longyan/admin/filter/add-reply",
+				url: "/Longyan/admin/filter/add-message-reply",
 				type: 'get',
 				data: {
 					message_id: me.msgId,

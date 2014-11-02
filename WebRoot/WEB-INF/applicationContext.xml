@@ -67,6 +67,7 @@
 	<mvc:resources mapping="/css/**" location="/css/" />
 	<mvc:resources mapping="/img/**" location="/img/" />
 	<mvc:resources mapping="/swf/**" location="/swf/" />
+	<mvc:resources mapping="/ueditor/**" location="/ueditor/"/>
 
 	<!-- 指定数据源，解析数据库配置文件，并设置数据源的属性 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

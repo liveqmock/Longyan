@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import com.longyan.dao.OrderDao;
 import com.longyan.entity.Order;
-import com.longyan.util.DateUtil;
 /**
  * 订单信息持久层
  * @author tracyqiu

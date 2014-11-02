@@ -21,6 +21,7 @@ import com.longyan.entity.Employee;
 import com.longyan.entity.Order;
 import com.longyan.service.CustomerService;
 import com.longyan.service.OrderService;
+import com.longyan.service.PermissionService;
 import com.longyan.util.DateUtil;
 import com.longyan.util.SessionUtil;
 
@@ -32,6 +33,9 @@ import com.longyan.util.SessionUtil;
  */
 @Controller
 public class OrderController {
+	@Resource
+	private PermissionService permissionService; 
+	
 	@Resource
 	private OrderService orderService; 
 	
@@ -59,6 +63,8 @@ public class OrderController {
 		model.addAttribute("username", employee.getName());
 		model.addAttribute("right", right);
 		model.addAttribute("dim", dim);
+		model.addAttribute("permission", permissionService.getPermissionByEmployeeId(employee.getId()) == null ? 
+				"" : permissionService.getPermissionByEmployeeId(employee.getId()).getColumn_ids());
 		
 		System.out.println("到达主页面");
 		return "admin/filter/order";

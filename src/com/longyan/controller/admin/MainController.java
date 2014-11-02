@@ -3,6 +3,7 @@ package com.longyan.controller.admin;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.longyan.entity.Employee;
+import com.longyan.service.PermissionService;
 import com.longyan.util.IPUtil;
 import com.longyan.util.SessionUtil;
 
@@ -23,7 +25,9 @@ import com.longyan.util.SessionUtil;
  */
 @Controller
 public class MainController {
-
+	@Resource
+	private PermissionService permissionService; 
+	
 	/**
 	 * 跳转到登录页面
 	 * 
@@ -46,19 +50,21 @@ public class MainController {
 		
 		//员工权限控制right_level值说明：0管理员权限，能看所有栏目；1 有系统设置权限； 2 系统设置+订单系统； 3 系统设置+订单系统 + 会员管理。
 		Integer right = employee.getRight_level(); 
-		String permission = right == 0 ? "管理员" : "普通员工";
+		String role = right == 0 ? "管理员" : "普通员工";
 
 		model.addAttribute("username", employee.getName());
 		model.addAttribute("telephone", employee.getTelephone());
 		model.addAttribute("sex", employee.getSex());
 		model.addAttribute("province", employee.getProvince());
 		model.addAttribute("email", employee.getEmail());
-		model.addAttribute("permission", permission);
+		model.addAttribute("role", role);
 		model.addAttribute("ip", ip);
 		model.addAttribute("right", right);
 		model.addAttribute("addr", addr);
 		model.addAttribute("time", time);
 		model.addAttribute("dim", dim);
+		model.addAttribute("permission", permissionService.getPermissionByEmployeeId(employee.getId()) == null ? 
+				"" : permissionService.getPermissionByEmployeeId(employee.getId()).getColumn_ids());
 		
 		System.out.println("到达主页面");
 		return "admin/filter/main";

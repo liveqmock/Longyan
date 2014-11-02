@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.longyan.entity.Employee;
 import com.longyan.service.EmployeeService;
+import com.longyan.service.PermissionService;
 import com.longyan.util.MD5;
 import com.longyan.util.SessionUtil;
 
@@ -28,6 +29,9 @@ import com.longyan.util.SessionUtil;
  */
 @Controller
 public class EmployeeController {
+	@Resource
+	private PermissionService permissionService; 
+	
 	@Resource
 	private EmployeeService employeeService; 
 
@@ -52,6 +56,8 @@ public class EmployeeController {
 		model.addAttribute("username", employee.getName());
 		model.addAttribute("right", right);
 		model.addAttribute("dim", dim);
+		model.addAttribute("permission", permissionService.getPermissionByEmployeeId(employee.getId()) == null ? 
+				"" : permissionService.getPermissionByEmployeeId(employee.getId()).getColumn_ids());
 		
 		System.out.println("到达主页面");
 		return "admin/filter/employee";
