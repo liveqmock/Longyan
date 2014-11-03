@@ -160,7 +160,7 @@ public class TemplateDaoImpl implements TemplateDao {
 	public Template findByContentId(Integer content_id) {
 		if(content_id == null) return null;
 		List<Template> template = null;
-		String sql = "select * from template where column_id=?";
+		String sql = "select * from template where content_id=?";
 		template = (List<Template>)jdbcTemplate.query(sql, new Object[]{ content_id }, new RowMapper<Template>() {  
             @Override  
             public Template mapRow(ResultSet rs, int rowNum) throws SQLException {  

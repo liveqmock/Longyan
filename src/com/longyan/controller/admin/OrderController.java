@@ -107,6 +107,8 @@ public class OrderController {
 		model.addAttribute("remark", order.getRemark());
 		model.addAttribute("employee_name", order.getEmployee_name());
 		model.addAttribute("ctime", DateUtil.getFormateDate(order.getCtime()));
+		model.addAttribute("permission", permissionService.getPermissionByEmployeeId(employee.getId()) == null ? 
+				"" : permissionService.getPermissionByEmployeeId(employee.getId()).getColumn_ids());
 		
 		System.out.println("到达主页面");
 		return "admin/filter/order-detail";

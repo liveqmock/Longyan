@@ -69,7 +69,8 @@
 	<mvc:resources mapping="/swf/**" location="/swf/" />
 	<mvc:resources mapping="/ueditor/**" location="/ueditor/"/>
 
-	<!-- 指定数据源，解析数据库配置文件，并设置数据源的属性 -->
+	<!-- 指定数据源，解析数据库配置文件，并设置数据
+	源的属性 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"

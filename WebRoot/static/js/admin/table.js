@@ -190,15 +190,15 @@
         		case 'column': 
         			link = function(field) {
 	    				return '<a href="javascript:;" class="btn btn-success edit-column" id="' + 
-						field.id + '">编辑栏目</a><a href="javascript:;" class="btn btn-warning edit-template" from="column" id="' + 
-						field.id + '">编辑模板</a>';
+						field.id + '">编辑栏目</a><a href="/Longyan/admin/filter/template?dim=column&id=' + 
+						field.id + '" class="btn btn-warning edit-template">编辑模板</a>';
         			};
         			break;
         		case 'content': 
         			link = function(field) {
 	    				return '<a href="javascript:;" class="btn btn-success edit-content" id="' + 
-						field.id + '">编辑内容</a><a href="javascript:;" class="btn btn-warning edit-template" from="content" id="' + 
-						field.id + '">编辑模板</a>';
+						field.id + '">编辑内容</a><a href="/Longyan/admin/filter/template?dim=content&id=' + 
+						field.id + '" class="btn btn-warning edit-template">编辑模板</a>';
         			};
         			break;
         		case 'permission': 

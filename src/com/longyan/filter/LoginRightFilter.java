@@ -71,21 +71,21 @@ public class LoginRightFilter extends HttpServlet implements Filter {
 		
 		switch(right){
 			case 1:
-				if(filteColumn(employee, path) || path.indexOf("main") > -1 || path.indexOf("upload") > -1){
+				if(filteColumn(employee, path) || path.indexOf("main") > -1 || path.indexOf("upload") > -1 || path.indexOf("template") > -1){
 					ret = true;
 				}else {
 					ret = false;
 				}
 				break;
 			case 2:
-				if(filteColumn(employee, path) || path.indexOf("order") > -1 || path.indexOf("main") > -1 || path.indexOf("upload") > -1){
+				if(filteColumn(employee, path) || path.indexOf("order") > -1 || path.indexOf("main") > -1 || path.indexOf("upload") > -1 || path.indexOf("template") > -1){
 					ret = true;
 				}else {
 					ret = false;
 				}
 				break;
 			case 3:
-				if(filteColumn(employee, path) || path.indexOf("order") > -1 || path.indexOf("customer") > -1 || path.indexOf("main") > -1 || path.indexOf("upload") > -1){
+				if(filteColumn(employee, path) || path.indexOf("order") > -1 || path.indexOf("customer") > -1 || path.indexOf("main") > -1 || path.indexOf("upload") > -1 || path.indexOf("template") > -1){
 					ret = true;
 				}else {
 					ret = false;
