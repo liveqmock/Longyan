@@ -1,0 +1,13 @@
+.tool-bar {
+	text-align: left;
+	padding-left: 15px;
+	padding-top: 5px;
+}
+#publish-template {
+	margin-right: 15px;
+	float: right;
+}
+.err {
+	color: red;
+	visibility: hidden;
+}

@@ -14,7 +14,12 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="tool-bar">
+					模板文件名：
 					<input type="text" name="filename" value="${filename}" id="filename"/>
+					<#if path != ''>
+						模板路径：<span class="path">${path}</span>
+					</#if>
+					<span class="err">文件名已存在</span>
 					<a class="btn btn-success" href="javascript:;" id="publish-template">发布</a>
 				</div>
 			</div>
@@ -22,13 +27,25 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-12">
-					<div id="ueditor-wrap"></div>
+					<script id="editor" type="text/plain" style="width:990px;height:300px;"></script>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <script src="/Longyan/ueditor/ueditor.config.js" type="text/javascript"></script>
-<script src="/Longyan/ueditor/ueditor.all.js" type="text/javascript"></script>
+<script src="/Longyan/ueditor/ueditor.all.min.js" type="text/javascript"></script>
+<script src="/Longyan/ueditor/lang/zh-cn/zh-cn.js" type="text/javascript" charset="utf-8"> </script>
 <script src="/Longyan/static/js/admin/template/template.js" ></script>
+<script type="text/javascript" charset="utf-8"> 
+	$(document).ready(function(){
+		$.initTemplateData({
+			dim: '${dim}',
+			id: ${id},
+			content: '${template_content}'
+		});
+		$.run();
+	});
+</script>
+
 
