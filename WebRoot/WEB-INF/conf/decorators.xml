@@ -6,18 +6,19 @@
         <pattern>/js/*</pattern>
         <pattern>/*.ajax</pattern>
 		<pattern>/*.jsp</pattern>
+		<pattern>/*.html</pattern>
         <pattern>/decorators/*</pattern>
         <pattern>/admin/login*</pattern>
-        <pattern>/page/register*</pattern>
-        <pattern>/page/comment*</pattern>
+        <pattern>/pages/register*</pattern>
+        <pattern>/pages/comment*</pattern>
 	</excludes>
 
 	<decorator name="admin" page="admin_common.ftl">
         <pattern>/admin/filter/*</pattern>
 	</decorator>
 	
-	<decorator name="page" page="page_common.ftl">
-        <pattern>/page/*</pattern>
+	<decorator name="pages" page="page_common.ftl">
+        <pattern>/pages/*</pattern>
 	</decorator>	
 	
 </decorators>

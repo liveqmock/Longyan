@@ -1,0 +1,104 @@
+@import url(../page-init.css);
+@import url(../common.css);
+
+body {
+	background: url(/Longyan/static/img/pages/index-bg.jpg) repeat 0 0;
+}
+.logo {
+	width: 308px;
+	height: 400px;
+	margin: 0 auto;
+	margin-top: 25px;
+	background: url(/Longyan/static/img/pages/index-logo.gif) no-repeat center center;
+}
+.tip {
+	font-weight: bold;
+	width: 312px;
+	height: 44px;
+	line-height: 44px;
+	color: #fff;
+	font-size: 34px;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding-left: 24px;
+}
+.links {
+	width: 504px;
+	height: 168px;
+	margin: 40px auto;
+	margin-top: 30px;
+}
+.link-item {
+	float: left;
+	width: 168px;
+	height: 168px;
+	position: relative;
+}
+.link-item a {
+	display: block;
+	width: 140px;
+	height: 140px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-top: -70px;
+	margin-left: -70px;
+}
+.link-item a:hover {
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
+}
+.link-item .inner {
+	width: 60px;
+	height: 46px;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin-top: -23px;
+	margin-left: -30px;
+}
+.link-item span.icon {
+	display: block;
+	margin: 0 auto;
+}
+.strategy span.txt {
+	color: #f98e00;
+}
+.news span.txt {
+	color: #19aad1;
+}
+.pillar span.txt {
+	color: #f4b606;
+}
+.icon {
+	font-size: 14px;
+	background: url(/Longyan/static/img/pages/index-icons.png) no-repeat;
+}
+.strategy a.icon {
+	background-position: -88px 0;
+}
+.strategy span.icon {
+	width: 26px;
+	height: 17px;
+	background-position: 0 -56px;
+}
+.news a.icon {
+	background-position: 0 -156px;
+}
+.news span.icon {
+	width: 22px;
+	height: 21px;
+	background-position: 0 -26px;
+}
+.pillar a.icon {
+	background-position: -153px -153px;
+}
+.pillar span.icon {
+	width: 28px;
+	height: 22px;
+	background-position: 0 0;
+}
