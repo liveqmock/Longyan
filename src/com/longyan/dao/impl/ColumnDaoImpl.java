@@ -220,7 +220,7 @@ public class ColumnDaoImpl implements ColumnDao {
 	 * @param code
 	 * @return
 	 */
-	private Column getColumnByCode(String code){
+	public Column getColumnByCode(String code){
 		if(code == "") return null;
 		List<Column> column = null;
 		String sql = "select * from colum_table where code=?";

@@ -12,7 +12,7 @@
     <div class="links">
       <ul>
         <li class="link-item strategy">
-          <a href="#" class="icon" target="_blank">
+          <a href="/Longyan/pages/strategy" class="icon" target="_blank">
             <div class="inner">
               <span class="icon"></span>
               <span class="txt">战略集团</span>
@@ -20,7 +20,7 @@
           </a>
         </li>
         <li class="link-item news">
-          <a href="#" class="icon" target="_blank">
+          <a href="/Longyan/pages/news" class="icon" target="_blank">
             <div class="inner">
               <span class="icon"></span>
               <span class="txt">新闻中心</span>
@@ -28,7 +28,7 @@
           </a>
         </li>
         <li class="link-item pillar">
-          <a href="#" class="icon" target="_blank">
+          <a href="/Longyan/pages/pillar" class="icon" target="_blank">
             <div class="inner">
               <span class="icon"></span>
               <span class="txt">支柱产业</span>

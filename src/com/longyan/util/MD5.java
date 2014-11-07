@@ -74,12 +74,27 @@ public class MD5 {
 			int times) {
 		return getMD5ofStr(inputStr, times).equals(MD5Code);
 	}
+	
+	/** 
+     * 加密解密算法 执行一次加密，两次解密 
+     */   
+    public static String convertMD5(String inStr){  
+  
+        char[] a = inStr.toCharArray();  
+        for (int i = 0; i < a.length; i++){  
+            a[i] = (char) (a[i] ^ 't');  
+        }  
+        String s = new String(a);  
+        return s;  
+  
+    } 
 
 	/**
 	 * 提供一个测试的主函数
 	 */
 	public static void main(String[] args) {
 		System.out.println("123:" + getMD5ofStr("123"));
+		System.out.println("123:" + convertMD5(convertMD5("123")));
 		System.out.println("123456789:" + getMD5ofStr("123456789"));
 		System.out.println("sarin:" + getMD5ofStr("sarin"));
 		System.out.println("123:" + getMD5ofStr("123", 4));

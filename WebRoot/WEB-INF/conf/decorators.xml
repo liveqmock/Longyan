@@ -9,15 +9,13 @@
 		<pattern>/*.html</pattern>
         <pattern>/decorators/*</pattern>
         <pattern>/admin/login*</pattern>
-        <pattern>/pages/register*</pattern>
-        <pattern>/pages/comment*</pattern>
 	</excludes>
 
 	<decorator name="admin" page="admin_common.ftl">
         <pattern>/admin/filter/*</pattern>
 	</decorator>
 	
-	<decorator name="pages" page="page_common.ftl">
+	<decorator name="page" page="page_common.ftl">
         <pattern>/pages/*</pattern>
 	</decorator>	
 	

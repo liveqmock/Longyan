@@ -1,3 +1,3 @@
-<#include "admin_header.inc">
+<#include "page_header.inc">
 ${body}
-<#include "admin_footer.inc">
+<#include "page_footer.inc">

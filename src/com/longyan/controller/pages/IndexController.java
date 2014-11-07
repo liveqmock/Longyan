@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 
 	/**
-	 * 跳转到登录页面
+	 * 跳转到前端首页
 	 * @param model
 	 * @param response
 	 * @return
@@ -28,7 +28,7 @@ public class IndexController {
 	public String login(Model model,
 			HttpServletResponse response) throws IOException {
 		
-		System.out.println("进入登录页面");
+		System.out.println("进入前端首页");
 		return "pages/index";
 	}
 }

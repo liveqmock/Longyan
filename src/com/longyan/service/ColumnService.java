@@ -73,6 +73,15 @@ public class ColumnService {
 	}
 	
 	/**
+	 * 通过栏目编码查找栏目
+	 * @param code
+	 * @return
+	 */
+	public Column getColumnByCode(String code){
+		return columnDaoImpl.getColumnByCode(code);
+	}
+	
+	/**
 	 * 获取某个站点下的所有栏目
 	 * @param site_id
 	 * @return
