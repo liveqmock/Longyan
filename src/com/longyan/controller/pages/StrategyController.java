@@ -1,7 +1,6 @@
 package com.longyan.controller.pages;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +32,7 @@ import com.longyan.util.CookieUtil;
  */
 @Controller
 public class StrategyController {
-	private final int SITE_ID = 2;  //集团战略站点ID默认为1
+	private final int SITE_ID = 1;  //集团战略站点ID默认为1
 	
 	@Autowired
 	private ColumnService columnService;
@@ -59,7 +58,8 @@ public class StrategyController {
 			HttpServletResponse response) throws IOException {
 		
 		initModel(request, model, "index");
-		model.addAttribute("page", "strategy");
+		model.addAttribute("pageCode", "strategy");
+		model.addAttribute("pageTitle", "集团战略");
 		model.addAttribute("dim", "index");
 		System.out.println("进入集团战略页面");
 		return "pages/filter/strategy/index";
@@ -87,14 +87,14 @@ public class StrategyController {
 		}
 		
 		//初始化banner图
-		List<String> imgList = new ArrayList<String>();
+		List<Column> columns = columnService.getColumnsBySiteId(SITE_ID);
+		JSONArray imgArray = new JSONArray(); 
 		if("index".equals(columnCode)){  //主页
-			List<Column> columns = columnService.getColumnsBySiteId(SITE_ID);
 			for(Column column : columns){
 				String imgUrl = column.getImg_url();
 				String imgArr[] = imgUrl.split("##");
 				for(int i = 0, len = imgArr.length; i < len; i++){
-					imgList.add(imgArr[i]);
+					imgArray.add(imgArr[i]);
 				}
 			}
 		}else {
@@ -102,7 +102,7 @@ public class StrategyController {
 			String imgUrl = column.getImg_url();
 			String imgArr[] = imgUrl.split("##");
 			for(int i = 0, len = imgArr.length; i < len; i++){
-				imgList.add(imgArr[i]);
+				imgArray.add(imgArr[i]);
 			}
 		}
 		
@@ -114,7 +114,8 @@ public class StrategyController {
 		
 		model.addAttribute("customer_name", customer_name);
 		model.addAttribute("customer_id", customer_id);
-		model.addAttribute("img_urls", imgList);
+		model.addAttribute("img_urls", imgArray.toString());
+		model.addAttribute("columns", columns);
 		model.addAttribute("contacts", contacts);
 		model.addAttribute("friendLinks", friendLinks);
 	}

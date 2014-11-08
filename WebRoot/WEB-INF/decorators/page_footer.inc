@@ -1,24 +1,54 @@
+		</div>
+		<!-- 右侧悬浮框区域 -->
+		<div class="page-side-wrap">
+			<div class="online-chat">
+				<p>在线咨询</p>
+				<#if contacts?exists && contacts?size!=0>
+					<#list contacts as contact>
+						<a class="contact-item" href="tencent://message/?uin=${contact.qq}&Site=龙颜集团&Menu=yes">
+							<i class="page-icon qq"></i>
+							<span class="contact-name" title="${contact.name}">${contact.name}</span>
+						</a>
+					</#list>
+				</#if>
 			</div>
-		<!-- </div> -->
-		<footer  class="footer">
-			<div class="copyright">
-			<hr>
-				<center><p>&copy;<span title="I:4; Q:1; S:1; C:56; F:4; T:238.89; H:com">2014</span><a href="http://waimai.meituan.com/">美团外卖</a> </center>
+			<div class="online-phone">
+				<p class="tip-wrap">
+					<i class="page-icon phone"></i>
+					<span class="tip-txt">服务热线</span>
+				</p>
+				<#if contacts?exists && contacts?size!=0>
+					<#list contacts as contact>
+						<p>${contact.telephone}</p>
+					</#list>
+				</#if>
 			</div>
-		</footer>
-		<!-- 底部导航栏 -->
-		 <button  id="goTop">^</button>
-	   	<!-- 页面的全局启动脚本文件 start-->
-	   <script  data-main="/static/js/page/global" src="/static/js/lib/r.js"></script>
-	   
-	   <script type="text/script">
-	   		require(['global'],function(general){
-	   			general(".list-group");
-	   		});
-
-
-	   </script>
-	   <!-- 页面的启动脚本文件 end-->
-		</body>
+		</div>
+		<!-- 页脚区域 -->
+		<div class="page-footer-bar">
+			<div class="center-wrap">
+				<p class="link-wrap">
+					友情链接：
+					<#if friendLinks?exists && friendLinks?size!=0>
+						<#list friendLinks as friendLink>
+							<a href="${friendLink.url}" target="_blank" class="link-item">${friendLink.name}</a>
+						</#list>
+					</#if>
+				</p>
+				<p class="right-wrap">
+					@2014 版权所有 龙颜集团  long yan group Co.,Ltd. 地址：重庆市南岸区江南大道1610 电话：023-58881002
+				</p>
+			</div>
+		</div>
 		
+		<script type="text/javascript">
+			//初始化banner图
+			var imgs = ${img_urls};
+				
+			$('.page-scroller-wrap').imgFly({
+		         "imgs": imgs,
+		       	 "height":400
+		    });
+		</script>
+	</body>
 </html>

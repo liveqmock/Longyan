@@ -3,7 +3,11 @@
 	height: 100%;
 	overflow: hidden;
 	position: relative;
-	margin: 30px auto;
+	margin: 0 auto;
+}
+
+.J-imgMain:hover .btnArrow {
+	opacity: .7;
 }
 
 .J-imgMainJ-imgMainJ-imgMain .box {
@@ -16,11 +20,12 @@
 }
 
 .J-imgMain .box img {
-	width: 100%;
+	width: 1920px;
 	height: 100%;
 	position: absolute;
-	left: 0px;
+	left: 50%;
 	top: 0px;
+	margin-left: -960px;
 	opacity: 0;
 	filter: alpha(opacity = 0);
 }
@@ -32,6 +37,12 @@
 	top: 50%;
 	margin-top: -28px;
 	z-index: 9999;
+	opacity: 0;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-ms-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 }
 
 .btnLeft {
@@ -50,22 +61,25 @@
 	height: 22px;
 	position: absolute;
 	bottom: 15px;
-	right: 50px;
+	right: 20px;
 }
 
 .J-imgMain .page a {
 	display: inline-block;
-	width: 22px;
-	height: 22px;
-	line-height: 22px;
-	background: #ccc;
-	margin: 0px 11px;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	background: #fff;
+	margin: 0px 5px;
 	float: left;
 	color: #FFF;
 	text-decoration: none;
 	text-align: center;
+	opacity: .7;
+	filter: alpha(opacity=70);
+	border-radius: 50%;
 }
 
 .J-imgMain  .page a.active {
-	background: red;
+	background: #2592d7;
 }

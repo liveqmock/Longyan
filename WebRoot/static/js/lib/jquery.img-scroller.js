@@ -13,15 +13,15 @@
 		$.each(option.imgs,function(index, value) {
 			var count = index + 1;
 			if (index == 0) {
-				imgDom += '<img class="J-img" style="opacity:1;filter:alpha(opacity=100);" src='
-						+ value + ' />';
-				aDom += '<a href="javascript:void(0);" class="J-page active">'
-						+ count + '</a>';
+				imgDom += '<img class="J-img" style="opacity:1;filter:alpha(opacity=100);" src="'
+						+ value + '" />';
+				aDom += '<a href="javascript:void(0);" class="J-page active" index="'
+					+ count + '"></a>';
 			} else {
-				imgDom += '<img class="J-img" src=' + value
-						+ ' />';
-				aDom += '<a href="javascript:void(0);" class="J-page">'
-						+ count + '</a>';
+				imgDom += '<img class="J-img" src="' + value
+						+ '" />';
+				aDom += '<a href="javascript:void(0);" class="J-page" index="'
+					+ count + '"></a>';
 			}
 		});
 		

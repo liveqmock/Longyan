@@ -1,0 +1,220 @@
+@import url(../common.css);
+@import url(../page-init.css);
+
+body {
+	background-color: #f4f4f4;
+}
+.center-wrap {
+	width: 1010px;
+	margin: 0 auto;	
+	position: relative;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+ul, ol, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+
+/********************************************page-top-bar**************************************/
+.page-top-bar {
+	width: 100%;
+	height: 42px;
+	background: url(/Longyan/static/img/pages/common/top-bar-bg.png) repeat-x center center;
+}
+
+.page-icon {
+	display: inline-block;
+	background: url(/Longyan/static/img/pages/common/common-icons.png) no-repeat center center;
+}
+
+.page-top-bar .info-wrap,
+.page-top-bar .login-wrap {
+	line-height: 42px;
+}
+.page-top-bar .info-wrap .hot-line-icon{
+	width: 12px;
+	height: 12px;
+	background-position: -4px -4px;
+	vertical-align: -1px;
+	*vertical-align: 1px;
+}
+.page-top-bar .info-wrap .mail-icon{
+	width: 12px;
+	height: 11px;
+	background-position: -4px -20px;
+	vertical-align: -1px;
+	*vertical-align: 1px;
+}
+.page-top-bar .info-wrap .hot-line-txt{
+	color: #ffb243;
+	margin-right: 14px;
+}
+
+.page-top-bar .info-wrap .mail-txt{
+	color: #4bcdd9;
+}
+
+.login-wrap a {
+	color: #8c8d8d;
+	padding: 0 6px;
+}
+.login-wrap #btn-login,
+.login-wrap #btn-user-center {
+	border-right: 1px solid #8c8d8d;
+}
+.login-wrap a:hover {
+	color: #999;
+	text-decoration: none;
+}
+
+/********************************************page-nav-bar***********************************/
+.page-nav-bar {
+	background-color: #fff;
+	height: 100px;
+}
+.page-nav-bar .logo {
+	position: absolute;
+	display: block;
+	width: 91px;
+	height: 84px;
+	background-position: -25px 0;
+	top: 8px;
+	left: 0;
+}
+.page-nav-bar .nav-list{
+	margin-left: 164px;
+	padding-top: 50px;
+}
+.page-nav-bar .nav-list li {
+	display: block;
+	float: left;
+	margin-right: 30px;
+}
+.page-nav-bar .nav-list li a {
+	font-size: 18px;
+	font-family: Microsoft Yahei;
+	padding-bottom: 8px;
+	display: block;
+}
+.page-nav-bar .nav-list li .active {
+	border-bottom: 4px solid #4bcdd9;
+}
+
+/***************************************page-scroller-wrap***************************************/
+.page-scroller-wrap {
+	height: 400px;
+}
+
+/*****************************************page-main************************************************/
+.page-main {
+	height: 300px;
+}
+
+/*****************************************page-side-wrap ******************************************/
+.page-side-wrap {
+	position: fixed;
+	right: 0;
+	top: 200px;
+	width: 96px;
+	font-size: 17px;
+	font-family: Microsoft Yahei;
+	color: #fff;
+	max-height: 280px;
+	overflow: hidden;
+	background: #2592d7 url(/Longyan/static/img/pages/common/left-side-bg.png) no-repeat center center;
+}
+.online-chat {
+	margin-top: 15px;
+}
+.online-chat p {
+	text-align: center;
+	font-size: 17px;
+	color: #fff;
+	margin-bottom: 15px;
+}
+.online-chat .contact-item {
+	display: block;
+	height: 34px;
+	line-height: 34px;
+	position: relative;
+}
+.online-chat .contact-item .qq{
+	display: block;
+	width: 29px;
+	height: 29px;
+	background-position: -123px 0;
+	position: absolute;
+	top: 1px;
+	left: 10px;
+}
+.online-chat .contact-item .contact-name {
+	margin-left: 47px;
+	color: #fff;
+	font-size: 12px;
+	display: inline-block;
+	width: 40px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.online-phone {
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+.online-phone p {
+	color: #fff;
+	margin-left: 15px;
+	margin-top: 6px;
+}
+p.tip-wrap {
+	text-align: center;
+	margin: 0;
+}
+.online-phone .phone {
+	display: inline-block;
+	width: 17px;
+	height: 23px;
+	background-position: -126px -34px;
+	vertical-align: -9px;
+	*vertical-align: -6px;
+}
+.online-phone .tip-txt {
+	color: #fff;
+}
+
+/**************************************page-footer-bar *****************************************/
+.page-footer-bar {
+	width: 100%;
+	height: 64px;
+	background: url(/Longyan/static/img/pages/common/bottom-bar-bg.png) repeat-x center center;
+	color: #a5a5a5;
+	text-align: center;
+}
+.link-wrap {
+	padding-top: 12px;
+	margin-bottom: 5px;
+}
+.link-wrap,
+.link-wrap .link-item,
+.right-wrap {
+	color: #a5a5a5;
+}
+.link-wrap .link-item {
+	border-right: 1px solid #a5a5a5;
+	padding: 0 5px;
+}
+.link-wrap .link-item:hover {
+	color: #999;
+}
+
+
