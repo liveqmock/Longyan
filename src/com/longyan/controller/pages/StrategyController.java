@@ -12,6 +12,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -63,6 +64,32 @@ public class StrategyController {
 		model.addAttribute("dim", "index");
 		System.out.println("进入集团战略页面");
 		return "pages/filter/strategy/index";
+	}
+	
+	/**
+	 * 集团战略首页
+	 * @param model
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/pages/strategy/{columnCode}", method={RequestMethod.GET, RequestMethod.POST})
+	public String column(Model model, @PathVariable("columnCode") String columnCode, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		initModel(request, model, columnCode);
+		model.addAttribute("pageCode", "strategy");
+		model.addAttribute("pageTitle", "集团战略");
+		model.addAttribute("dim", columnCode);
+		System.out.println("进入详细栏目页面");
+		
+		Column column = columnService.getColumnByCode(columnCode);
+		if("".equals(column.getCode())){
+			return "pages/filter/default";
+		}else {
+			return "pages/filter/default";
+		}
+		
 	}
 	
 	/**
