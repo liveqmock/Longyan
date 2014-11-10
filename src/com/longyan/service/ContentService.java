@@ -86,6 +86,15 @@ public class ContentService {
 	 * @param site_id
 	 * @return
 	 */
+	public List<Content> getContentsByColumnId(Integer column_id, Integer start, Integer count){
+		return contentDaoImpl.findByColumnId(column_id, start, count);
+	}
+	
+	/**
+	 * 获取某个栏目下的所有二级内容
+	 * @param site_id
+	 * @return
+	 */
 	public List<Content> getContentsByColumnId(Integer column_id){
 		return contentDaoImpl.findByColumnId(column_id);
 	}

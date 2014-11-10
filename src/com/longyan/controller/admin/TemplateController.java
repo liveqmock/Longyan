@@ -28,6 +28,7 @@ import com.longyan.entity.Template;
 import com.longyan.entity.Employee;
 import com.longyan.service.TemplateService;
 import com.longyan.service.PermissionService;
+import com.longyan.util.FileUtil;
 import com.longyan.util.SessionUtil;
 
 /**
@@ -84,7 +85,7 @@ public class TemplateController {
 			model.addAttribute("filename", template.getFilename());
 			model.addAttribute("path", template.getPath());
 			model.addAttribute("template_content",
-					readTemplate(template.getPath()));
+					FileUtil.readTemplate(template.getPath()));
 		}
 		model.addAttribute("username", employee.getName());
 		model.addAttribute("right", right);
@@ -129,7 +130,7 @@ public class TemplateController {
 		String filename = request.getParameter("filename");
 		String template_content = request.getParameter("template_content");
 		String create_user = employee.getName();
-		String path = writeTemplate(request, template_content, filename, dim);
+		String path = FileUtil.writeTemplate(request, template_content, filename, dim);
 		String codeStr = "";
 
 		if (template == null) {
@@ -176,79 +177,6 @@ public class TemplateController {
 		jsonObject.put("msg", err_msg);
 
 		return jsonObject.toString();
-	}
-
-	/**
-	 * 读取模板文件内容
-	 * 
-	 * @param path
-	 * @return
-	 */
-	private String readTemplate(String path) {
-		String content = "";
-		try {
-			String encoding = "UTF-8";
-			File file = new File(path);
-			if (file.isFile() && file.exists()) { // 判断文件是否存在
-				InputStreamReader read = new InputStreamReader(
-						new FileInputStream(file), encoding);// 考虑到编码格式
-				BufferedReader bufferedReader = new BufferedReader(read);
-				String lineTxt = null;
-
-				while ((lineTxt = bufferedReader.readLine()) != null) {
-					content += lineTxt;
-				}
-				read.close();
-				return content;
-			} else {
-				System.out.println("找不到指定的文件");
-				return "";
-			}
-		} catch (Exception e) {
-			System.out.println("读取文件内容出错");
-			e.printStackTrace();
-			return "";
-		}
-	}
-
-	/**
-	 * 写文件
-	 * 
-	 * @param content
-	 */
-	private String writeTemplate(HttpServletRequest request, String content,
-			String filename, String type) {
-		String rootFile = request.getSession().getServletContext().getRealPath("")
-				+ "\\templates\\" + type;
-
-		FileOutputStream out = null;
-		File file;
-		try {
-			file = new File(rootFile);
-			if (!file.exists()) {
-				file.mkdirs();
-			}
-			File fileDat = new File(rootFile + "\\" + filename + ".ftl");
-			out = new FileOutputStream(fileDat);
-			byte[] contentInBytes = content.getBytes();
-			out.write(contentInBytes);
-			out.flush();
-			out.close();
-			System.out.println("创建文件" + rootFile + "\\" + filename + "成功~---------------~");
-			
-			return rootFile + "\\" + filename + ".ftl";
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "";
-		} finally {
-			try {
-				if (out != null) {
-					out.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 }

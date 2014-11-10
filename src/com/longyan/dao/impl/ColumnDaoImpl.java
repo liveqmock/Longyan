@@ -163,7 +163,7 @@ public class ColumnDaoImpl implements ColumnDao {
 	 */
 	@Override
 	public List<Column> findAll() {
-		String sql = "select * from colum_table order by ctime desc";
+		String sql = "select * from colum_table order by id";
 		List<Column> columns = new ArrayList<Column>();
 		
 		columns = (List<Column>)jdbcTemplate.query(sql, new RowMapper<Column>() {  

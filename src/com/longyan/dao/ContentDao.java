@@ -64,5 +64,12 @@ public interface ContentDao {
 	 * @param column_id
 	 * @return
 	 */
+	public List<Content> findByColumnId(Integer column_id, Integer start, Integer end);
+	
+	/**
+	 * 取得某个栏目下的所有二级内容
+	 * @param column_id
+	 * @return
+	 */
 	public List<Content> findByColumnId(Integer column_id);
 }

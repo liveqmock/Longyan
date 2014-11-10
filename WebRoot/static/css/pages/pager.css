@@ -1,0 +1,22 @@
+.PageNum {
+	MARGIN: 20px 0px;
+	TEXT-ALIGN: right
+}
+
+.PageNum B {
+	margin: 3px;
+	font-weight: bold;
+	color: #900;
+}
+
+.PageNum A {
+	padding: 3px 6px;
+	border: 1px solid #bbb;
+	margin: 3px;
+	color: #666;
+}
+
+.PageNum A:hover {
+	text-decoration: none;
+	color: #2673BB;
+}

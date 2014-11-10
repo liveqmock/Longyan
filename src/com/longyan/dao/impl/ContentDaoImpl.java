@@ -198,6 +198,25 @@ public class ContentDaoImpl implements ContentDao {
 	 * 获取某个栏目下的所有二级内容
 	 */
 	@Override
+	public List<Content> findByColumnId(Integer column_id, Integer start, Integer count) {
+		String sql = "select * from content where column_id=? order by ctime desc limit " + start + ", " + count;
+		List<Content> contents = new ArrayList<Content>();
+		
+		contents = (List<Content>)jdbcTemplate.query(sql, new Object[]{column_id}, new RowMapper<Content>() {  
+            @Override  
+            public Content mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Content col = setContentProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return contents;
+	}
+	
+	/**
+	 * 获取某个栏目下的所有二级内容
+	 */
+	@Override
 	public List<Content> findByColumnId(Integer column_id) {
 		String sql = "select * from content where column_id=? order by ctime desc";
 		List<Content> contents = new ArrayList<Content>();

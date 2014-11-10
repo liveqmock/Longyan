@@ -1,0 +1,8 @@
+.h1 {
+	padding: 50px 0;
+	font-family: Microsoft Yahei;
+}
+.content-wrap {
+	word-wrap: break-word;
+	overflow: hidden;
+}

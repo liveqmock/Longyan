@@ -32,13 +32,13 @@ import com.longyan.util.CookieUtil;
 import com.longyan.util.FileUtil;
 
 /**
- * 集团战略
+ * 新闻中心
  * @author tracyqiu
  *
  */
 @Controller
-public class StrategyController {
-	private final int SITE_ID = 1;  //集团战略站点ID默认为1
+public class NewsController {
+	private final int SITE_ID = 2;  //新闻中心站点ID默认为2
 	private final int PAGE_SIZE = 20;  //集团战略站点ID默认为1
 	
 	@Autowired
@@ -60,32 +60,32 @@ public class StrategyController {
 	private FriendLinksService friendLinksService;
 	
 	/**
-	 * 集团战略首页
+	 * 新闻中心首页
 	 * @param model
 	 * @param response
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping(value="/pages/strategy", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/pages/news", method={RequestMethod.GET, RequestMethod.POST})
 	public String login(Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		
 		initModel(request, model, "index");
-		model.addAttribute("pageCode", "strategy");
-		model.addAttribute("pageTitle", "集团战略");
+		model.addAttribute("pageCode", "news");
+		model.addAttribute("pageTitle", "新闻中心");
 		model.addAttribute("dim", "index");
-		System.out.println("进入集团战略页面");
-		return "pages/filter/strategy/index";
+		System.out.println("进入新闻中心页面");
+		return "pages/filter/news/index";
 	}
 	
 	/**
-	 * 集团战略其他栏目页面
+	 * 新闻中心其他栏目页面
 	 * @param model
 	 * @param response
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping(value="/pages/strategy/{columnCode}", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/pages/news/{columnCode}", method={RequestMethod.GET, RequestMethod.POST})
 	public String column(
 			Model model, 
 			@PathVariable("columnCode") String columnCode, 
@@ -94,8 +94,8 @@ public class StrategyController {
 			HttpServletResponse response) throws IOException {
 		
 		initModel(request, model, columnCode);
-		model.addAttribute("pageCode", "strategy");
-		model.addAttribute("pageTitle", "集团战略");
+		model.addAttribute("pageCode", "news");
+		model.addAttribute("pageTitle", "新闻中心");
 		model.addAttribute("dim", columnCode);
 		System.out.println("进入详细栏目页面");
 		
@@ -137,13 +137,13 @@ public class StrategyController {
 	}
 	
 	/**
-	 * 集团战略其他栏目页面点击二级内容页面
+	 * 新闻中心其他栏目页面点击二级内容页面
 	 * @param model
 	 * @param response
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping(value="/pages/strategy/{columnCode}/content/{contentId}", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/pages/news/{columnCode}/content/{contentId}", method={RequestMethod.GET, RequestMethod.POST})
 	public String content(
 			Model model, 
 			@PathVariable("columnCode") String columnCode, 
@@ -152,8 +152,8 @@ public class StrategyController {
 			HttpServletResponse response) throws IOException {
 		
 		initModel(request, model, columnCode);
-		model.addAttribute("pageCode", "strategy");
-		model.addAttribute("pageTitle", "集团战略");
+		model.addAttribute("pageCode", "news");
+		model.addAttribute("pageTitle", "新闻中心");
 		model.addAttribute("dim", columnCode);
 		System.out.println("进入模板页面");
 		
