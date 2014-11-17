@@ -1,0 +1,263 @@
+@import url(../page-init.css);
+@import url(../common.css);
+@import url(page-common.css);
+
+body {
+	background-color: #006db2 !important;
+}
+.login-center {
+	width: 980px;
+	margin: 0 auto;
+	position: relative;
+}
+.top {
+	height: 100px;
+}
+.top .logo {
+	position: absolute;
+	display: block;
+	width: 91px;
+	height: 84px;
+	background-position: -25px 0;
+	top: 8px;
+	left: 0;
+}
+.login-content {
+	margin-top: 60px;
+	min-height: 550px;
+	font-family: Microsoft YaHei;
+}
+.logo-wrap img {
+	margin-left: 10px;
+	
+	-webkit-animation: animation1 1.5s linear;
+    -moz-animation: animation1 1.5s linear;
+    -o-animation: animation1 1.5s linear;
+    animation: animation1 1.5s linear;
+}
+.login-box {
+	float: right;
+	margin-top: -275px;
+	margin-right: 120px;
+	width: 300px;
+	border: 2px solid #dedede;
+	background-color: #FFF;
+	
+	-webkit-animation: animation2 1.5s linear;
+    -moz-animation: animation2 1.5s linear;
+    -o-animation: animation2 1.5s linear;
+    animation: animation2 1.5s linear;
+}
+.login-box .hd {
+	padding: 0 20px;
+	margin: 15px 0;
+}
+.login-box .hd .tip {
+	font-weight: bold;
+}
+.login-box .hd .login-ret {
+	color: red;
+	margin-top: 10px;
+	display: none;
+}
+.login-box .bd {
+	padding: 0 20px;
+}
+.login-box .bd p {
+	position: relative;
+	margin: 5px 0;
+}
+.login-box .bd .icon {
+	display: block;
+	width: 27px;
+	height: 27px;
+	line-height: 27px;
+	color: #FFF;
+	text-align: center;
+	background: #ccc url(/Longyan/static/img/pages/login-icon.png) no-repeat 50% 7px;
+	position: absolute;
+	text-indent: -9999em;
+	outline: 0;
+}
+.login-box .bd .pass {
+	background-position: 50% -30px;
+}
+.login-box .bd input {
+	width: 220px;
+	height: 19px;
+	line-height: 19px;
+	padding: 3px;
+	padding-left: 30px;
+	vertical-align: middle;
+	border: 1px solid #dedede;
+	border-radius: 0;
+}
+#commit {
+	width: 255px;
+	height: 38px;
+	border: 0;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: middle;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #FFF;
+	background: #097cc5;
+	border-radius: 3px;
+	cursor: pointer;
+	zoom: 1;
+	text-align: center;
+	margin: 20px 0;
+}
+.footer {
+	margin-top: 45px;
+	text-align: center;
+}
+.login-box .ft {
+	margin-bottom: 12px;
+	text-align: right;
+	padding: 0 20px;
+}
+.login-box .ft a{
+	color: #097cc5;
+	text-decoration: underline;
+}
+.right-wrap {
+	color: #fff;
+	text-align: center;
+}
+
+
+/*********************************************动画*************************/
+@-webkit-keyframes animation1{
+    0%{
+    	opacity: 0; 
+    	margin-left: 0px;
+    }
+    50%{
+    	opacity: .5; 
+    	margin-left: 100px;
+    }
+    100%{
+    	opacity: 1; 
+    	margin-left: 10px;
+    }
+}
+ 
+@-moz-keyframes animation1{
+    0%{
+    	opacity: 0; 
+    	margin-left: 0px;
+    }
+    50%{
+    	opacity: .5; 
+    	margin-left: 100px;
+    }
+    100%{
+    	opacity: 1; 
+    	margin-left: 10px;
+    }
+}
+ 
+@-o-keyframes animation1{
+    0%{
+    	opacity: 0; 
+    	margin-left: 0px;
+    }
+    50%{
+    	opacity: .5; 
+    	margin-left: 100px;
+    }
+    100%{
+    	opacity: 1; 
+    	margin-left: 10px;
+    }
+}
+ 
+@keyframes animation1{
+    0%{
+    	opacity: 0; 
+    	margin-left: 0px;
+    }
+    50%{
+    	opacity: .5; 
+    	margin-left: 100px;
+    }
+    100%{
+    	opacity: 1; 
+    	margin-left: 10px;
+    }
+}
+
+@-webkit-keyframes animation2{
+    0%{
+    	opacity: 0; 
+    	margin-top: 0;
+		margin-right: 0;
+    }
+    50% {
+    	opacity: .5; 
+    	margin-top: -275px;
+		margin-right: 140px;
+    }
+    100%{
+    	opacity: 1; 
+    	margin-top: -275px;
+		margin-right: 120px;
+    }
+}
+ 
+@-moz-keyframes animation2{
+    0%{
+    	opacity: 0; 
+    	margin-top: 0;
+		margin-right: 0;
+    }
+    50% {
+    	opacity: .5; 
+    	margin-top: -275px;
+		margin-right: 140px;
+    }
+    100%{
+    	opacity: 1; 
+    	margin-top: -275px;
+		margin-right: 120px;
+    }
+}
+ 
+@-o-keyframes animation2{
+    0%{
+    	opacity: 0; 
+    	margin-top: 0;
+		margin-right: 0;
+    }
+    50% {
+    	opacity: .5; 
+    	margin-top: -275px;
+		margin-right: 140px;
+    }
+    100%{
+    	opacity: 1; 
+    	margin-top: -275px;
+		margin-right: 120px;
+    }
+}
+ 
+@keyframes animation2{
+    0%{
+    	opacity: 0; 
+    	margin-top: 0;
+		margin-right: 0;
+    }
+    50% {
+    	opacity: .5; 
+    	margin-top: -275px;
+		margin-right: 140px;
+    }
+    100%{
+    	opacity: 1; 
+    	margin-top: -275px;
+		margin-right: 120px;
+    }
+}

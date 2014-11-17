@@ -44,18 +44,24 @@ public class CookieUtil {
 			jsonArray.add(cus);
 			return jsonArray;
 		}
-		String cid = cookie.getValue(); // 取得cookie值
-		if ("".equals(cid)) {
+		String cookie_str = cookie.getValue(); // 取得cookie值
+		String userInfo[] = cookie_str.split("#");
+		
+		if (userInfo.length != 2 || (userInfo.length != 2 && ("".equals(userInfo[0]) || "".equals(userInfo[1])))) {
 			login.put("isLogin", false);
 			cus.put("customer", null);
 			jsonArray.add(login);
 			jsonArray.add(cus);
 			return jsonArray;
 		} else {
-			Integer customer_id = Integer.parseInt(MD5.convertMD5(MD5.convertMD5(cid)));
-			Customer customer = customerService.getCustomerById(customer_id);
+			Customer customer = customerService.getCustomerById(Integer.parseInt(userInfo[0]));
+			Integer customer_id = -1;
+			
+			if(customer != null) {
+				customer_id = Integer.parseInt(userInfo[0]);
+			}
 			login.put("isLogin", true);
-			cus.put("customer", customer);
+			cus.put("customer_id", customer_id);
 			jsonArray.add(login);
 			jsonArray.add(cus);
 			return jsonArray;
@@ -113,4 +119,21 @@ public class CookieUtil {
 		}
 		return cookieMap;
 	}
+	
+	 /**
+     * 清除cookie
+     * @param req
+     * @param res
+     * @param name
+     */
+    public static void remove(HttpServletRequest req,HttpServletResponse res,String name) {
+        Cookie cookieName =  getCookieByName(req, name);
+        if(null != cookieName) {
+            Cookie cookie = new Cookie(cookieName.getName(),null);
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            res.addCookie(cookie);
+        }
+    }
+	
 }

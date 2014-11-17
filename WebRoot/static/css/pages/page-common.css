@@ -215,5 +215,12 @@ p.tip-wrap {
 .link-wrap .link-item:hover {
 	color: #999;
 }
+.comment {
+	color: #4bcdd9;
+	margin-left: 10px;
+}
+.comment:hover {
+	text-decoration: underline;
+}
 
 

@@ -21,11 +21,11 @@
 			</div>
 			<div class="login-wrap fr">
 				<#if customer_id == -1> <#-- 未登录 -->
-					<a href="#" target="_blank" id="btn-login">登录</a>
-					<a href="#" target="_blank" id="btn-register">注册</a>
+					<a href="/Longyan/login" id="btn-login">登录</a>
+					<a href="/Longyan/join" target="_blank" id="btn-register">注册</a>
 				<#else>
 					<a href="#" target="_blank" id="btn-user-center" data-cid="${customer_id}">${customer_name}</a>
-					<a href="#" target="_blank" id="btn-logout">退出</a>
+					<a href="javascript:;" target="_blank" id="btn-logout">退出</a>
 				</#if>
 			</div>
 		</div>

@@ -193,7 +193,7 @@ public class PillarController {
 		JSONObject loginJson = (JSONObject) jsonArray.get(0);
 		JSONObject customerJson = (JSONObject) jsonArray.get(1);
 		if(Boolean.parseBoolean(loginJson.get("isLogin").toString())){
-			customer = (Customer) customerJson.get("customer");
+			customer = customerService.getCustomerById((Integer)customerJson.get("customer_id"));
 			customer_id = customer.getId();
 			customer_name = customer.getRealname();
 		}

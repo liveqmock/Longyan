@@ -185,6 +185,27 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		return customer.size() > 0 ? customer.get(0) : null;
 	}
+	
+	/**
+	 * 根据用户名和密码验证用户
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public Customer findByUsernameAndPassword(String username, String password) {
+		List<Customer> customer = null;
+		String sql = "select * from customer where username=? and password=?";
+		
+		customer = (List<Customer>)jdbcTemplate.query(sql, new Object[]{username, password}, new RowMapper<Customer>() {  
+            @Override  
+            public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Customer cus = setCustomerProperties(rs); 
+                return cus;  
+            }  
+        });
+		
+		return customer.size() > 0 ? customer.get(0) : null;
+	}
 
 	/**
 	 * 取得所有用户信息
@@ -229,7 +250,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	 * @param email
 	 * @return
 	 */
-	private List<Customer> findCustomersByEmail(String email){
+	public List<Customer> findCustomersByEmail(String email){
 		List<Customer> customers = new ArrayList<Customer>();
 		String sql = "select * from customer where email=?";
 		customers = (List<Customer>) jdbcTemplate.query(sql, new Object[]{email}, new RowMapper<Customer>() {  

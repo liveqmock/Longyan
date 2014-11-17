@@ -1,0 +1,101 @@
+@import url(../page-init.css);
+@import url(../common.css);
+@import url(page-common.css);
+
+body {
+	background: #f9f9f9 !important;
+}
+.top {
+	height: 100px;
+	background: #ececec;
+	border-bottom: 1px solid #d9d9d9;
+}
+.top .logo {
+	position: absolute;
+	display: block;
+	width: 91px;
+	height: 84px;
+	background-position: -25px 0;
+	top: 8px;
+	left: 0;
+}
+.join-center {
+	width: 903px;
+	margin: 0 auto;
+	position: relative;
+}
+.join-content {
+	margin-top: 80px;
+	font-family: Microsoft YaHei;
+}
+.join-content-top {
+	height: auto;
+	min-height: 513px;
+	_height: 513px;
+	border: 1px solid #dadada;
+	border-bottom: none;
+}
+.join-content-top .h4_f {
+	margin: 0 0 10px 30px;
+	padding-top: 20px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #097cc5;
+}
+.sub_h4_f {
+	padding: 0 0 20px 30px;
+	border-bottom: 1px dashed #e3e3e3;
+	color: #999;
+}
+.sub_h4_f a {
+	color: #097cc5;
+	text-decoration: underline;
+}
+.register-table {
+	width: 100%;
+	margin-top: 25px;
+}
+.register-table .name {
+	width: 30%;
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+}
+.register-table .star {
+	width: 2%;
+	font-weight: bold;
+	color: red;
+}
+.register-table .input-wrap {
+	width: 60%;
+}
+.register-table .input-wrap .form-control {
+	width: 252px;
+	display: inline-block;
+}
+.btn-wrap {
+	margin-top: 20px;
+	text-align: center;
+}
+.btn-wrap .btn-success {
+	font-weight: bold;
+	background-color: #097cc5;
+	border-color: #097dc5;
+	padding: 6px 60px;
+}
+.btn-wrap .btn-success:hover {
+	background-color: #097ca5;
+	border-color: #097dc5;
+}
+.join-content-bottom {
+	background: url(/Longyan/static/img/pages/join-bottom-bg.png) left bottom no-repeat;
+	height: 62px;
+}
+.err-wrap {
+	visibility: hidden;
+	color: red;
+}
+.footer {
+	margin-top: 45px;
+	text-align: center;
+}

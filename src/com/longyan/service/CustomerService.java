@@ -83,6 +83,16 @@ public class CustomerService {
 	}
 	
 	/**
+	 * 验证用户登录
+	 * @param username
+	 * @param pass
+	 * @return
+	 */
+	public Customer getCustomerByNameAndPass(String username, String pass){
+		return customerDaoImpl.findByUsernameAndPassword(username, pass);
+	}
+	
+	/**
 	 * 获取所有会员信息
 	 * @return
 	 */
@@ -97,5 +107,14 @@ public class CustomerService {
 	 */
 	public List<Customer> getCustomersByName(String name) {
 		return customerDaoImpl.findByName(name);
+	}
+	
+	/**
+	 * 通过邮箱查询会员信息
+	 * @param name
+	 * @return
+	 */
+	public List<Customer> getCustomersByEmail(String email) {
+		return customerDaoImpl.findCustomersByEmail(email);
 	}
 }
