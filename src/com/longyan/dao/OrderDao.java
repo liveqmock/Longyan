@@ -65,7 +65,7 @@ public interface OrderDao {
 	 * @param customerId
 	 * @return
 	 */
-	public List<Order> findByCustomerId(Integer customerId);
+	public List<Order> findByCustomerId(Integer customerId, Integer start, Integer pageSize);
 	
 	/**
 	 * 按照日期

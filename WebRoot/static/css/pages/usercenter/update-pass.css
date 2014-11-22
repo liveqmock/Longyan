@@ -1,0 +1,67 @@
+@import url(../../page-init.css);
+@import url(../../common.css);
+
+.pass-table {
+	width: 100%;
+	margin-top: 50px;
+	font-family: Microsoft Yahei;
+}
+.pass-table .name {
+	width: 30%;
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+}
+.pass-table .star {
+	width: 2%;
+	font-weight: bold;
+	color: red;
+}
+.pass-table .input-wrap {
+	width: 60%;
+}
+.pass-table .input-wrap .form-control {
+	width: 252px;
+	padding: 10px 3px;
+	display: inline-block;
+}
+.btn-wrap {
+	margin-top: 20px;
+	text-align: center;
+}
+.btn-wrap .btn-success {
+	font-weight: bold;
+	background-color: #097cc5;
+	border-color: #097dc5;
+	padding: 6px 60px;
+	color: #fff;
+	display: inline-block;
+	margin-bottom: 0;
+	font-size: 14px;
+	line-height: 1.428571429;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	font-family: Microsoft Yahei;
+}
+.btn-wrap .btn-success:hover {
+	background-color: #097ca5;
+	border-color: #097dc5;
+}
+.join-content-bottom {
+	background: url(/Longyan/static/img/pages/join-bottom-bg.png) left bottom no-repeat;
+	height: 62px;
+}
+.err-wrap {
+	visibility: hidden;
+	color: red;
+}

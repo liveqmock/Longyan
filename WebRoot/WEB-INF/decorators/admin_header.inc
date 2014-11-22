@@ -5,7 +5,6 @@
 <title>欢迎访问龙颜后台系统</title>
 
 	<script src="/Longyan/static/js/lib/jquery-1.9.1.js" ></script>
-	<!--<script src="/Longyan/static/js/lib/r.js" ></script>-->
 	<script src="/Longyan/static/js/lib/bootstrap.min.js" ></script>
 	<script src="/Longyan/static/js/lib/jquery.dataTables.js" ></script>
 	<script src="/Longyan/static/js/lib/jquery.dataTables.tableTools.js" ></script>

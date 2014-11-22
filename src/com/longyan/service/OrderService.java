@@ -86,8 +86,17 @@ public class OrderService {
 	 * @param customer_id
 	 * @return
 	 */
-	public List<Order> getOrdersByCustomerId(Integer customer_id){
-		return orderDaoImpl.findByCustomerId(customer_id);
+	public int getOrderCountByCustomerId(Integer customer_id){
+		return orderDaoImpl.getOrderCountByCustomerId(customer_id);
+	}
+	
+	/**
+	 * 获取会员能看到的订单
+	 * @param customer_id
+	 * @return
+	 */
+	public List<Order> getOrdersByCustomerId(Integer customer_id, Integer start, Integer pageSize){
+		return orderDaoImpl.findByCustomerId(customer_id, start, pageSize);
 	}
 	
 	/**

@@ -24,7 +24,7 @@
 					<a href="/Longyan/login" id="btn-login">登录</a>
 					<a href="/Longyan/join" target="_blank" id="btn-register">注册</a>
 				<#else>
-					<a href="#" target="_blank" id="btn-user-center" data-cid="${customer_id}">${customer_name}</a>
+					<a href="/Longyan/usercenter/userinfo" target="_blank" id="btn-user-center" data-cid="${customer_id}">${customer_name}</a>
 					<a href="javascript:;" target="_blank" id="btn-logout">退出</a>
 				</#if>
 			</div>

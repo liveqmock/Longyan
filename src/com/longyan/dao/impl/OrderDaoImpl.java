@@ -185,8 +185,8 @@ public class OrderDaoImpl implements OrderDao {
 	 * 取得某个会员能看到的订单信息
 	 */
 	@Override
-	public List<Order> findByCustomerId(Integer customerId) {
-		String sql = "select * from order_table where customer_id=? order by ctime desc";
+	public List<Order> findByCustomerId(Integer customerId, Integer start, Integer pageSize) {
+		String sql = "select * from order_table where customer_id=? order by ctime desc limit " + start + ", " + pageSize;
 		List<Order> orders = new ArrayList<Order>();
 		
 		orders = (List<Order>)jdbcTemplate.query(sql, new Object[]{ customerId }, new RowMapper<Order>() {  
@@ -198,6 +198,24 @@ public class OrderDaoImpl implements OrderDao {
         });
 		
 		return orders;
+	}
+	
+	/**
+	 * 取得某个会员能看到的订单信息
+	 */
+	public int getOrderCountByCustomerId(Integer customerId) {
+		String sql = "select * from order_table where customer_id=? order by ctime desc";
+		List<Order> orders = new ArrayList<Order>();
+		
+		orders = (List<Order>)jdbcTemplate.query(sql, new Object[]{ customerId }, new RowMapper<Order>() {  
+            @Override  
+            public Order mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Order con = setOrderProperties(rs); 
+            	return con;
+            }  
+        });
+		
+		return orders.size();
 	}
 
 	

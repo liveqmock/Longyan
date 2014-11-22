@@ -3,5 +3,7 @@ encoding//WebRoot/WEB-INF/decorators/admin_footer.inc=UTF-8
 encoding//WebRoot/WEB-INF/decorators/admin_header.inc=UTF-8
 encoding//WebRoot/WEB-INF/decorators/page_footer.inc=UTF-8
 encoding//WebRoot/WEB-INF/decorators/page_header.inc=UTF-8
+encoding//WebRoot/WEB-INF/decorators/usercenter_footer.inc=UTF-8
+encoding//WebRoot/WEB-INF/decorators/usercenter_header.inc=UTF-8
 encoding//WebRoot/WEB-INF/view/admin/login.ftl=UTF-8
 encoding/<project>=UTF-8

@@ -1,5 +1,5 @@
 /**
- * 前端用户注册逻辑
+ * 用户修改基本信息
  * @author tracyqiu
  */
 
@@ -12,16 +12,12 @@ $(document).ready(function(){
 		},
 		_init: function(){
 			var me = this;
-			me.jQregisterTable = $('.register-table');
-			me.jQsure = $('#sure');
+			me.jQuserinfoTable = $('.userinfo-table');
+			me.jQsave = $('#save');
 
 			me.canSubmit = {
 				username: false,
-				realname: false,
-				telephone: false,
-				email: false,
-				repassword: false,
-				password: false
+				telephone: false
 			};
 
 			me._initEvent();
@@ -30,11 +26,11 @@ $(document).ready(function(){
 		_initEvent: function(){
 			var me = this;
 
-			me.jQregisterTable.on('blur', '.required', function(e){
+			me.jQuserinfoTable.on('blur', '.required', function(e){
 				me._inputBlur($(e.target));
 			});
 
-			me.jQsure.on('click', function(){
+			me.jQsave.on('click', function(){
 				me._commit($(this));
 			});
 		},
@@ -63,7 +59,7 @@ $(document).ready(function(){
 
 			if(val){
 				tar.next().html('').css('visibility', 'hidden');
-				if(name == 'username' || name == 'realname' || name == 'password' || name == 'telephone'){
+				if(name == 'username' || name == 'telephone'){
 					me.canSubmit[name] = true;
 				}
 			} else {
@@ -71,47 +67,27 @@ $(document).ready(function(){
 				me.canSubmit[name] = false;
 			}
 				
-			if(name == 'repassword') {
-				var pass = $('#password').val();
-
-				if(pass && pass === val) {
-					tar.next().html('').css('visibility', 'hidden');
-					me.canSubmit[name] = true;
-				} else {
-					tar.next().html('密码不一致').css('visibility', 'visible');
-					me.canSubmit[name] = false;
-				}
-			}
-
-			if(name == 'email'){
-				if(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(val)){
-					tar.next().html('').css('visibility', 'hidden');
-					$.ajax({
-						url: '/Longyan/customer-email-check',
-						data: {
-							email: val
-						}
-					}).done(function(res){
-						var json = typeof res == 'string' ? JSON.parse(res) : res;
-						if(json.code == 0){
-							tar.next().html('').css('visibility', 'hidden');
-							me.canSubmit[name] = true;
-						} else {
-							tar.next().html('邮箱已被注册，换个邮箱吧').css('visibility', 'visible');
-							me.canSubmit[name] = false;
-						}
-					}).fail(function(){
-						tar.next().html('邮箱检查失败').css('visibility', 'visible');
-						me.canSubmit[name] = false;
-					});
-				}else {
-					tar.next().html('邮箱格式不正确').css('visibility', 'visible');
-					me.canSubmit[name] = false;
-				}
-			}
 		},
 		_commit: function(tar){
-			var me = this;
+			var me = this,
+				jQrequireds = $('.required'),
+				len = jQrequireds.length;
+			
+			for(var i = 0; i < len; i++) {
+				var temp = $(jQrequireds[i]),
+					name = temp.attr('name'),
+					val = temp.val();
+				
+				if(val){
+					temp.next().html('').css('visibility', 'hidden');
+					if(name == 'username' || name == 'telephone'){
+						me.canSubmit[name] = true;
+					}
+				} else {
+					temp.next().html('该字段不能为空').css('visibility', 'visible');
+					me.canSubmit[name] = false;
+				}
+			}
 
 			for (var item in me.canSubmit) {
 				if(me.canSubmit.hasOwnProperty(item)){
@@ -123,12 +99,9 @@ $(document).ready(function(){
 			}
 
 			$.ajax({
-				url: '/Longyan/add-customer',
+				url: '/Longyan/customer/update-customer',
 				data: {
 					username: $('#username').val(),
-					realname: $('#realname').val(),
-					password: $('#password').val(),
-					email: $('#email').val(),
 					telephone: $('#telephone').val(),
 					sex: $('input[type="radio"]:checked').val(),
 					birthday: $('#birthday').val(),
@@ -139,16 +112,19 @@ $(document).ready(function(){
 				var json = typeof res == 'string' ? JSON.parse(res) : res;
 
 				if(json){
-					if(json.code == 1001){   //通过登录验证
+					if(json.code == 2001){   //通过登录验证
+						window.location.reload();
+					}else if(json.code == 2004){
+						alert('用户登录信息已失效，请重新登录再修改');
 						window.location.href = '/Longyan/login';
 					}else{
-						alert('注册成功，即将进入登录页');
+						alert('修改失败，请重试');
 					}
 				}else {
-					alert('注册失败');
+					alert('修改失败，请重试');
 				}
 			}).fail(function(){
-				alert('注册失败');
+				alert('修改失败，请重试');
 			});
 		}
 	};

@@ -19,4 +19,7 @@
         <pattern>/pages/*</pattern>
 	</decorator>	
 	
+	<decorator name="usercenter" page="usercenter_common.ftl">
+        <pattern>/usercenter/*</pattern>
+	</decorator>
 </decorators>

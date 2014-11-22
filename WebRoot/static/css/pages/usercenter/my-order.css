@@ -1,0 +1,44 @@
+@import url(../../page-init.css);
+@import url(../../common.css);
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.my-order-list {
+	width: 100%;
+	table-layout: fixed;
+}
+.my-order-list thead {
+	height: 32px;
+	border-top: 1px solid #f2c4ba;
+	border-bottom: 1px solid #f2c4ba;
+	background: #fff8e5;
+	line-height: 32px;
+}
+.my-order-list thead td {
+	padding-left: 10px;
+	border-right: 1px solid #e5e5e5;
+}
+.my-order-list .order-remark-h {
+	border-right: 0;
+}
+.my-order-list tbody {
+	margin-right: -1px;
+}
+.my-order-list tbody tr:hover {
+	background: #fff8e5;
+}
+.my-order-list tbody td {
+	height: 40px;
+	padding: 10px;
+	border-right: 1px solid #e5e5e5;
+	border-bottom: 1px dotted #e5e5e5;
+	overflow: hidden;
+}
+.my-order-list .order-op-b {
+	border-right: 0;
+}
+.PageNum {
+	text-align: center;
+}

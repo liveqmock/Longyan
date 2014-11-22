@@ -116,8 +116,8 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		int i = jdbcTemplate.update(sql, new Object[]{
 			MD5.getMD5ofStr(password),
-			customer.getId(),
-			new Date()
+			new Date(),
+			customer.getId()
 		});
 		
 		if(i > 0){
@@ -276,6 +276,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		cus.setId(rs.getInt("id"));
 		cus.setAddress(rs.getString("address"));
     	cus.setBirthday(rs.getString("birthday"));
+    	cus.setPassword(rs.getString("password"));
     	cus.setEmail(rs.getString("email"));
     	cus.setQq(rs.getString("qq"));
     	cus.setRealname(rs.getString("realname"));
