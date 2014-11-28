@@ -26,5 +26,19 @@
 				alert('登出失败');
 			});
 		});
+		
+		//监听body的scroll事件
+		$(window).on('scroll', function(){
+			var scroll = $('body').scrollTop(),
+				jQsideWrap = $('.page-side-wrap');
+			
+			if(scroll < 350) {
+				jQsideWrap && jQsideWrap.hide();
+			}else{
+				jQsideWrap && jQsideWrap.show();
+			}
+			
+		});
+		
 	});
 })(jQuery);

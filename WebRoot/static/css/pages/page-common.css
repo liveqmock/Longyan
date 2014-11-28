@@ -130,6 +130,7 @@ ul, ol, li {
 	color: #fff;
 	max-height: 280px;
 	overflow: hidden;
+	display: none;
 	background: #2592d7 url(/Longyan/static/img/pages/common/left-side-bg.png) no-repeat center center;
 }
 .online-chat {

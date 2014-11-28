@@ -29,7 +29,7 @@
 				</div>
 				<ul class="uc-nav">  
 					<li><a class="<#if dim == 'userinfo'>current</#if>" href="/Longyan/usercenter/userinfo">个人资料</a></li> 
-					<li><a class="<#if dim == 'password'>current</#if>" href="/Longyan/usercenter/modify-pass">修改密码</a></li> 
+					<li><a class="<#if dim == 'password'>current</#if>" href="/Longyan/usercenter/modify-pass">密码修改</a></li> 
 					<li><a class="<#if dim == 'order'>current</#if>" href="/Longyan/usercenter/my-order">我的订单</a></li> 
 				</ul>
 			</div>
