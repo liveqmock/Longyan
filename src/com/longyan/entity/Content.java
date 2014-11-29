@@ -15,6 +15,8 @@ public class Content {
 	
 	private String code;  //内容 代码
 	
+	private String describe; //内容简介
+	
 	private int template_id;   //每个二级内容的栏目会对应一个模板文件
 	
 	private String img_url;   //图片地址
@@ -49,6 +51,14 @@ public class Content {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getDescribe() {
+		return describe;
+	}
+
+	public void setDescribe(String describe) {
+		this.describe = describe;
 	}
 
 	public int getTemplate_id() {

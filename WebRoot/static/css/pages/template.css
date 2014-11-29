@@ -6,3 +6,21 @@
 	word-wrap: break-word;
 	overflow: hidden;
 }
+.catalog_title {
+	border-left: 3px solid #2670b9;
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 10px;
+	color: #2670b9;
+	margin-bottom: 30px;
+}
+.catalog_title span {
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	font-family: Microsoft Yahei;
+	font-size: 22px;
+	color: #969696;
+	padding-top: 5px;
+	position: relative;
+}

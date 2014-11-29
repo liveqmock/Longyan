@@ -61,6 +61,12 @@
 						<td class="err-lable">aaaa</td>
 					</tr>
 					<tr>
+						<td class="right-align">内容简介</td>
+						<td class="star">*</td>
+						<td class="input-wrap"><textarea id="describe" name="describe" class="form-control validate"></textarea></td>
+						<td class="err-lable"></td>
+					</tr>
+					<tr>
 						<td class="right-align">图片</td>
 						<td class="star">*</td>
 						<td class="input-wrap">

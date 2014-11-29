@@ -38,7 +38,7 @@ public class ContentDaoImpl implements ContentDao {
 	@Override
 	public String insert(Content content) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，二级内容已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into content(title, code, template_id, img_url, column_id, create_user, ctime) values(?,?,?,?,?,?,?)";
+		String sql = "insert into content(title, code, descri, template_id, img_url, column_id, create_user, ctime) values(?,?,?,?,?,?,?,?)";
 		Content col = getContentByCode(content.getCode());
 		
 		if(col != null){
@@ -48,6 +48,7 @@ public class ContentDaoImpl implements ContentDao {
 		int i = jdbcTemplate.update(sql, new Object[]{
 			content.getTitle(),
 			content.getCode(),
+			content.getDescribe(),
 			content.getTemplate_id(),
 			content.getImg_url(),
 			content.getColumn_id(),
@@ -67,7 +68,7 @@ public class ContentDaoImpl implements ContentDao {
 	@Override
 	public String update(Content content) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update content set title=?, code=?, template_id=?, img_url=?, column_id=?, create_user=?, utime=? where id=?";
+		String sql = "update content set title=?, code=?, descri=?, template_id=?, img_url=?, column_id=?, create_user=?, utime=? where id=?";
 		Content col = getContentByCode(content.getCode());
 		
 		if(col == null){
@@ -78,6 +79,7 @@ public class ContentDaoImpl implements ContentDao {
 		int i = jdbcTemplate.update(sql, new Object[]{
 			content.getTitle(),
 			content.getCode(),
+			content.getDescribe(),
 			content.getTemplate_id(),
 			content.getImg_url(),
 			content.getColumn_id(),
@@ -263,6 +265,7 @@ public class ContentDaoImpl implements ContentDao {
 		
 		content.setId(rs.getInt("id"));
 		content.setCode(rs.getString("code"));
+		content.setDescribe(rs.getString("descri"));
 		content.setCreate_user(rs.getString("create_user"));
 		content.setCtime(rs.getDate("ctime"));
 		content.setTitle(rs.getString("title"));

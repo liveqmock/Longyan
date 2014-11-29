@@ -105,6 +105,8 @@ public class StrategyController {
 		
 		Column column = columnService.getColumnByCode(columnCode);
 		if(column != null){
+			model.addAttribute("column", column);
+			
 			if("".equals(column.getCode())){ //表示进入一个未知的栏目
 				return "pages/filter/default";
 			}else {
@@ -159,6 +161,8 @@ public class StrategyController {
 		
 		Column column = columnService.getColumnByCode(columnCode);
 		if(column != null){
+			model.addAttribute("column", column);
+			
 			if("".equals(column.getCode())){ //表示进入一个未知的栏目
 				return "pages/filter/default";
 			}else {

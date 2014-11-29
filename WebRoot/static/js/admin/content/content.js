@@ -208,6 +208,7 @@ $(document).ready(function(){
 			}
 			$('#title', me.jQcontentInfoPop).val(parent.find('.title').html());
 			$('#code', me.jQcontentInfoPop).val(parent.find('.code').html());
+			$('#describe', me.jQcontentInfoPop).val(parent.find('.describe').html());
 			$('#img-list', me.jQcontentInfoPop).html(me._renderImgs(parent.find('.img_url').html()));
 
 			$('.err-lable').hide();
@@ -222,6 +223,7 @@ $(document).ready(function(){
 
 			$('#title', me.jQcontentInfoPop).val('');
 			$('#code', me.jQcontentInfoPop).val('');
+			$('#describe', me.jQcontentInfoPop).val('');
 			$('#img_url', me.jQcontentInfoPop).val('');
 			$('#img-list', me.jQcontentInfoPop).html('');
 			$('.err-lable').hide();

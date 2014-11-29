@@ -89,6 +89,7 @@ public class ContentController {
 			jsonObject.put("title", content.getTitle());
 			jsonObject.put("column_id", content.getColumn_id());
 			jsonObject.put("code", content.getCode());
+			jsonObject.put("describe", content.getDescribe());
 			jsonObject.put("template_id", content.getTemplate_id());
 			jsonObject.put("img_url", content.getImg_url());
 			jsonObject.put("create_user", content.getCreate_user());
@@ -127,6 +128,7 @@ public class ContentController {
 			jsonObject.put("title", content.getTitle());
 			jsonObject.put("column_id", content.getColumn_id());
 			jsonObject.put("code", content.getCode());
+			jsonObject.put("describe", content.getDescribe());
 			jsonObject.put("template_id", content.getTemplate_id());
 			jsonObject.put("img_url", content.getImg_url());
 			jsonObject.put("create_user", content.getCreate_user());
@@ -153,12 +155,14 @@ public class ContentController {
 		Integer column_id = Integer.parseInt(request.getParameter("column_id"));
 		String title = request.getParameter("title");
 		String code = request.getParameter("code");
+		String describe = request.getParameter("describe");
 		String img_url = request.getParameter("img_url");
 		String create_user = employee.getName();
 		
 		Content content = new Content();
 		content.setTitle(title);
 		content.setCode(code);
+		content.setDescribe(describe);
 		content.setCreate_user(create_user);
 		content.setImg_url(img_url);
 		content.setColumn_id(column_id);
@@ -238,12 +242,14 @@ public class ContentController {
 		Integer column_id = Integer.parseInt(request.getParameter("column_id"));
 		String title = request.getParameter("title");
 		String code = request.getParameter("code");
+		String describe = request.getParameter("describe");
 		String img_url = request.getParameter("img_url");
 		String create_user = employee.getName();
 		
 		Content content = contentService.getContentById(id);
 		content.setTitle(title);
 		content.setCode(code);
+		content.setDescribe(describe);
 		content.setCreate_user(create_user);
 		content.setImg_url(img_url);
 		content.setColumn_id(column_id);

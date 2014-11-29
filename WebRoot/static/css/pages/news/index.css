@@ -1,135 +1,113 @@
-.section-block {
+.wrap{
+	width: 1010px;
+	height: auto;
+	margin: 0 auto;
 	position: relative;
-	width: 100%;
-	font-family: Microsoft Yahei;
-}
-.section-block .section-title {
-	width: 100%;
-	text-align: center;
-	font-size: 30px;
-	color: #2592d7;
-	margin: 40px 0;
-}
-.who-wrap, .process-wrap{
-	position: relative;
-	width: 100%;
-	min-height: 240px;
-	_height: 240px;
-}
-.who-wrap .who-img {
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 365px;
-	height: 200px;
-	background: url(/Longyan/static/img/pages/strategy/who.gif) no-repeat center center;
-}
-.process-wrap .process-img {
-	display: block;
-	position: absolute;
-	left: 30px;
-	top: 40px;
-	width: 290px;
-	height: 240px;
-	background: url(/Longyan/static/img/pages/strategy/proccess.png) no-repeat center center;
-}
-.who-wrap .explain-wrap, .process-wrap .explain-wrap  {
-	width: 558px;
-	margin-left: 420px;
-	word-wrap: break-word;
 	overflow: hidden;
-	padding-top: 30px;
-}
-.process-wrap .explain-wrap {
-	margin-bottom: 50px;
-}
-.section-block .title {
-	font-size: 24px;
-	color: #a5a5a5;
-	margin-bottom: 10px;
-}
-.section-block .content {
+	background-color: #f4f4f4;
 	font-family: Microsoft Yahei;
-	color: #575757;
-	font-size: 14px;
 }
-
-.what-title {
-	margin-top: 40px;
-	text-align: left;
+.culture{
+	position: relative;
+	min-height: 310px;
+	_height: 310px;
+	width: 1000px;
 }
-.what-title span {
+.culture img{
+	position: absolute;
+	top: 10px;
+	left: 20px;
 	display: block;
 	width: 370px;
-	height: 50px;
-	line-height: 50px;
-	padding-left: 10px;
-	background-color: #2592d7;
-	color: #fff;
+	height: 362px;
+}
+.culture-left {
+	margin-left: 430px;
+}
+.title{
+	font-size: 30px;
+	color: #2592d7;
+	font-weight: normal;
+}
+.small-title{
+	margin-top: 40px;
+	color: #a5a5a5;
+	font-weight: normal;
 	font-size: 24px;
 }
-.what-wrap {
+.culture p{
+    margin-top: 10px;
+    font-size: 14px;
+}
+.hope{
+	width: 1000px;
+	min-height: 320px;
+	_height: 320px;
 	position: relative;
-	width: 100%;
-	margin-top: 10px;
+	margin-top: 90px;
 }
-.what-wrap .what-img{
-	display: block;
+.hope-right {
+	width: 540px;
+	text-align: right;
+}
+.hope img{
 	position: absolute;
-	width: 193px;
-	height: 189px;
-	top: 5px;
-	right: 10px;
-	background: url(/Longyan/static/img/pages/strategy/person.gif) no-repeat center center;
-}
-.what-wrap .info-wrap {
-	width: 780px;
-	min-height: 200px;
-	_height: 200px;
-}
-.info-wrap .detail-line {
-	width: 100%;
-	height: 70px;
-}
-.detail-line .detail-item {
-	display: inline-block;
-	width: 350px;
-	height: 70px;
-	line-height: 70px;
-	overflow: hidden;
-	position: relative;
-}
-.detail-item .detail-img {
-	position: absolute;
+	top: 0;
+	right: 50px;
 	display: block;
-	left: 0;
-	top: 5px;
+	width: 320px;
+	height: 262px;
 }
-.a-icon {
-	width: 22px;
-	height: 58px;
-	top: 6px;
-	background: url(/Longyan/static/img/pages/strategy/A.png) no-repeat center center;
+.color{
+	color: #ffb830;
 }
-.b-icon {
-	width: 20px;
-	height: 60px;
-	background: url(/Longyan/static/img/pages/strategy/B.png) no-repeat center center;
+.our-hope {
+	font-size: 24px;
+	font-weight: normal;
 }
-.c-icon {
-	width: 20px;
-	height: 54px;
-	top: 8px;
-	background: url(/Longyan/static/img/pages/strategy/C.png) no-repeat center center;
+.our-hope .color {
+	font-size: 24px;
 }
-.d-icon {
-	width: 20px;
-	height: 60px;
-	background: url(/Longyan/static/img/pages/strategy/D.png) no-repeat center center;
+.small-text{
+	margin-top: 8px;
+	margin-bottom: 10px;
 }
-.detail-item .detail-txt {
-	margin-left: 66px;
+.hope p{
 	font-size: 14px;
-	color: #000;
+}
+.hope h2{
+	color: #666;
+}
+.business{
+	width: 1000px;
+	min-height: 300px;
+	_height: 300px;
+	position: relative;
+	margin-top: 60px;
+	margin-bottom: 20px;
+}
+.business img{
+	width: 292px;
+	height: 244px;
+	display: block;
+	position: absolute;
+	top: 10px;
+	left: 20px;
+}
+.business-right {
+	margin-left: 370px;
+}
+.business h1{
+	color: #2592d7;
+	font-size: 30px;
+	font-weight: normal;
+}
+.pre{
+	margin-top: 30px;
+	font-size: 24px;
+	color: #a5a5a5;
+}
+.intro{
+	font-size: 14px;
+	margin-top: 10px;
 }
