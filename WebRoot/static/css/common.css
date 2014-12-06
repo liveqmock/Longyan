@@ -21,6 +21,10 @@ a {
 	background-color: transparent;
 }
 
+a:ACTIVE, a:VISITED {
+	text-decoration: none;
+}
+
 input.inputText {
 	color: #336699;
 	background: url(/Longyan/static/img/admin/text_bg.gif) #F7FAFC repeat-x left top;

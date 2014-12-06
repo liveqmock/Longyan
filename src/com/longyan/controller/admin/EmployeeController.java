@@ -244,10 +244,12 @@ public class EmployeeController {
 	 * @throws IOException
 	 */
 	@RequestMapping("/admin/filter/update-employee")
-	public @ResponseBody String updateEmployee(Model model, HttpServletRequest request,
+	public @ResponseBody String updateEmployee(Model model, 
+			HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		Employee employee = (Employee) SessionUtil.getSession(response, request);// 登录人
+		
 		String name = request.getParameter("name");
 		String id_card = request.getParameter("id_card");
 		String telephone = request.getParameter("telephone");
@@ -257,21 +259,24 @@ public class EmployeeController {
 		String qq = request.getParameter("qq");
 		String email = request.getParameter("email");
 		String province = request.getParameter("province");
-		int right_level = Integer.parseInt(request.getParameter("right_level"));
+		String code = "";
 		
-		Employee employee = employeeService.getEmployeeById(id);
-		employee.setName(name);
-		employee.setId_card(id_card);
-		employee.setTelephone(telephone);
-		employee.setSex(sex);
-		employee.setBirthday(birthday);
-		employee.setAddress(address);
-		employee.setQq(qq);
-		employee.setEmail(email);
-		employee.setProvince(province);
-		employee.setRight_level(right_level);
+		if(employee != null){
+			employee.setName(name);
+			employee.setId_card(id_card);
+			employee.setTelephone(telephone);
+			employee.setSex(sex);
+			employee.setBirthday(birthday);
+			employee.setAddress(address);
+			employee.setQq(qq);
+			employee.setEmail(email);
+			employee.setProvince(province);
+			
+			code = employeeService.modifyEmployee(employee);
+		}else {
+			code = "2004";
+		}
 		
-		String code = employeeService.modifyEmployee(employee);
 		String err_msg = "";
 		
 		switch (Integer.parseInt(code)) {
@@ -305,35 +310,40 @@ public class EmployeeController {
 	public @ResponseBody String updateEmployeePassword(Model model, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		
-		Integer id = Integer.parseInt(request.getParameter("id"));
-		String oldPassword = request.getParameter("oldPassword");
+		Employee employee = (Employee) SessionUtil.getSession(response, request);// 登录人
+		
+		String password = request.getParameter("password");
 		String newPassword = request.getParameter("newPassword");
 		
-		Employee employee = employeeService.getEmployeeById(id);
 		JSONObject jsonObject = new JSONObject();
+		String code = "";
 		
-		if(!MD5.verifyPassword(oldPassword, employee.getPassword())){
-			jsonObject.put("code", 1004);
-			jsonObject.put("msg", "原密码错误");
-		}else {
-			String code = employeeService.modifyPassword(employee, newPassword);
-			String err_msg = "";
-			
-			switch (Integer.parseInt(code)) {
-				case 2001:
-					err_msg = "update success";
-					break;
-				case 2002:
-					err_msg = "the employer does not exist!";
-					break;
-				case 2003:
-					err_msg = "unkown error!";
-					break;
+		if(employee != null){
+			if(MD5.verifyPassword(password, employee.getPassword())){
+				code = employeeService.modifyPassword(employee, newPassword);
+			}else{
+				code = "2005";
 			}
-			
-			jsonObject.put("code", code);
-			jsonObject.put("msg", err_msg);
+		}else {
+			code = "2004";   //cookie已失效
 		}
+		
+		String err_msg = "";
+		
+		switch (Integer.parseInt(code)) {
+			case 2001:
+				err_msg = "update success";
+				break;
+			case 2002:
+				err_msg = "the employer does not exist!";
+				break;
+			case 2003:
+				err_msg = "unkown error!";
+				break;
+		}
+		
+		jsonObject.put("code", code);
+		jsonObject.put("msg", err_msg);
 		
 		return jsonObject.toString();
 	}

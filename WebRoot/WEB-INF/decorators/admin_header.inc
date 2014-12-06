@@ -35,7 +35,9 @@
 			<div class="col-md-2 col-xs-4" id="J-left-nav">
 				<#if right == 0>
 					<a href="/Longyan/admin/filter/permission" class="list-group-item left-nav-item <#if dim == 'permission'>active</#if>">权限管理</a>
+					<#--
 					<a href="/Longyan/admin/filter/email" class="list-group-item left-nav-item <#if dim == 'email'>active</#if>">邮件管理</a>
+					-->
 					<a href="/Longyan/admin/filter/message" class="list-group-item left-nav-item <#if dim == 'message'>active</#if>">留言管理</a>
 					<a href="/Longyan/admin/filter/employee" class="list-group-item left-nav-item <#if dim == 'employee'>active</#if>">员工管理</a>
 				</#if>

@@ -277,6 +277,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 		employee.setId(rs.getInt("id"));
 		employee.setAddress(rs.getString("address"));
+		employee.setPassword(rs.getString("password"));
 		employee.setBirthday(rs.getString("birthday"));
 		employee.setEmail(rs.getString("email"));
 		employee.setQq(rs.getString("qq"));

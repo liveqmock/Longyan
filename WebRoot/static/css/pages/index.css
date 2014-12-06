@@ -13,7 +13,7 @@ body {
 }
 .tip {
 	font-weight: bold;
-	width: 312px;
+	width: 400px;
 	height: 44px;
 	line-height: 44px;
 	color: #fff;
@@ -21,6 +21,7 @@ body {
 	margin: 0 auto;
 	margin-top: 30px;
 	padding-left: 24px;
+	text-align: center;
 }
 .links {
 	width: 504px;

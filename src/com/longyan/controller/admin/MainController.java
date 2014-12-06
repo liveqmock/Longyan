@@ -53,10 +53,7 @@ public class MainController {
 		String role = right == 0 ? "管理员" : "普通员工";
 
 		model.addAttribute("username", employee.getName());
-		model.addAttribute("telephone", employee.getTelephone());
-		model.addAttribute("sex", employee.getSex());
-		model.addAttribute("province", employee.getProvince());
-		model.addAttribute("email", employee.getEmail());
+		model.addAttribute("employee", employee);
 		model.addAttribute("role", role);
 		model.addAttribute("ip", ip);
 		model.addAttribute("right", right);
