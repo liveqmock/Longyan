@@ -8,7 +8,8 @@
   </head>
   <body>
     <div class="logo"></div>
-    <p class="tip">中国健康产业运营商</p>
+    <p class="tip">重庆龙颜实业集团</p>
+    <p class="tip" style="margin-top: 8px;">中国健康产业运营商</p>
     <div class="links">
       <ul>
         <li class="link-item strategy">
