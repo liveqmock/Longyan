@@ -140,6 +140,7 @@ $(document).ready(function(){
 
 				if(json){
 					if(json.code == 1001){   //通过登录验证
+						alert('注册成功，跳转至登录页面~~');
 						window.location.href = '/Longyan/login';
 					}else{
 						alert('注册成功，即将进入登录页');

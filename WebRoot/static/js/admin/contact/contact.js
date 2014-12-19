@@ -81,7 +81,7 @@ $(document).ready(function(){
 
 			$.ajax({
 				url: me.flag == 'add' ? "/Longyan/admin/filter/add-contact" : "/Longyan/admin/filter/update-contact",
-				type: 'get',
+				type: 'get',
 				data: postData
 			}).done(function(data){
 				var json = typeof data == 'string' ? JSON.parse(data) : data;
@@ -119,7 +119,7 @@ $(document).ready(function(){
 			if(confirm("确认删除所选项？")){
 				$.ajax({
 					url: "/Longyan/admin/filter/del-contact",
-					type: 'get',
+					type: 'get',
 					data: {
 						contactIds: ids.join(',')
 					}
