@@ -47,7 +47,12 @@ $(document).ready(function(){
 					if(json.code == 1){   //未通过登录验证
 						me.jQloginRet.html('用户名或密码错误').show();
 					}else{
-						var url = document.referrer ? document.referrer : '/Longyan';
+						var url = '';
+						if(document.referrer){
+							url = document.referrer.indexOf('Longyan/join') > -1 ? '/Longyan/pages/strategy' : document.referrer;
+						}else{
+							url = '/Longyan';
+						}
 						window.location.href = url;
 					}
 				}else {

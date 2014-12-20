@@ -94,7 +94,7 @@ $(document).ready(function(){
 
 			$.ajax({
 				url: me.flag == 'add' ? "/Longyan/admin/filter/add-column" : "/Longyan/admin/filter/update-column",
-				type: 'get',
+				type: 'get',
 				data: postData
 			}).done(function(data){
 				var json = typeof data == 'string' ? JSON.parse(data) : data;
@@ -132,7 +132,7 @@ $(document).ready(function(){
 			if(confirm("确认删除所选项？")){
 				$.ajax({
 					url: "/Longyan/admin/filter/del-column",
-					type: 'get',
+					type: 'get',
 					data: {
 						columnIds: ids.join(',')
 					}
