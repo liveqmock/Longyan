@@ -2,6 +2,7 @@
 	position: relative;
 	width: 100%;
 	font-family: Microsoft Yahei;
+	margin-bottom: 40px;
 }
 .section-block .section-title {
 	width: 100%;
@@ -21,9 +22,9 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: 365px;
-	height: 200px;
-	background: url(/Longyan/static/img/pages/strategy/who.gif) no-repeat center center;
+	width: 441px;
+	height: 325px;
+	background: url(/Longyan/static/img/pages/strategy/ceo.jpg) no-repeat center center;
 }
 .process-wrap .process-img {
 	display: block;
@@ -35,11 +36,11 @@
 	background: url(/Longyan/static/img/pages/strategy/proccess.png) no-repeat center center;
 }
 .who-wrap .explain-wrap, .process-wrap .explain-wrap  {
-	width: 558px;
-	margin-left: 420px;
+	width: 506px;
+	margin-left: 466px;
 	word-wrap: break-word;
 	overflow: hidden;
-	padding-top: 30px;
+	padding-top: 20px;
 }
 .process-wrap .explain-wrap {
 	margin-bottom: 50px;
