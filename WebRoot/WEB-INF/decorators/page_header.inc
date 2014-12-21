@@ -36,7 +36,13 @@
 			<a href="/Longyan/" class="logo page-icon"></a>
 			<ul class="nav-list">
 				<li>
-					<a href="/Longyan/pages/${pageCode}" class="<#if dim == 'index'>active</#if>">主页</a>
+					<a href="/Longyan/pages/${pageCode}" class="<#if dim == 'index'>active</#if>">
+						<#if pageCode == 'news'>
+							社区首页
+						<#else>
+							主页
+						</#if>
+					</a>
 				</li>
 				<#if columns?exists && columns?size!=0>
 					<#list columns as column>

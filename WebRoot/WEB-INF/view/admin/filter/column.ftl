@@ -19,7 +19,7 @@
 					<select id="site-form" class="form-control">
 						<option value="0" selected="selected">全部</option>
 						<option value="1">集团战略</option>
-						<option value="2">新闻中心</option>
+						<option value="2">健康社区</option>
 						<option value="3">支柱产业</option>
 					</select>
 					<a class="btn btn-default" href="javascript:;" id="search">查询</a>
@@ -49,7 +49,7 @@
 						<td class="input-wrap">
 							<select id="site_id" class="required form-control validate" name="site_id">
 								<option value="1">集团战略</option>
-								<option value="2">新闻中心</option>
+								<option value="2">健康社区</option>
 								<option value="3">支柱产业</option>
 							</select>
 						</td>

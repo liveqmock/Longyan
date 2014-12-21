@@ -72,9 +72,9 @@ public class NewsController {
 		
 		initModel(request, model, "index");
 		model.addAttribute("pageCode", "news");
-		model.addAttribute("pageTitle", "新闻中心");
+		model.addAttribute("pageTitle", "社区首页");
 		model.addAttribute("dim", "index");
-		System.out.println("进入新闻中心页面");
+		System.out.println("进入社区首页");
 		return "pages/filter/news/index";
 	}
 	
@@ -110,26 +110,30 @@ public class NewsController {
 			if("".equals(column.getCode())){ //表示进入一个未知的栏目
 				return "pages/filter/default";
 			}else {
-				Template template = templateService.getTemplateByColumnId(column.getId());   //取得对应的模板
-				if(template != null){ //该栏目下没有二级内容
-					String template_content = FileUtil.readTemplate(template.getPath());
-					model.addAttribute("template_content", template_content);
-					
-					return "pages/filter/template";
+				if(columnCode.equals("health") || columnCode.equals("activity")){   //进入健康养生和活动专区，表示进入论坛页面
+					return "pages/filter/news/" + columnCode;
 				}else {
-					int start = (pager_offset - 1) * PAGE_SIZE;
-					List<Content> contents = contentService.getContentsByColumnId(column.getId());
-					List<Content> ret_contents = contentService.getContentsByColumnId(column.getId(), start, PAGE_SIZE);
-					if(contents.size() > 0){  //存在二级内容
-						model.addAttribute("contents", ret_contents);
-						model.addAttribute("style", column.getStyle());
-						model.addAttribute("request", request);
-						model.addAttribute("totalCount", contents.size());
-						model.addAttribute("pageSize", PAGE_SIZE);
+					Template template = templateService.getTemplateByColumnId(column.getId());   //取得对应的模板
+					if(template != null){ //该栏目下没有二级内容
+						String template_content = FileUtil.readTemplate(template.getPath());
+						model.addAttribute("template_content", template_content);
 						
-						return "pages/filter/content";
-					}else {  //不存在二级内容
-						return "pages/filter/default";
+						return "pages/filter/template";
+					}else {
+						int start = (pager_offset - 1) * PAGE_SIZE;
+						List<Content> contents = contentService.getContentsByColumnId(column.getId());
+						List<Content> ret_contents = contentService.getContentsByColumnId(column.getId(), start, PAGE_SIZE);
+						if(contents.size() > 0){  //存在二级内容
+							model.addAttribute("contents", ret_contents);
+							model.addAttribute("style", column.getStyle());
+							model.addAttribute("request", request);
+							model.addAttribute("totalCount", contents.size());
+							model.addAttribute("pageSize", PAGE_SIZE);
+							
+							return "pages/filter/content";
+						}else {  //不存在二级内容
+							return "pages/filter/default";
+						}
 					}
 				}
 			}
