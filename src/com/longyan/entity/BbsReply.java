@@ -15,6 +15,8 @@ public class BbsReply {
 	
 	private int cutomer_id; 
 	
+	private int bbs_id;
+	
 	private int status; //跟帖状态  1： 正常   2：被屏蔽
 	
 	private Date ctime;
@@ -43,6 +45,14 @@ public class BbsReply {
 
 	public void setCutomer_id(int cutomer_id) {
 		this.cutomer_id = cutomer_id;
+	}
+
+	public int getBbs_id() {
+		return bbs_id;
+	}
+
+	public void setBbs_id(int bbs_id) {
+		this.bbs_id = bbs_id;
 	}
 
 	public int getStatus() {
