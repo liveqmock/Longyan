@@ -137,4 +137,13 @@ public class BbsService {
 		return bbsDaoImpl.addReplyCount(bbs);
 	}
 	
+	/**
+	 * 取得能展现帖子总数
+	 * @param type
+	 * @return
+	 */
+	public int getBbsCountByType(Integer type){
+		return bbsDaoImpl.getBbsCountByType(type);
+	}
+	
 }

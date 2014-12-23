@@ -1,7 +1,10 @@
 package com.longyan.controller.pages;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +19,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.longyan.entity.Bbs;
 import com.longyan.entity.Column;
 import com.longyan.entity.Contact;
 import com.longyan.entity.Content;
 import com.longyan.entity.Customer;
 import com.longyan.entity.FriendLinks;
 import com.longyan.entity.Template;
+import com.longyan.service.BbsService;
 import com.longyan.service.ColumnService;
 import com.longyan.service.ContactService;
 import com.longyan.service.ContentService;
@@ -29,6 +34,7 @@ import com.longyan.service.CustomerService;
 import com.longyan.service.FriendLinksService;
 import com.longyan.service.TemplateService;
 import com.longyan.util.CookieUtil;
+import com.longyan.util.DateUtil;
 import com.longyan.util.FileUtil;
 
 /**
@@ -39,7 +45,7 @@ import com.longyan.util.FileUtil;
 @Controller
 public class NewsController {
 	private final int SITE_ID = 2;  //新闻中心站点ID默认为2
-	private final int PAGE_SIZE = 20;  //集团战略站点ID默认为1
+	private final int PAGE_SIZE = 20;  
 	
 	@Autowired
 	private ColumnService columnService;
@@ -58,6 +64,9 @@ public class NewsController {
 	
 	@Autowired
 	private FriendLinksService friendLinksService;
+	
+	@Autowired
+	private BbsService bbsService;
 	
 	/**
 	 * 新闻中心首页
@@ -95,7 +104,7 @@ public class NewsController {
 		
 		initModel(request, model, columnCode);
 		model.addAttribute("pageCode", "news");
-		model.addAttribute("pageTitle", "新闻中心");
+		model.addAttribute("pageTitle", "健康社区");
 		model.addAttribute("dim", columnCode);
 		System.out.println("进入详细栏目页面");
 		
@@ -111,6 +120,25 @@ public class NewsController {
 				return "pages/filter/default";
 			}else {
 				if(columnCode.equals("health") || columnCode.equals("activity")){   //进入健康养生和活动专区，表示进入论坛页面
+					int start = (pager_offset - 1) * PAGE_SIZE;
+					int type = getBbsType(columnCode);
+					List<Bbs> bbsList = bbsService.getPassedAndTimeoutByType(type, start, PAGE_SIZE);
+					int bbsCount = bbsService.getBbsCountByType(type);
+					List<Object> mapList = new ArrayList<Object>();
+					
+					for(Bbs bbs : bbsList) {
+						Map map = new HashMap();
+						Customer customer = customerService.getCustomerById(bbs.getCutomer_id());
+						map.put("customer", customer);
+						map.put("bbs", bbs);
+						mapList.add(map);
+					}
+					
+					model.addAttribute("dataList", mapList);
+					model.addAttribute("request", request);
+					model.addAttribute("totalCount", bbsCount);
+					model.addAttribute("pageSize", PAGE_SIZE);
+					
 					return "pages/filter/news/" + columnCode;
 				}else {
 					Template template = templateService.getTemplateByColumnId(column.getId());   //取得对应的模板
@@ -240,5 +268,22 @@ public class NewsController {
 		model.addAttribute("columns", columns);
 		model.addAttribute("contacts", contacts);
 		model.addAttribute("friendLinks", friendLinks);
+	}
+	
+	/**
+	 * 取得帖子类型code
+	 * @param type
+	 * @return
+	 */
+	private int getBbsType(String type){
+		int ret = 1;
+		
+		if(type.equals("health")){
+			ret = 1;
+		}else if(type.equals("activity")){
+			ret = 2;
+		}
+		
+		return ret;
 	}
 }

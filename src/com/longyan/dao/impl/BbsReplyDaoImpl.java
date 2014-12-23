@@ -193,8 +193,8 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 		bbsReply.setBbs_id(rs.getInt("bbs_id"));
 		bbsReply.setCutomer_id(rs.getInt("customer_id"));
 		bbsReply.setStatus(rs.getInt("status"));
-		bbsReply.setCtime(rs.getDate("ctime"));
-		bbsReply.setUtime(rs.getDate("utime"));
+		bbsReply.setCtime(rs.getTimestamp("ctime"));
+		bbsReply.setUtime(rs.getTimestamp("utime"));
 		return bbsReply;  
 	}
 

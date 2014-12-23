@@ -2,7 +2,111 @@
 	width: 1010px;
 	height: auto;
 	margin: 0 auto;
+	margin-top: 50px;
 	position: relative;
 	overflow: hidden;
 	font-family: Microsoft Yahei;
+}
+.catalog_title {
+	border-left: 3px solid #2670b9;
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 10px;
+	color: #2670b9;
+	margin-bottom: 30px;
+}
+.catalog_title span {
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	font-family: Microsoft Yahei;
+	font-size: 22px;
+	color: #969696;
+	padding-top: 5px;
+	position: relative;
+}
+.top-bar, 
+.footer-bar {
+	padding: 0 20px 20px 20px;
+	border-bottom: 1px solid #ccc;
+}
+.footer-bar {
+	border-bottom: 0;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+.top-bar .add-bbs,
+.footer-bar .add-bbs {
+	display: block;
+	width: 70px;
+	height: 30px;
+	background-color: #488fcf;
+	font-weight: bold;
+	color: #fff;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 5px;
+}
+.add-bbs:hover {
+	background-color: #105cb6;
+}
+.top-pager,
+.footer-pager{
+	float: right;
+	margin-top: -28px;
+}
+.PageNum {
+	margin: 0;
+}
+.bbs-list-wrap {
+	margin-top: 30px;
+	padding: 0 20px;
+}
+.bbs-item {
+	border-bottom: 1px dashed #dcdcdc;
+	padding: 10px 0;
+	position: relative;
+}
+.bbs-item .title-link {
+	margin-bottom: 5px;
+}
+.title-link a {
+	color: #105cb6;
+	blr: expression(this.onFocus=this.blur());
+	outline: none;
+	text-decoration: none;
+	font-size: 16px;
+	margin-right: 3px;
+}
+.title-link a:hover {
+	text-decoration: underline;
+}
+
+.bbs-item .info .gray {
+	color: #999;
+}
+.info .customer {
+	margin-right: 20px;
+}
+.bbs-item .view-count, 
+.bbs-item .reply-count {
+	float: right;
+	display: block;
+	background: #f4f4f4;
+	width: 54px;
+	height: 36px;
+	padding: 4px 0;
+	margin: 0 0 0 10px;
+	border-radius: 3px;
+	overflow: hidden;
+	line-height: 18px;
+	text-align: center;
+	color: #999;
+	margin-top: -42px;
+}
+.bbs-item em {
+	display: block;
+	font-size: 11px;
+	font-style: normal;
 }

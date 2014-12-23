@@ -3,20 +3,29 @@
 	TEXT-ALIGN: right
 }
 
-.PageNum B {
-	margin: 3px;
-	font-weight: bold;
-	color: #900;
+.PageNum a, .PageNum b {
+	display: inline-block;
+	line-height: 13px;
+	padding: 6px 10px !important;
+	border: 1px solid;
+	border-color: #c9c9c9 #bdbdbd #b0b0b0 #bdbdbd;
+	background-color: #f8f8f8;
+	text-decoration: none;
+	color: #666666;
+	margin-right: 3px;
+	border-radius: 3px;
+	vertical-align: top;
 }
 
-.PageNum A {
-	padding: 3px 6px;
-	border: 1px solid #bbb;
-	margin: 3px;
-	color: #666;
+.PageNum b {
+	color: #fff !important;
+	background: #488fcf !important;
+	border-color: #2470b5 #488fcf #488fcf #488fcf;
 }
 
 .PageNum A:hover {
+	color: #fff;
+	background: #488fcf !important;
+	border-color: #2470b5 #488fcf #488fcf #488fcf;
 	text-decoration: none;
-	color: #2673BB;
 }

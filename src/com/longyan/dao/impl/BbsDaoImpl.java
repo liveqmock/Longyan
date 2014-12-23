@@ -236,6 +236,26 @@ public class BbsDaoImpl implements BbsDao {
 	}
 	
 	/**
+	 * 取得某个类型下的帖子总数
+	 * @param type
+	 * @return
+	 */
+	public int getBbsCountByType(Integer type) {
+		String sql = "select * from bbs where type=? and (status = 2 or status = 4)";
+		List<Bbs> bbss = new ArrayList<Bbs>();
+		
+		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ type }, new RowMapper<Bbs>() {  
+            @Override  
+            public Bbs mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Bbs col = setBbsProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return bbss.size();
+	}
+	
+	/**
 	 * 根据帖子类型获取帖子
 	 * @param type
 	 * @param start
@@ -349,8 +369,8 @@ public class BbsDaoImpl implements BbsDao {
 		bbs.setIs_customer(rs.getInt("is_customer"));
 		bbs.setView_count(rs.getInt("view_count"));
 		bbs.setReply_count(rs.getInt("reply_count"));
-		bbs.setCtime(rs.getDate("ctime"));
-		bbs.setUtime(rs.getDate("utime"));
+		bbs.setCtime(rs.getTimestamp("ctime"));
+		bbs.setUtime(rs.getTimestamp("utime"));
 		return bbs;  
 	}
 
