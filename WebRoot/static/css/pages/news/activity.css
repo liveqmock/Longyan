@@ -56,6 +56,9 @@
 	float: right;
 	margin-top: -28px;
 }
+.footer-pager {
+	margin-top: 0;
+}
 .PageNum {
 	margin: 0;
 }

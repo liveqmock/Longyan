@@ -89,6 +89,31 @@
 .info .customer {
 	margin-right: 20px;
 }
+.info .bbs-status {
+	margin-left: 20px;
+}
+.bbs-status .red {
+	color: red;
+	font-weight: 600;
+}
+.bbs-status .yellow {
+	color: #fd8a23;
+	font-weight: 600;
+}
+.bbs-status .green {
+	color: #49bb97;
+	font-weight: 600;
+}
+.info .bbs-op {
+	margin-left: 20px;
+}
+.info .bbs-op a{
+	margin-right: 5px;
+	color: #105cb6;
+}
+.info .bbs-op a:hover {
+	text-decoration: underline;
+}
 .bbs-item .view-count, 
 .bbs-item .reply-count {
 	float: right;

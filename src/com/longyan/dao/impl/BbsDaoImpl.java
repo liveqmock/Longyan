@@ -199,7 +199,7 @@ public class BbsDaoImpl implements BbsDao {
 	 */
 	@Override
 	public List<Bbs> findByStatus(Integer status, Integer start, Integer count) {
-		String sql = "select * from bbs where status=? order by utime asc limit " + start + ", " + count;
+		String sql = "select * from bbs where status=? order by utime desc limit " + start + ", " + count;
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ status }, new RowMapper<Bbs>() {  
@@ -221,7 +221,7 @@ public class BbsDaoImpl implements BbsDao {
 	 * @return
 	 */
 	public List<Bbs> findByType(Integer type, Integer start, Integer count) {
-		String sql = "select * from bbs where type=? order by utime asc limit " + start + ", " + count;
+		String sql = "select * from bbs where type=? order by utime desc limit " + start + ", " + count;
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ type }, new RowMapper<Bbs>() {  
@@ -263,7 +263,7 @@ public class BbsDaoImpl implements BbsDao {
 	 * @return
 	 */
 	public List<Bbs> findPassedAndTimeoutByType(Integer type, Integer start, Integer count) {
-		String sql = "select * from bbs where type=? and (status = 2 or status = 4) order by utime asc limit " + start + ", " + count;
+		String sql = "select * from bbs where type=? and (status = 2 or status = 4) order by utime desc limit " + start + ", " + count;
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ type }, new RowMapper<Bbs>() {  
@@ -281,7 +281,7 @@ public class BbsDaoImpl implements BbsDao {
 	 * 取得审核通过的帖子供前段展现
 	 */
 	public List<Bbs> findPassedAndTimeoutedBbs(Integer start, Integer count) {
-		String sql = "select * from bbs where status=2 or status=4 order by utime asc limit " + start + ", " + count;
+		String sql = "select * from bbs where status=2 or status=4 order by utime desc limit " + start + ", " + count;
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new RowMapper<Bbs>() {  
@@ -300,7 +300,7 @@ public class BbsDaoImpl implements BbsDao {
 	 */
 	@Override
 	public List<Bbs> findByCustomerId(Integer customer_id, Integer start, Integer count) {
-		String sql = "select * from bbs where customer_id=? order by utime asc limit " + start + ", " + count; 
+		String sql = "select * from bbs where customer_id=? and status != 6 order by utime desc limit " + start + ", " + count; 
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ customer_id }, new RowMapper<Bbs>() {  
@@ -315,11 +315,31 @@ public class BbsDaoImpl implements BbsDao {
 	}
 	
 	/**
+	 * 取得某个用户下的帖子总数
+	 * @param type
+	 * @return
+	 */
+	public int getBbsCountByCustomerId(Integer customer_id) {
+		String sql = "select * from bbs where customer_id=? and status != 6";
+		List<Bbs> bbss = new ArrayList<Bbs>();
+		
+		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ customer_id }, new RowMapper<Bbs>() {  
+            @Override  
+            public Bbs mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Bbs col = setBbsProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return bbss.size();
+	}
+	
+	/**
 	 * 取得所有栏目
 	 */
 	@Override
 	public List<Bbs> findAll(Integer start, Integer count) {
-		String sql = "select * from bbs order by utime asc limit " + start + ", " + count;
+		String sql = "select * from bbs order by utime desc limit " + start + ", " + count;
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new RowMapper<Bbs>() {  

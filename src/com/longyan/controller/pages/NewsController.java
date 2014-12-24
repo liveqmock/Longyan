@@ -140,6 +140,27 @@ public class NewsController {
 					model.addAttribute("pageSize", PAGE_SIZE);
 					
 					return "pages/filter/news/" + columnCode;
+				}else if(columnCode.equals("mybbs")){  //进入到我的帖子
+					int start = (pager_offset - 1) * PAGE_SIZE;
+					JSONArray jsonArray = CookieUtil.isLogin(request, customerService);
+					JSONObject loginJson = (JSONObject) jsonArray.get(0);
+					JSONObject customerJson = (JSONObject) jsonArray.get(1);
+					
+					if(!Boolean.parseBoolean(loginJson.get("isLogin").toString())){
+						return "pages/jump";
+					}
+					
+					Customer customer = customerService.getCustomerById((Integer)customerJson.get("customer_id"));
+					
+					List<Bbs> bbsList = bbsService.getBbsByCustomerId(customer.getId(), start, PAGE_SIZE);
+					int bbsCount = bbsService.getBbsCountByCustomerId(customer.getId());
+					
+					model.addAttribute("bbsList", bbsList);
+					model.addAttribute("customer", customer);
+					model.addAttribute("request", request);
+					model.addAttribute("totalCount", bbsCount);
+					model.addAttribute("pageSize", PAGE_SIZE);
+					return "pages/filter/news/" + columnCode;
 				}else {
 					Template template = templateService.getTemplateByColumnId(column.getId());   //取得对应的模板
 					if(template != null){ //该栏目下没有二级内容

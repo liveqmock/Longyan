@@ -89,7 +89,7 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 	 */
 	@Override
 	public List<BbsReply> findByStatus(Integer status, Integer start, Integer count) {
-		String sql = "select * from bbs_reply where status=? order by ctime asc limit " + start + ", " + count;
+		String sql = "select * from bbs_reply where status=? order by ctime desc limit " + start + ", " + count;
 		List<BbsReply> bbss = new ArrayList<BbsReply>();
 		
 		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new Object[]{ status }, new RowMapper<BbsReply>() {  
@@ -108,7 +108,7 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 	 */
 	@Override
 	public List<BbsReply> findByCustomerId(Integer customer_id, Integer start, Integer count) {
-		String sql = "select * from bbs_reply where customer_id=? order by ctime asc limit " + start + ", " + count;
+		String sql = "select * from bbs_reply where customer_id=? order by ctime desc limit " + start + ", " + count;
 		List<BbsReply> bbss = new ArrayList<BbsReply>();
 		
 		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new Object[]{ customer_id }, new RowMapper<BbsReply>() {  
@@ -127,7 +127,7 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 	 */
 	@Override
 	public List<BbsReply> findAll(Integer start, Integer count) {
-		String sql = "select * from bbs_reply order by ctime asc limit " + start + ", " + count;
+		String sql = "select * from bbs_reply order by ctime desc limit " + start + ", " + count;
 		List<BbsReply> bbss = new ArrayList<BbsReply>();
 		
 		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new RowMapper<BbsReply>() {  
@@ -146,7 +146,7 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 	 */
 	@Override
 	public List<BbsReply> findByBbsId(Integer bbs_id, Integer start, Integer count) {
-		String sql = "select * from bbs_reply where bbs_id=? order by ctime asc limit " + start + ", " + count;
+		String sql = "select * from bbs_reply where bbs_id=? order by ctime desc limit " + start + ", " + count;
 		List<BbsReply> bbss = new ArrayList<BbsReply>();
 		
 		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new Object[]{ bbs_id }, new RowMapper<BbsReply>() {  
