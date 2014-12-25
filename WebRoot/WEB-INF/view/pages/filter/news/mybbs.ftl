@@ -5,7 +5,7 @@
 		<span>${pageCode?cap_first}</span><br>${pageTitle!''} ▪ ${column.name!''}
 	</div>
 	<div class="top-bar">
-		<a class="add-bbs" href="/Longyan/pages/add-bbs?dim=mybbs">发帖</a>
+		<a class="add-bbs" href="/Longyan/add-bbs?dim=mybbs">发帖</a>
 		<div class="top-pager">
 			<div class="PageNum">
 				<#import "../pagination.ftl" as com>
@@ -41,11 +41,11 @@
 							
 							<span class="bbs-op">
 								<#if bbs.status == 2>
-									<a class="update" href="/Longyan/bbs/update/${bbs.id}?status=${bbs.status}">修改</a>
+									<a class="update" href="/Longyan/pages/update-bbs?id=${bbs.id}">修改</a>
 									<a class="delete" href="javascript:;" data-id="${bbs.id}" data-status="${bbs.status}">删除</a>
 									<a class="close-bbs" href="javascript:;" data-id="${bbs.id}" data-status="${bbs.status}">结贴</a>
 								<#elseif bbs.status == 3>
-									<a class="update" href="/Longyan/bbs/update/${bbs.id}?status=${bbs.status}">修改</a>
+									<a class="update" href="/Longyan/pages/update-bbs?id=${bbs.id}">修改</a>
 									<a class="delete" href="javascript:;" data-id="${bbs.id}" data-status="${bbs.status}">删除</a>
 								<#elseif bbs.status == 4>
 									<a class="delete" href="javascript:;" data-id="${bbs.id}" data-status="${bbs.status}" >删除</a>
@@ -69,7 +69,7 @@
 		</ul>
 	</div>
 	<div class="footer-bar">
-		<a class="add-bbs" href="/Longyan/pages/add-bbs?dim=health">发帖</a>
+		<a class="add-bbs" href="/Longyan/add-bbs?dim=mybbs">发帖</a>
 		<div class="footer-pager">
 			<div class="PageNum">
 				<#import "../pagination.ftl" as com>
@@ -79,3 +79,4 @@
 		</div>
 	</div>
 </div>
+<script src="/Longyan/static/js/pages/news/mybbs.js" ></script>

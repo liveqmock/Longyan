@@ -155,4 +155,12 @@ public class BbsService {
 		return bbsDaoImpl.getBbsCountByCustomerId(customer_id);
 	}
 	
+	/**
+	 * 取得能展现帖子总数
+	 * @param type
+	 * @return
+	 */
+	public Bbs getBbsById(Integer id){
+		return bbsDaoImpl.getBbsById(id);
+	}
 }

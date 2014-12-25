@@ -5,7 +5,7 @@
 		<span>${pageCode?cap_first}</span><br>${pageTitle!''} ▪ ${column.name!''}
 	</div>
 	<div class="top-bar">
-		<a class="add-bbs" href="/Longyan/pages/add-bbs?dim=health">发帖</a>
+		<a class="add-bbs" href="/Longyan/add-bbs?dim=health">发帖</a>
 		<div class="top-pager">
 			<div class="PageNum">
 				<#import "../pagination.ftl" as com>
@@ -43,7 +43,7 @@
 		</ul>
 	</div>
 	<div class="footer-bar">
-		<a class="add-bbs" href="/Longyan/pages/add-bbs?dim=health">发帖</a>
+		<a class="add-bbs" href="/Longyan/add-bbs?dim=health">发帖</a>
 		<div class="footer-pager">
 			<div class="PageNum">
 				<#import "../pagination.ftl" as com>

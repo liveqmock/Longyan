@@ -38,7 +38,7 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	public String insert(Bbs bbs) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，帖子已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into bbs(title, content, status, cutomer_id, is_customer, view_count, reply_count, ctime, utime) values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into bbs(title, content, status, customer_id, is_customer, view_count, reply_count, type, ctime, utime) values(?,?,?,?,?,?,?,?,?,?)";
 		Bbs col = getBbsById(bbs.getId());
 		
 		if(col != null){
@@ -53,6 +53,7 @@ public class BbsDaoImpl implements BbsDao {
 			bbs.getIs_customer(),
 			bbs.getView_count(),
 			bbs.getReply_count(),
+			bbs.getType(),
 			new Date(),
 			new Date()
 		});
@@ -69,7 +70,7 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	public String update(Bbs bbs) {
 		String flag = "2003";     //2001 更新成功；2002  用户不存在； 2003 其他原因更新失败
-		String sql = "update bbs set title=?, content=?, utime=? where id=?";
+		String sql = "update bbs set title=?, content=?, type=?, status=?, utime=? where id=?";
 		Bbs col = getBbsById(bbs.getId());
 		
 		if(col == null){
@@ -80,6 +81,8 @@ public class BbsDaoImpl implements BbsDao {
 		int i = jdbcTemplate.update(sql, new Object[]{
 			bbs.getTitle(),
 			bbs.getContent(),
+			bbs.getType(),
+			bbs.getStatus(),
 			new Date(),
 			bbs.getId()
 		});
@@ -214,7 +217,7 @@ public class BbsDaoImpl implements BbsDao {
 	}
 	
 	/**
-	 * 根据帖子类型获取帖子
+	 * 根据帖子类型获取帖子  -- 后台接口
 	 * @param type
 	 * @param start
 	 * @param count
@@ -300,7 +303,7 @@ public class BbsDaoImpl implements BbsDao {
 	 */
 	@Override
 	public List<Bbs> findByCustomerId(Integer customer_id, Integer start, Integer count) {
-		String sql = "select * from bbs where customer_id=? and status != 6 order by utime desc limit " + start + ", " + count; 
+		String sql = "select * from bbs where customer_id=? and status != 6 and type != 2 order by utime desc limit " + start + ", " + count; 
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ customer_id }, new RowMapper<Bbs>() {  
@@ -320,7 +323,7 @@ public class BbsDaoImpl implements BbsDao {
 	 * @return
 	 */
 	public int getBbsCountByCustomerId(Integer customer_id) {
-		String sql = "select * from bbs where customer_id=? and status != 6";
+		String sql = "select * from bbs where customer_id=? and status != 6 and type != 2";
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ customer_id }, new RowMapper<Bbs>() {  
@@ -389,6 +392,7 @@ public class BbsDaoImpl implements BbsDao {
 		bbs.setIs_customer(rs.getInt("is_customer"));
 		bbs.setView_count(rs.getInt("view_count"));
 		bbs.setReply_count(rs.getInt("reply_count"));
+		bbs.setType(rs.getInt("type"));
 		bbs.setCtime(rs.getTimestamp("ctime"));
 		bbs.setUtime(rs.getTimestamp("utime"));
 		return bbs;  
