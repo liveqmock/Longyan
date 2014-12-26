@@ -20,7 +20,7 @@
 				<#list dataList as data>
 					<li class="bbs-item">
 						<p class="title-link">
-							<a href="/Longyan/pages/${pageCode}/${columnCode}/bbs/${data.bbs.id}">${data.bbs.title}</a>
+							<a href="/Longyan/pages/bbs/${data.bbs.id}?dim=${columnCode}">${data.bbs.title}</a>
 						</p>
 						<p class="info">
 							<span class="customer gray">楼主：${data.customer.username}</span>

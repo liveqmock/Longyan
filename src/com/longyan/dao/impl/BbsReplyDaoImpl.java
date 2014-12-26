@@ -102,6 +102,7 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 		
 		return bbss;
 	}
+	
 
 	/**
 	 * find by customer id
@@ -127,7 +128,7 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 	 */
 	@Override
 	public List<BbsReply> findAll(Integer start, Integer count) {
-		String sql = "select * from bbs_reply order by ctime desc limit " + start + ", " + count;
+		String sql = "select * from bbs_reply order by ctime asc limit " + start + ", " + count;
 		List<BbsReply> bbss = new ArrayList<BbsReply>();
 		
 		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new RowMapper<BbsReply>() {  
@@ -146,7 +147,7 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 	 */
 	@Override
 	public List<BbsReply> findByBbsId(Integer bbs_id, Integer start, Integer count) {
-		String sql = "select * from bbs_reply where bbs_id=? order by ctime desc limit " + start + ", " + count;
+		String sql = "select * from bbs_reply where bbs_id=? order by ctime asc limit " + start + ", " + count;
 		List<BbsReply> bbss = new ArrayList<BbsReply>();
 		
 		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new Object[]{ bbs_id }, new RowMapper<BbsReply>() {  
@@ -158,6 +159,44 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
         });
 		
 		return bbss;
+	}
+	
+	/**
+	 * 取得某个帖子下面的所有会员可见的跟帖
+	 */
+	public List<BbsReply> findPassedByBbsId(Integer bbs_id, Integer start, Integer count) {
+		String sql = "select * from bbs_reply where bbs_id=? and status =1 order by ctime asc limit " + start + ", " + count;
+		List<BbsReply> bbss = new ArrayList<BbsReply>();
+		
+		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new Object[]{ bbs_id }, new RowMapper<BbsReply>() {  
+            @Override  
+            public BbsReply mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	BbsReply col = setBbsReplyProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return bbss;
+	}
+	
+	/**
+	 * 取得有效的评论数量通过帖子ID
+	 * @param bbs_id
+	 * @return
+	 */
+	public int getPassedReplyCountByBbsId(Integer bbs_id){
+		String sql = "select * from bbs_reply where id=? and status = 1";
+		List<BbsReply> bbss = new ArrayList<BbsReply>();
+		
+		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new Object[]{ bbs_id }, new RowMapper<BbsReply>() {  
+            @Override  
+            public BbsReply mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	BbsReply col = setBbsReplyProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return bbss.size();
 	}
 
 	/**

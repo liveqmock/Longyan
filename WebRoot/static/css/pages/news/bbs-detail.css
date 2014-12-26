@@ -1,0 +1,252 @@
+.wrap{
+	width: 1010px;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 50px;
+	position: relative;
+	overflow: hidden;
+	font-family: Microsoft Yahei;
+}
+.catalog_title {
+	border-left: 3px solid #2670b9;
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 10px;
+	color: #2670b9;
+	margin-bottom: 30px;
+}
+.catalog_title span {
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	font-family: Microsoft Yahei;
+	font-size: 22px;
+	color: #969696;
+	padding-top: 5px;
+	position: relative;
+}
+.top-bar, 
+.footer-bar {
+	padding:20px 0;
+	border-bottom: 1px solid #ccc;
+}
+.footer-bar {
+	border-bottom: 0;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+.top-bar .add-bbs-reply,
+.footer-bar .add-bbs-reply {
+	display: block;
+	width: 70px;
+	height: 30px;
+	background-color: #488fcf;
+	font-weight: bold;
+	color: #fff;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 5px;
+	float:right;
+	margin-top: -20px;
+}
+.return-list {
+	display: inline-block;
+	line-height: 13px;
+	padding: 6px 10px !important;
+	border: 1px solid;
+	border-color: #c9c9c9 #bdbdbd #b0b0b0 #bdbdbd;
+	background-color: #f8f8f8;
+	text-decoration: none;
+	color: #666666;
+	margin-right: 3px;
+	border-radius: 3px;
+	vertical-align: top;
+}
+.add-bbs-reply:hover,
+#J_reply_quick_btn:hover {
+	background-color: #105cb6;
+}
+.return-list:hover{
+	background-color: #488fcf;
+	color: #fff;
+}
+.top-pager,
+.footer-pager{
+	float: left;
+	margin-top: -20px;
+}
+.PageNum {
+	margin: 0;
+}
+.clear {
+	clear: both;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	visibility: hidden;
+	overflow: hidden;
+}
+.cc:after {
+	content: '\20';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.reply-list-wrap {
+	padding: 20px 0 0 0;
+}
+.reply-list-wrap .item {
+	border: 1px solid #eee;
+	border-top: 2px solid #eee;
+	border-radius: 15px;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.02);
+	background: #fbfbfb;
+	margin-bottom: 10px;
+}
+
+.item .customer-info {
+	float: left;
+	width: 160px;
+	padding: 20px;
+	text-align: center;
+}
+.customer-info .img-wrap {
+	margin-bottom: 15px;
+}
+.img-wrap img {
+	width: 100px;
+	height: 100px;
+}
+.customer-info .name {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.customer-info .name .sex-icon {
+	font-size: 14px;
+	font-weight: bold;
+	color: #F60;
+}
+.item .content-main {
+	float: left;
+	background-color: #fff;
+	padding: 10px 20px;
+	border-left: 1px solid #eee;
+	width: 767px;
+	min-height: 200px;
+	border-radius: 0 15px 15px 0;
+}
+.content-main .floor-title {
+	padding: 2px 0 12px;
+	border-bottom: 1px dashed #dddddd;
+	margin-bottom: 10px;
+}
+.floor-title .post-num {
+	float: right;
+	margin-top: 5px;
+	color: #999;
+}
+.post-num .hits {
+	border-right: 1px solid #ccc;
+	padding: 0 10px;
+}
+.post-num .replies {
+	padding-left: 10px;
+}
+.core_num {
+	padding: 0 4px;
+	background: #ff9000;
+	color: #fff !important;
+	border-radius: 3px;
+	font-size: 12px;
+	overflow: hidden;
+	text-indent: 0;
+	white-space: nowrap;
+}
+.floor-title h1 {
+	font-size: 16px;
+	display: inline;
+	line-height: 24px;
+}
+.time-bar {
+	padding: 0 0 10px;
+	margin-bottom: 5px;
+	color: #666;
+}
+.time-bar .floor {
+	float: right;
+	font-size: 24px;
+	color: #F60;
+	line-height: 1.3;
+	cursor: pointer;
+}
+.time-bar .create-time {
+	color: #666;
+}
+.content-template {
+	padding: 20px;
+}
+sup {
+	font-size: 12px;
+	margin-left: -5px;
+}
+.do-reply-wrap {
+	margin-bottom: 60px;
+	position: relative;
+}
+.do-reply-wrap textarea {
+	width: 590px;
+	height: 110px;
+	font-size: 14px;
+	overflow: auto;
+	resize: none;
+	padding: 10px;
+	line-height: 18px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	box-shadow: 2px 2px 2px #f0f0f0 inset;
+	vertical-align: middle;
+	margin: 0;
+	font-family: inherit;
+	color: #333;
+}
+.reply-tips {
+	border: #e4e4e4 solid 1px;
+	width: 280px;
+	height: 110px;
+	padding: 10px;
+	background: #fcfcfc;
+	color: #999;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 12px;
+}
+.reply-tips .mb5 {
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 5px;
+}
+#J_reply_ft {
+	margin-top: 10px;
+}
+#J_reply_quick_btn {
+	display: inline-block;
+	width: 70px;
+	height: 30px;
+	background-color: #488fcf;
+	font-weight: bold;
+	color: #fff;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 5px;
+}
+.err{
+	color: red;
+	margin-left: 20px;
+	font-size: 14px;
+	visibility: hidden;
+}

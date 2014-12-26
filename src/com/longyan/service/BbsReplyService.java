@@ -54,4 +54,22 @@ public class BbsReplyService {
 	public List<BbsReply> getBbsReplyByBbsId(Integer bbs_id, Integer start, Integer count){
 		return bbsReplyDaoImpl.findByBbsId(bbs_id, start, count);
 	}
+	
+	/**
+	 * 取得某个帖子下面可见的所有跟帖
+	 * @param bbs_id
+	 * @return
+	 */
+	public List<BbsReply> getPasssedBbsReplyByBbsId(Integer bbs_id, Integer start, Integer count){
+		return bbsReplyDaoImpl.findPassedByBbsId(bbs_id, start, count);
+	}
+	
+	/**
+	 * 有效跟帖数量
+	 * @param bbs_id
+	 * @return
+	 */
+	public int getPassedReplyCountByBbsId(Integer bbs_id){
+		return bbsReplyDaoImpl.getPassedReplyCountByBbsId(bbs_id);
+	}
 }

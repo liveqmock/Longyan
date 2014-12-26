@@ -69,7 +69,7 @@
 			}).done(function(res){
 				res = typeof res == 'string' ? $.parseJSON(res) : res;
 				if(res.code == 2001){
-					alert('结贴完成');
+					alert('已完成封贴');
 					window.location.reload();
 				}else if(res.code == 1004){
 					alert('登录验证已失效，请重新登录');

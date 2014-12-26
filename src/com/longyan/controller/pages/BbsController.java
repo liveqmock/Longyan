@@ -1,7 +1,10 @@
 package com.longyan.controller.pages;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +16,18 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.longyan.entity.Bbs;
+import com.longyan.entity.BbsReply;
 import com.longyan.entity.Column;
 import com.longyan.entity.Contact;
 import com.longyan.entity.Customer;
 import com.longyan.entity.FriendLinks;
+import com.longyan.service.BbsReplyService;
 import com.longyan.service.BbsService;
 import com.longyan.service.ColumnService;
 import com.longyan.service.ContactService;
@@ -37,6 +43,7 @@ import com.longyan.util.CookieUtil;
 @Controller
 public class BbsController {
 	private final int SITE_ID = 2;  //新闻中心站点ID默认为2
+	private final int PAGE_SIZE = 20;  
 	
 	@Resource
 	private CustomerService customerService; 
@@ -52,6 +59,9 @@ public class BbsController {
 	
 	@Autowired
 	private BbsService bbsService;
+	
+	@Autowired
+	private BbsReplyService bbsReplyService;
 	
 	/**
 	 * 中间跳转，判断是否已经登录
@@ -79,7 +89,7 @@ public class BbsController {
 	}
 	
 	/**
-	 * 新增帖子
+	 * 初始化新增帖子页面
 	 * @param model
 	 * @param request
 	 * @param response
@@ -106,13 +116,13 @@ public class BbsController {
 		model.addAttribute("id", -1);
 		model.addAttribute("status", 1);
 		model.addAttribute("type", 1);
-		model.addAttribute("pageTitle", "社区首页");
+		model.addAttribute("pageTitle", "健康社区");
 		
 		return "pages/filter/news/bbs";
 	}
 	
 	/**
-	 * 新增帖子
+	 * 初始化修改帖子页面
 	 * @param model
 	 * @param request
 	 * @param response
@@ -161,7 +171,7 @@ public class BbsController {
 		model.addAttribute("id", id);
 		model.addAttribute("status", status);
 		model.addAttribute("type", type);
-		model.addAttribute("pageTitle", "社区首页");
+		model.addAttribute("pageTitle", "健康社区");
 		
 		return "pages/filter/news/bbs";
 	}
@@ -365,6 +375,68 @@ public class BbsController {
 		jsonObject.put("msg", err_msg);
 		
 		return jsonObject.toString();
+	}
+	
+	/**
+	 * 进入帖子详情
+	 * @param model
+	 * @param bbsId
+	 * @param dim
+	 * @param pager_offset
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value="/pages/bbs/{bbsId}", method={RequestMethod.GET, RequestMethod.POST})
+	public String bbsDetail(Model model, 
+			@PathVariable("bbsId") Integer bbsId, 
+			String dim,
+			Integer pager_offset,
+			HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		if(null == dim){
+			dim = "index";
+		}
+		
+		if(pager_offset == null){
+			pager_offset = 1;
+		}
+		
+		initModel(request, model, dim);
+		
+		Map bbsLz = new HashMap();   //帖子信息和楼主信息
+		Bbs bbs = bbsService.getBbsById(bbsId);
+		Customer lz = customerService.getCustomerById(bbs.getCutomer_id());
+		bbsLz.put("bbs", bbs);
+		bbsLz.put("lz", lz);
+		
+		int start = (pager_offset - 1) * PAGE_SIZE;
+		int replyCount = bbsReplyService.getPassedReplyCountByBbsId(bbsId) + 1;
+		List replyInfoList = new ArrayList();
+		List<BbsReply> replyList = bbsReplyService.getPasssedBbsReplyByBbsId(bbsId, start, PAGE_SIZE);
+		
+		for(BbsReply bbsReply : replyList){
+			Map bbsInfoMap = new HashMap();
+			Customer cus = customerService.getCustomerById(bbsReply.getCutomer_id());
+			bbsInfoMap.put("reply", bbsReply);
+			bbsInfoMap.put("customer", cus);
+			
+			replyInfoList.add(bbsInfoMap);
+		}
+		
+		model.addAttribute("pageCode", "news");
+		model.addAttribute("dim", dim);
+		model.addAttribute("bbsLz", bbsLz);
+		model.addAttribute("replyInfoList", replyInfoList);
+		model.addAttribute("request", request);
+		model.addAttribute("totalCount", replyCount);
+		model.addAttribute("pageSize", PAGE_SIZE);
+		model.addAttribute("pageTitle", "健康社区");
+		
+		return "pages/filter/news/bbs-detail";
+		
 	}
 	
 	/**
