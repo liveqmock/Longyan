@@ -303,7 +303,7 @@ public class BbsDaoImpl implements BbsDao {
 	 */
 	@Override
 	public List<Bbs> findByCustomerId(Integer customer_id, Integer start, Integer count) {
-		String sql = "select * from bbs where customer_id=? and status != 6 and type != 2 order by utime desc limit " + start + ", " + count; 
+		String sql = "select * from bbs where customer_id=? and status != 6 order by utime desc limit " + start + ", " + count; 
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ customer_id }, new RowMapper<Bbs>() {  
@@ -323,7 +323,7 @@ public class BbsDaoImpl implements BbsDao {
 	 * @return
 	 */
 	public int getBbsCountByCustomerId(Integer customer_id) {
-		String sql = "select * from bbs where customer_id=? and status != 6 and type != 2";
+		String sql = "select * from bbs where customer_id=? and status != 6";
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ customer_id }, new RowMapper<Bbs>() {  
@@ -343,6 +343,52 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	public List<Bbs> findAll(Integer start, Integer count) {
 		String sql = "select * from bbs order by utime desc limit " + start + ", " + count;
+		List<Bbs> bbss = new ArrayList<Bbs>();
+		
+		bbss = (List<Bbs>)jdbcTemplate.query(sql, new RowMapper<Bbs>() {  
+            @Override  
+            public Bbs mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Bbs col = setBbsProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return bbss;
+	}
+	
+	/**
+	 * 取得所有栏目--后台用
+	 */
+	public List<Bbs> findAll() {
+		String sql = "select * from bbs order by utime desc";
+		List<Bbs> bbss = new ArrayList<Bbs>();
+		
+		bbss = (List<Bbs>)jdbcTemplate.query(sql, new RowMapper<Bbs>() {  
+            @Override  
+            public Bbs mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Bbs col = setBbsProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return bbss;
+	}
+	
+	/**
+	 * 根据条件查询
+	 * @return
+	 */
+	public List<Bbs> getBbsByParam(Integer type, Integer status) {
+		String sql = "";
+		if(type == 0 && status == 0){
+			sql = "select * from bbs order by utime desc";
+		}else if(type == 0 && status != 0){
+			sql = "select * from bbs where status=" + status + " order by utime desc";
+		}else if(status == 0 && type != 0){
+			sql = "select * from bbs where type=" + type + " order by utime desc";
+		}else {
+			sql = "select * from bbs where type=" + type +" and status=" + status + " order by utime desc";
+		}
 		List<Bbs> bbss = new ArrayList<Bbs>();
 		
 		bbss = (List<Bbs>)jdbcTemplate.query(sql, new RowMapper<Bbs>() {  

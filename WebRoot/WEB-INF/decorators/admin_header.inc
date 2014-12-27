@@ -38,6 +38,7 @@
 					<#--
 					<a href="/Longyan/admin/filter/email" class="list-group-item left-nav-item <#if dim == 'email'>active</#if>">邮件管理</a>
 					-->
+					<a href="/Longyan/admin/filter/bbs" class="list-group-item left-nav-item <#if dim == 'bbs'>active</#if>">论坛管理</a>
 					<a href="/Longyan/admin/filter/message" class="list-group-item left-nav-item <#if dim == 'message'>active</#if>">留言管理</a>
 					<a href="/Longyan/admin/filter/employee" class="list-group-item left-nav-item <#if dim == 'employee'>active</#if>">员工管理</a>
 				</#if>

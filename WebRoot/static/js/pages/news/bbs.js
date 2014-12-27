@@ -11,6 +11,8 @@
 			me.id = options.id;
 			me.content = options.content;
 			me.status = options.status;
+			me.pageCode = options.pageCode;
+			me.dim = options.dim;
 		},
 		run: function(){
 			var me = this;
@@ -24,6 +26,7 @@
 			me.jQbbsType = $('#bbs-type');
 			
 			me._initEvent();
+			$(document).scrollTop(541);
 		},
 		_initEvent: function(){
 			var me = this;
@@ -44,7 +47,8 @@
 			var me = this,
 				title = me.jQtitle.val(),
 				type = +me.jQbbsType.val(),
-				content = ue.getContent();
+				content = ue.getContent(),
+				timer;
 			
 			if(!title || !content){
 				me.jQerr.html('标题或者内容不能为空').css({'visibility': 'visible', 'color': 'red'});
@@ -66,7 +70,10 @@
 			}).done(function(res){
 				var json = typeof res == 'string' ? $.parseJSON(res) : res;
 				if(json.code == 1001 || json.code == 2001){
-					me.jQerr.html('发布成功，正在跳转至帖子详情页').css({'visibility': 'visible', 'color': 'green'});
+					me.jQerr.html('发布成功，正在跳转至帖子列表页...').css({'visibility': 'visible', 'color': 'green'});
+					timer = setTimeout(function(){
+						window.location.href = '/Longyan/pages/' + me.pageCode + '/' + me.dim;
+					}, 500);
 				} else if(json.code == 1002) {
 					me.jQerr.html('帖子已存在').css({'visibility': 'visible', 'color': 'red'});
 				}else if(json.code == 1004) {

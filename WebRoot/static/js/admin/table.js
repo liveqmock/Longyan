@@ -23,9 +23,19 @@
 						field.id +'"/>';
 			};
 				
-			opts.datafields.unshift({ title:'<input type="checkbox" id="select-all" />', name:'number', type:'string', checkbox: inputStr});
-			opts.datafields.unshift({ title:'序号', name:'number', type:'number', number: true, sClass: "td-hidden"});
-			opts.datafields.push({ "title":"操作", "name":"id", "type":"number","align":"right", "text": me.pageLink(opts.page)});
+			if(opts.page == 'bbs'){
+				opts.datafields.unshift({ title:'帖子标题', name:'title', type:'string', sClass: "title", text: me.pageLink("bbs_title")});
+				opts.datafields.unshift({ title:'序号', name:'number', type:'number', number: true, sClass: "td-hidden"});
+				opts.datafields.push({ "title":"操作", "name":"id", "type":"number","align":"right", "text": me.pageLink(opts.page)});
+			}else if(opts.page == 'bbs_reply'){
+				opts.datafields.unshift({ title:'序号', name:'number', type:'number', number: true, sClass: "td-hidden"});
+				opts.datafields.push({ "title":"操作", "name":"id", "type":"number","align":"right", "text": me.pageLink(opts.page)});
+			}else{
+				opts.datafields.unshift({ title:'<input type="checkbox" id="select-all" />', name:'number', type:'string', checkbox: inputStr});
+				opts.datafields.unshift({ title:'序号', name:'number', type:'number', number: true, sClass: "td-hidden"});
+				opts.datafields.push({ "title":"操作", "name":"id", "type":"number","align":"right", "text": me.pageLink(opts.page)});
+			}
+			
 		    me.renderTable(opts); 
 		},
 		initEvent: function(){
@@ -207,6 +217,55 @@
 						field.employee_id + '">更新</a>';
         			};
         			break;
+        		case 'bbs_title':
+        			var statusMap = {
+        				1: 'health',
+        				2: 'activity'
+        			};
+        			link = function(field) {
+	    				return '<a href="/Longyan/pages/bbs/' + field.id + '?dim=' + statusMap[field.type] + 
+	    				'" target="_blank">' + field.title + '</a>';
+	    			};
+					break;
+				case 'bbs':
+					link = function(field) {
+						var ret = '';
+						if(field.status == 1){
+							ret = '<a href="javascript:;" class="btn btn-success bbs-status-change" target-status="2" id="' + 
+								field.id + '">通过</a><a href="javascript:;" class="btn btn-danger bbs-status-change" target-status="3" id="' +
+								field.id + '">拒绝</a>';
+						}else if(field.status == 2) {
+							ret = '<a href="javascript:;" class="btn btn-danger bbs-status-change" target-status="5" id="' +
+								field.id + '">屏蔽</a>';
+						}else if(field.status == 3){
+							ret = '<a href="javascript:;" class="btn btn-success bbs-status-change" target-status="2" id="' +
+								field.id + '">通过</a>';
+						}else if (field.status == 4) {
+							ret = '<a href="javascript:;" class="btn btn-danger bbs-status-change" target-status="5" id="' +
+								field.id + '">屏蔽</a>';
+						}else if (field.status == 5) {
+							ret = '<a href="javascript:;" class="btn btn-warning bbs-status-change" target-status="1" id="' +
+								field.id + '">取消屏蔽</a>';
+						}
+						ret += '<a href="javascript:;" class="btn btn-info bbs-reply-check" id="' +
+						field.id + '">查看回复</a>';
+						
+	    				return ret;
+	    			};
+					break;
+				case 'bbs_reply':
+					link = function(field) {
+						var ret = '';
+						if(field.status == 1) {
+							ret = '<a href="javascript:;" class="btn btn-danger bbs-reply-status-change" target-status="2" id="' +
+								field.id + '">屏蔽</a>';
+						}else {
+							ret = '<a href="javascript:;" class="btn btn-warning bbs-reply-status-change" target-status="1" id="' +
+								field.id + '">取消屏蔽</a>';
+						}
+	    				return ret;
+	    			};
+					break;
         	}
         	
         	return link;

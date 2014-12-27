@@ -5,6 +5,9 @@
 		<span>${pageCode?cap_first}</span><br>${pageTitle!''} ▪ ${column.name!''}
 	</div>
 	<div class="top-bar">
+		<#if customer_id == -2>
+			<a class="add-bbs" href="/Longyan/add-bbs?dim=activity">发帖</a>
+		</#if>
 		<div class="top-pager">
 			<div class="PageNum">
 				<#import "../pagination.ftl" as com>
@@ -42,6 +45,9 @@
 		</ul>
 	</div>
 	<div class="footer-bar">
+		<#if customer_id == -2>
+			<a class="add-bbs" href="/Longyan/add-bbs?dim=activity">发帖</a>
+		</#if>
 		<div class="footer-pager">
 			<div class="PageNum">
 				<#import "../pagination.ftl" as com>

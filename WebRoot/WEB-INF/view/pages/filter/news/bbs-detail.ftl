@@ -5,7 +5,9 @@
 		<span>${pageCode?cap_first}</span><br>${pageTitle!''} ▪ 帖子详情
 	</div>
 	<div class="top-bar">
-		<a class="add-bbs-reply" href="javascript:;">回复</a>
+		<#if bbsLz.bbs.status == 2>
+			<a class="add-bbs-reply" href="javascript:;">回复</a>
+		</#if>
 		<div class="top-pager">
 			<a class="return-list" href="/Longyan/pages/news/${dim}">« 返回列表</a>
 		</div>
@@ -101,7 +103,9 @@
 		</#if>
 	</div>
 	<div class="footer-bar">
-		<a class="add-bbs-reply" href="javascript:;">回复</a>
+		<#if bbsLz.bbs.status == 2>
+			<a class="add-bbs-reply" href="javascript:;">回复</a>
+		</#if>
 		<div class="footer-pager">
 			<a class="return-list" href="/Longyan/pages/news/${dim}">« 返回列表</a>
 		</div>
@@ -113,20 +117,22 @@
 			</div>
 		</div>
 	</div>
-	<div class="do-reply-wrap">
-		<textarea aria-label="快速回复" id="reply-area" placeholder="(^_^) 请遵守“龙颜社区回帖规范”谢谢！"></textarea>
-		<div class="fr reply-tips">
-            <div class="mb5">龙颜社区回帖规范：</div>
-            一、遵纪守法，禁止发布违法乱纪的消息及言论。<br>
-            二、不讨论政治、国家及地方领导人的相关话题。<br>
-            三、回帖中严禁广告。<br>
-            四、回帖中不要恶意诋毁他人、评价要有根有据。<br>
-            五、不要使用侮辱、淫秽性词汇，拒绝人身攻击。
-        </div>
-        <div class="J_reply_ft" id="J_reply_ft">
-            <a data-bid="${bbsLz.lz.id}" href="javascript:;" id="J_reply_quick_btn">回复</a>
-            <span class="err">eeeee</span>
-        </div>
-	</div>
+	<#if bbsLz.bbs.status == 2>
+		<div class="do-reply-wrap">
+			<textarea aria-label="快速回复" id="reply-area" placeholder="(^_^) 请遵守“龙颜社区回帖规范”谢谢！"></textarea>
+			<div class="fr reply-tips">
+	            <div class="mb5">龙颜社区回帖规范：</div>
+	            一、遵纪守法，禁止发布违法乱纪的消息及言论。<br>
+	            二、不讨论政治、国家及地方领导人的相关话题。<br>
+	            三、回帖中严禁广告。<br>
+	            四、回帖中不要恶意诋毁他人、评价要有根有据。<br>
+	            五、不要使用侮辱、淫秽性词汇，拒绝人身攻击。
+	        </div>
+	        <div class="J_reply_ft" id="J_reply_ft">
+	            <a data-bid="${bbsLz.bbs.id}" href="javascript:;" id="J_reply_quick_btn">回复</a>
+	            <span class="err">eeeee</span>
+	        </div>
+		</div>
+	</#if>
 </div>
 <script src="/Longyan/static/js/pages/news/bbs-detail.js" ></script>

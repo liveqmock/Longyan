@@ -38,7 +38,7 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 	@Override
 	public String insert(BbsReply bbsReply) {
 		String flag = "1003";   //1001 插入成功；1002 插入失败，帖子已存在； 1003默认表示插入失败，原因未知。
-		String sql = "insert into bbs_reply(content, bbs_id, cutomer_id, status, ctime, utime) values(?,?,?,?,?,?)";
+		String sql = "insert into bbs_reply(content, bbs_id, customer_id, status, ctime, utime) values(?,?,?,?,?,?)";
 		BbsReply col = getBbsReplyById(bbsReply.getId());
 		
 		if(col != null){
@@ -148,6 +148,24 @@ public class BbsReplyDaoImpl implements BbsReplyDao {
 	@Override
 	public List<BbsReply> findByBbsId(Integer bbs_id, Integer start, Integer count) {
 		String sql = "select * from bbs_reply where bbs_id=? order by ctime asc limit " + start + ", " + count;
+		List<BbsReply> bbss = new ArrayList<BbsReply>();
+		
+		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new Object[]{ bbs_id }, new RowMapper<BbsReply>() {  
+            @Override  
+            public BbsReply mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	BbsReply col = setBbsReplyProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return bbss;
+	}
+	
+	/**
+	 * 取得某个帖子下面的所有跟帖--后台用
+	 */
+	public List<BbsReply> findByBbsId(Integer bbs_id) {
+		String sql = "select * from bbs_reply where bbs_id=? order by ctime asc";
 		List<BbsReply> bbss = new ArrayList<BbsReply>();
 		
 		bbss = (List<BbsReply>)jdbcTemplate.query(sql, new Object[]{ bbs_id }, new RowMapper<BbsReply>() {  

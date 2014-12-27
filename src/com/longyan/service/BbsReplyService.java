@@ -56,6 +56,24 @@ public class BbsReplyService {
 	}
 	
 	/**
+	 * 取得某个帖子下面的所有跟帖
+	 * @param bbs_id
+	 * @return
+	 */
+	public List<BbsReply> getBbsReplyByBbsId(Integer bbs_id){
+		return bbsReplyDaoImpl.findByBbsId(bbs_id);
+	}
+	
+	/**
+	 * 通过ID取得跟帖
+	 * @param id
+	 * @return
+	 */
+	public BbsReply getBbsReplyById(Integer id){
+		return bbsReplyDaoImpl.getBbsReplyById(id);
+	}
+	
+	/**
 	 * 取得某个帖子下面可见的所有跟帖
 	 * @param bbs_id
 	 * @return

@@ -42,13 +42,9 @@
 							<span class="bbs-op">
 								<#if bbs.status == 2>
 									<a class="update" href="/Longyan/pages/update-bbs?id=${bbs.id}">修改</a>
-									<a class="delete" href="javascript:;" data-id="${bbs.id}" data-status="${bbs.status}">删除</a>
 									<a class="close-bbs" href="javascript:;" data-id="${bbs.id}" data-status="${bbs.status}">封贴</a>
 								<#elseif bbs.status == 3>
-									<a class="update" href="/Longyan/pa                     es/update-bbs?id=${bbs.id}">修改</a>
-									<a class="delete" href="javascript:;" data-id="${bbs.id}" data-status="${bbs.status}">删除</a>
-								<#elseif bbs.status == 4>
-									<a class="delete" href="javascript:;" data-id="${bbs.id}" data-status="${bbs.status}" >删除</a>
+									<a class="update" href="/Longyan/paes/update-bbs?id=${bbs.id}">修改</a>
 								</#if>
 							</span>
 						</p>

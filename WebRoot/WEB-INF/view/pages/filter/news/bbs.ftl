@@ -8,6 +8,9 @@
 			<span class="text">请选择分类：</span>
 			<select id="bbs-type">
 				<option value="1" <#if type == 1>selected="selected"</#if>>健康中心</option>
+				<#if customer_id == -2>
+					<option value="2" <#if type == 2>selected="selected"</#if>>活动专区</option>
+				</#if>
 			</select>
 		</div>
 		<div class="content-box">
@@ -32,7 +35,9 @@
 			method: '${method}',
 			id: ${id},
 			content: '${content}',
-			status: ${status}
+			status: ${status},
+			pageCode: '${pageCode}',
+			dim: '${dim}'
 		});
 		$.run();
 	});

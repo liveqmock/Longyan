@@ -1,0 +1,13 @@
+{
+	"table_fileds": [
+		{"title":"ID", "name":"id", "type":"string","align":"right", "sClass": "id td-hidden"},
+    	{"title":"状态", "name":"status_text", "type":"string","align":"right", "sClass": "status_text"},
+    	{"title":"状态Code", "name":"status", "type":"number","align":"right", "sClass": "status td-hidden"},
+    	{"title":"会员", "name":"customer_name", "type":"string","align":"right", "sClass": "customer_name"},
+    	{"title":"类型", "name":"type_text", "type":"string","align":"right", "sClass": "type_text"},
+    	{"title":"类型Code", "name":"type", "type":"string","align":"right", "sClass": "type td-hidden"},
+    	{"title":"浏览量", "name":"view_count", "type":"string","align":"right", "sClass": "view_count"},
+    	{"title":"回帖量", "name":"reply_count", "type":"string","align":"right", "sClass": "reply_count"},
+    	{"title":"创建时间", "name":"ctime", "type":"string","align":"right", "sClass": "ctime"}
+    ]
+}

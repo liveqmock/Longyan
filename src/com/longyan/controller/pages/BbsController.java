@@ -218,7 +218,11 @@ public class BbsController {
 			bbs.setCutomer_id(customer_id);
 			bbs.setIs_customer(0);
 			bbs.setReply_count(0);
-			bbs.setStatus(1);
+			if (customer_id == -2) {  //如果为前端管理员发帖，帖子默认通过
+				bbs.setStatus(2);
+			}else {
+				bbs.setStatus(1);
+			}
 			bbs.setTitle(title);
 			bbs.setType(type);
 			bbs.setView_count(0);
@@ -411,6 +415,7 @@ public class BbsController {
 		Customer lz = customerService.getCustomerById(bbs.getCutomer_id());
 		bbsLz.put("bbs", bbs);
 		bbsLz.put("lz", lz);
+		bbsService.addViewCount(bbs);
 		
 		int start = (pager_offset - 1) * PAGE_SIZE;
 		int replyCount = bbsReplyService.getPassedReplyCountByBbsId(bbsId) + 1;
@@ -437,6 +442,74 @@ public class BbsController {
 		
 		return "pages/filter/news/bbs-detail";
 		
+	}
+	
+	/**
+	 * 新增评论
+	 * @param model
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("/bbs-reply/post")
+	public @ResponseBody String addBbsReply(
+			Model model,
+			HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		JSONArray jsonArray = CookieUtil.isLogin(request, customerService);
+		JSONObject loginJson = (JSONObject) jsonArray.get(0);
+		JSONObject customerJson = (JSONObject) jsonArray.get(1);
+		if(!Boolean.parseBoolean(loginJson.get("isLogin").toString
+				())){
+			jsonObject.put("code", 1004);
+			jsonObject.put("msg", "not login");
+			return jsonObject.toString();
+		}
+		
+		Integer bbs_id = Integer.parseInt(request.getParameter("bbs_id"));
+		String content = request.getParameter("content");
+		int customer_id = (Integer)customerJson.get("customer_id");
+		String codeStr = "";
+		String err_msg = "";
+		
+		Bbs bbs = bbsService.getBbsById(bbs_id);
+		if(bbs == null) {
+			jsonObject.put("code", 1005);
+			jsonObject.put("msg", "bbs does not exist");
+			return jsonObject.toString();
+		}
+		
+		BbsReply bbsReply = new BbsReply();
+		bbsReply.setBbs_id(bbs_id);
+		bbsReply.setContent(content);
+		bbsReply.setCutomer_id(customer_id);
+		bbsReply.setStatus(1);
+		
+		codeStr = bbsReplyService.addBbsReply(bbsReply);
+		
+		switch (Integer.parseInt(codeStr)) {
+			case 1001:
+				err_msg = "add success";
+				//回帖成功更新帖子时间、帖子回复量
+				bbsService.addReplyCount(bbs);
+				bbsService.modifyBbsTime(bbs);
+				break;
+			case 1002:
+				err_msg = "the bbs already exist!";
+				break;
+			case 1003:
+				err_msg = "unkown error!";
+				break;
+		}
+		
+		jsonObject.put("code", codeStr);
+		jsonObject.put("msg", err_msg);
+		
+		return jsonObject.toString();
 	}
 	
 	/**

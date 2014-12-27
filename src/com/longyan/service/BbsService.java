@@ -163,4 +163,22 @@ public class BbsService {
 	public Bbs getBbsById(Integer id){
 		return bbsDaoImpl.getBbsById(id);
 	}
+	
+	/**
+	 * 后台取得所有帖子
+	 * @return
+	 */
+	public List<Bbs> getAllBbs(){
+		return bbsDaoImpl.findAll();
+	}
+	
+	/**
+	 * 根据条件查询帖子
+	 * @param type
+	 * @param status
+	 * @return
+	 */
+	public List<Bbs> getBbsByParam(Integer type, Integer status){
+		return bbsDaoImpl.getBbsByParam(type, status);
+	}
 }
