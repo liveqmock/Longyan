@@ -112,6 +112,17 @@ public class BbsService {
 	}
 	
 	/**
+	 * 根据帖子类型查找帖子
+	 * @param type
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<Bbs> getHotBbsByType(Integer type, Integer start, Integer count){
+		return bbsDaoImpl.findHotBbsByType(type, start, count);
+	}
+	
+	/**
 	 * 取得所有帖子
 	 * @return
 	 */

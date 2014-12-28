@@ -4,111 +4,135 @@
 	margin: 0 auto;
 	position: relative;
 	overflow: hidden;
-	background-color: #f4f4f4;
+	background-color: #fff;
 	font-family: Microsoft Yahei;
 }
-.culture{
-	margin-top: 40px;
-	position: relative;
-	min-height: 310px;
-	_height: 310px;
-	width: 1000px;
+.section {
+	padding: 10px 10px 30px 10px;
+	margin-top: 20px;
 }
-.culture img{
+.section a:hover {
+	color: #0561b4;
+}
+.dividing_line {
+	height: 1px;
+	background: url(/Longyan/static/img/pages/news/line.gif) no-repeat center center;
+}
+.catalog_title {
+	border-left: 3px solid #2670b9;
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 10px;
+	color: #2670b9;
+	margin-bottom: 30px;
+}
+.catalog_title span {
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	font-family: Microsoft Yahei;
+	font-size: 22px;
+	color: #969696;
+	padding-top: 5px;
+	position: relative;
+	font-weight: normal;
+}
+.section .content-box {
+	position: relative;
+}
+.content-box .img-box {
 	position: absolute;
-	top: 10px;
-	left: 20px;
+	width: 303px;
+	height: 301px;
+	top: 0;
+	right: 0;
+}
+.img-box a {
+	width: 107px;
+	height: 30px;
+	line-height: 30px;
 	display: block;
-	width: 370px;
-	height: 362px;
-}
-.culture-left {
-	margin-left: 430px;
-}
-.title{
-	font-size: 30px;
-	color: #2592d7;
-	font-weight: normal;
-}
-.small-title{
-	margin-top: 40px;
-	color: #a5a5a5;
-	font-weight: normal;
+	position: absolute;
+	background: #3E4662;
 	font-size: 24px;
+	text-align: center;
+	padding: 5px 0;
+	color: #fff;
+	left: 126px;
+	top: 124px;
 }
-.culture p{
-    margin-top: 10px;
-    font-size: 14px;
-}
-.hope{
-	width: 1000px;
-	min-height: 320px;
-	_height: 320px;
+.content-box .more-box {
 	position: relative;
-	margin-top: 90px;
+	height: 1px;
+	border-bottom: 1px solid #999;
+	margin-top: 20px;
 }
-.hope-right {
-	width: 540px;
-	text-align: right;
+.more-box a {
+	position: absolute;
+	top: -20px;
+	right: 5px;
 }
-.hope img{
+.content-box .list-box {
+	padding: 20px 20px 20px 10px;
+}
+.list-box .item {
+	margin-bottom: 6px;
+}
+.list-box .item span {
+	float: right;
+	color: #999;
+}
+.list-box .item .time {
+	margin-left: 10px;
+}
+.list-box .item a {
+	display: inline-block;
+	max-width: 400px;
+	height: 20px;
+	line-height: 20px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	font-weight: bold;
+	font-size: 14px;
+}
+.img-box a:hover {
+	background: #F27B3D;
+	color: #fff;
+}
+.news-box .content-box {
+	min-height: 310px;
+}
+.news-box .news-list {
+	width: 670px;
+	padding: 10px;
+}
+.health-box .content-box {
+	min-height: 250px;
+}
+.health-box .health-img {
+	display: block;
+	width: 300px;
+	height: 244px;
 	position: absolute;
 	top: 0;
-	right: 50px;
+	left: 0;
+}
+.health-box .news-list {
+	width: 680px;
+	margin-left: 320px;
+}
+.activity-box .content-box {
+	min-height: 240px;
+}
+.activity-box .activity-img {
 	display: block;
-	width: 320px;
-	height: 262px;
-}
-.color{
-	color: #ffb830;
-}
-.our-hope {
-	font-size: 24px;
-	font-weight: normal;
-}
-.our-hope .color {
-	font-size: 24px;
-}
-.small-text{
-	margin-top: 8px;
-	margin-bottom: 10px;
-}
-.hope p{
-	font-size: 14px;
-}
-.hope h2{
-	color: #666;
-}
-.business{
-	width: 1000px;
-	min-height: 300px;
-	_height: 300px;
-	position: relative;
-	margin-top: 60px;
-	margin-bottom: 20px;
-}
-.business img{
-	width: 292px;
-	height: 244px;
-	display: block;
+	width: 300px;
+	height: 224px;
 	position: absolute;
-	top: 10px;
-	left: 20px;
+	top: 0;
+	right: 0;
 }
-.business-right {
-	margin-left: 370px;
-}
-.business h1{
-	color: #2592d7;
-	font-size: 30px;
-	font-weight: normal;
-}
-.pre{
-	margin-top: 30px;
-	font-size: 24px;
-	color: #a5a5a5;
-}
-.intro{
-	font-size: 14px;
-	margin-top: 10px;
+.activity-box .news-list {
+	width: 680px;
 }

@@ -11,7 +11,9 @@
   <body>
   	<div class="top">
   		<div class="join-center">
-  			<a href="/Longyan" class="logo page-icon"></a>
+  			<a href="/Longyan/" class="logo">
+				<img alt="logo" src="/Longyan/static/img/pages/common/nav-logo.png">
+			</a>
   		</div>
   	</div>
   	
@@ -117,7 +119,7 @@
 	</div>
 	<div class="footer">
 		<p class="right-wrap">
-			@2014 版权所有 龙颜集团  long yan group Co.,Ltd. 地址：重庆市南岸区江南大道1610 电话：023-58881002
+			@2015 版权所有 龙颜集团  long yan group Co.,Ltd. 地址：重庆市南岸区江南大道1610 电话：023-58881002
 		</p>
 	</div>
 	<script src="/Longyan/static/js/lib/jquery-1.9.1.js" ></script>

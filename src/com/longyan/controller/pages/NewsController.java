@@ -80,7 +80,17 @@ public class NewsController {
 			HttpServletResponse response) throws IOException {
 		
 		initModel(request, model, "index");
+		
+		Column column = columnService.getColumnByCode("news");
+		//首页取得
+		List<Content> contents = contentService.getContentsByColumnId(column.getId(), 0, 8);
+		List<Bbs> activityBbs = bbsService.getHotBbsByType(2, 0, 8);
+		List<Bbs> healthBbs = bbsService.getHotBbsByType(1, 0, 8);
+		
 		model.addAttribute("pageCode", "news");
+		model.addAttribute("contentList", contents);
+		model.addAttribute("activityBbs", activityBbs);
+		model.addAttribute("healthBbs", healthBbs);
 		model.addAttribute("pageTitle", "社区首页");
 		model.addAttribute("dim", "index");
 		System.out.println("进入社区首页");

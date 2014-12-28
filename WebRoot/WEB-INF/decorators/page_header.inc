@@ -33,7 +33,9 @@
 	<!-- 导航条区域 -->
 	<div class="page-nav-bar">
 		<div class="center-wrap">
-			<a href="/Longyan/" class="logo page-icon"></a>
+			<a href="/Longyan/" class="logo">
+				<img alt="logo" src="/Longyan/static/img/pages/common/nav-logo.png">
+			</a>
 			<ul class="nav-list">
 				<li>
 					<a href="/Longyan/pages/${pageCode}" class="<#if dim == 'index'>active</#if>">

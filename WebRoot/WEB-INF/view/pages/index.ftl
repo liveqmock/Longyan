@@ -7,7 +7,10 @@
     <link rel="stylesheet" type="text/css" href="/Longyan/static/css/pages/index.css">
   </head>
   <body>
-    <div class="logo"></div>
+    <div class="logo">
+    	<img src="/Longyan/static/img/pages/index-logo.jpg">
+    	<p class="logo-txt">龍顏集团</p>
+    </div>
     <p class="tip">重庆龙颜实业集团</p>
     <p class="tip" style="margin-top: 8px;">中国健康产业运营商</p>
     <div class="links">
@@ -16,7 +19,7 @@
           <a href="/Longyan/pages/strategy" class="icon" target="_blank">
             <div class="inner">
               <span class="icon"></span>
-              <span class="txt">战略集团</span>
+              <span class="txt">集团战略</span>
             </div>
           </a>
         </li>

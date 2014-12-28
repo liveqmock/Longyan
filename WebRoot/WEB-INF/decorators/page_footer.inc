@@ -36,7 +36,7 @@
 					</#if>
 				</p>
 				<p class="right-wrap">
-					@2014 版权所有 龙颜集团  long yan group Co.,Ltd. 地址：中国.重庆.南岸区.弹子石.中海国际社区B座12层 电话：023-58881002
+					@2015 版权所有 龙颜集团  long yan group Co.,Ltd. 地址：中国.重庆.南岸区.弹子石.中海国际社区B座12层 电话：023-58881002
 					<a href="/Longyan/add-feedback" target="_blank" class="comment">意见反馈</a>
 				</p>
 			</div>

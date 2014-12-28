@@ -281,6 +281,28 @@ public class BbsDaoImpl implements BbsDao {
 	}
 	
 	/**
+	 * 根据帖子类型获取帖子
+	 * @param type
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<Bbs> findHotBbsByType(Integer type, Integer start, Integer count) {
+		String sql = "select * from bbs where type=? and (status = 2 or status = 4) order by reply_count desc limit " + start + ", " + count;
+		List<Bbs> bbss = new ArrayList<Bbs>();
+		
+		bbss = (List<Bbs>)jdbcTemplate.query(sql, new Object[]{ type }, new RowMapper<Bbs>() {  
+            @Override  
+            public Bbs mapRow(ResultSet rs, int rowNum) throws SQLException {  
+            	Bbs col = setBbsProperties(rs); 
+            	return col;
+            }  
+        });
+		
+		return bbss;
+	}
+	
+	/**
 	 * 取得审核通过的帖子供前段展现
 	 */
 	public List<Bbs> findPassedAndTimeoutedBbs(Integer start, Integer count) {
