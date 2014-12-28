@@ -70,7 +70,7 @@
 		</tr>
 	</table>
 	<div class="btn-wrap">
-		<a class="btn btn-success" href="javascript:;" id="save">保存</a>
+		<a class="btn btn-success" href="javascript:void(0);" id="save">保存</a>
 	</div>
 	<script src="/Longyan/static/js/lib/jquery-ui.min.js" ></script>
 	<script src="/Longyan/static/js/pages/usercenter/userinfo.js"></script>

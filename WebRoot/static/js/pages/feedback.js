@@ -33,7 +33,7 @@ $(document).ready(function(){
 				return;
 			}
 			$.ajax({
-				url: '/Longyan/post-feedback',
+				url: '/Longyan/post-feedback?_=' + new Date().getTime(),
 				data: {
 					content: val
 				}

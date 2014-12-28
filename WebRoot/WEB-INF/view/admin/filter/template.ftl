@@ -20,7 +20,7 @@
 						模板路径：<span class="path">${path}</span>
 					</#if>
 					<span class="err">文件名已存在</span>
-					<a class="btn btn-success" href="javascript:;" id="publish-template">发布</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="publish-template">发布</a>
 				</div>
 			</div>
 		</div>

@@ -2,6 +2,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+	<META HTTP-EQUIV="expires" CONTENT="0">
 	<title>龙颜集团--${pageTitle!""}</title>
 	<link href="/Longyan/static/css/pages/usercenter/usercenter-common.css" rel="stylesheet" />
 	<link href="/Longyan/static/css/pages/pager.css" rel="stylesheet" />
@@ -11,7 +14,9 @@
 	<!-- 顶部登录信息 -->
 	<div class="page-top-bar">
 		<div class="center-wrap">
-			<a href="/Longyan" class="logo page-icon"></a>
+			<a href="/Longyan" class="logo">
+				<img alt="logo" src="/Longyan/static/img/pages/common/nav-logo.png">
+			</a>
 		</div>
 	</div>
 	<!-- 页面内容区域 -->

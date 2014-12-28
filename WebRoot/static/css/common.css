@@ -25,6 +25,10 @@ a:ACTIVE, a:VISITED {
 	text-decoration: none;
 }
 
+img {
+	border: 0;
+}
+
 input.inputText {
 	color: #336699;
 	background: url(/Longyan/static/img/admin/text_bg.gif) #F7FAFC repeat-x left top;

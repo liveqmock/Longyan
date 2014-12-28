@@ -35,7 +35,7 @@
 				status = +tar.data('status');
 			
 			$.ajax({
-				url: '/Longyan/bbs/delete',
+				url: '/Longyan/bbs/delete?_=' + new Date().getTime(),
 				data: {
 					id: id,
 					status: status
@@ -61,7 +61,7 @@
 				status = +tar.data('status');
 			
 			$.ajax({
-				url: '/Longyan/bbs/close',
+				url: '/Longyan/bbs/close?_=' + new Date().getTime(),
 				data: {
 					id: id,
 					status: status

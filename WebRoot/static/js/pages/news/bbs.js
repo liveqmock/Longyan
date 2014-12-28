@@ -57,7 +57,7 @@
 			me.jQerr.css('visibility', 'hidden');
 			
 			$.ajax({
-				url: '/Longyan/bbs/post',
+				url: '/Longyan/bbs/post?_=' + new Date().getTime(),
 				data: {
 					method: me.method,
 					id: me.id,

@@ -123,7 +123,7 @@ $(document).ready(function(){
 			}
 
 			$.ajax({
-				url: '/Longyan/add-customer',
+				url: '/Longyan/add-customer?_=' + new Date().getTime(),
 				data: {
 					username: $('#username').val(),
 					realname: $('#realname').val(),

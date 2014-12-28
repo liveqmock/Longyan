@@ -20,9 +20,9 @@
 		</div>
 		<div class="col-md-12 ">
 			<div class="update-wrap">
-				<a class="modify-info" href="javascript:;" status="0">展开修改用户个人信息</a>
+				<a class="modify-info" href="javascript:void(0);" status="0">展开修改用户个人信息</a>
 				<div class="table-box">
-					<a class="modify-pass" href="javascript:;">修改密码</a>
+					<a class="modify-pass" href="javascript:void(0);">修改密码</a>
 					<table class="userinfo-table">
 						<tr>
 							<td class="name">用户名：</td>
@@ -99,7 +99,7 @@
 						</tr>
 					</table>
 					<div class="btn-wrap">
-						<a class="btn btn-success" href="javascript:;" id="save">保存</a>
+						<a class="btn btn-success" href="javascript:void(0);" id="save">保存</a>
 					</div>
 				</div>
 			<div>
@@ -137,8 +137,8 @@
 			</tr>
 		</table>
 		<div class="btn-wrap">
-			<a class="btn btn-success pass-btn" href="javascript:;" id="update">确认修改</a>
-			<a class="btn btn-success pass-btn" href="javascript:;" id="cancel">取消</a>
+			<a class="btn btn-success pass-btn" href="javascript:void(0);" id="update">确认修改</a>
+			<a class="btn btn-success pass-btn" href="javascript:void(0);" id="cancel">取消</a>
 		</div>
 	</div>
 </div>

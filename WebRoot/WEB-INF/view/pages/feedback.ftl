@@ -3,6 +3,9 @@
   <head>
     <title>龙颜集团--用户反馈</title>
     <meta http-equiv="keywords" content="龙颜,连锁超市,社区医院">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+	<META HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="/Longyan/static/css/pages/feedback.css">
   </head>
@@ -15,7 +18,7 @@
   	</div>
   	<div class="content-wrap">
   		<textarea id="textarea"></textarea>
-  		<a href="javascript:;" id="feedback-submit">提交回复</a>
+  		<a href="javascript:void(0);" id="feedback-submit">提交回复</a>
   	</div>
   	<div class="reply-list">
   		<p class="text">我的反馈</p>

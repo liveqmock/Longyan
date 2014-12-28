@@ -35,7 +35,7 @@ $(document).ready(function(){
 			}
 			
 			$.ajax({
-				url: '/Longyan/customer-login-check',
+				url: '/Longyan/customer-login-check?_' + new Date().getTime(),
 				data: {
 					username: username,
 					password: password

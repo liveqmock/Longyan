@@ -4,6 +4,9 @@
     <title>龙颜集团--用户注册</title>
     <meta http-equiv="keywords" content="龙颜,连锁超市,社区医院">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+	<META HTTP-EQUIV="expires" CONTENT="0">
     <link rel="stylesheet" type="text/css" href="/Longyan/static/css/pages/join.css">
     <link href="/Longyan/static/css/lib/bootstrap.min.css" rel="stylesheet" />
     <link href="/Longyan/static/css/lib/jquery-ui.css" rel="stylesheet" />
@@ -110,7 +113,7 @@
 						</tr>
 					</table>
 					<div class="btn-wrap">
-						<a class="btn btn-success" href="javascript:;" id="sure">立即注册</a>
+						<a class="btn btn-success" href="javascript:void(0);" id="sure">立即注册</a>
 					</div>
 				</div>
 			</div>

@@ -13,8 +13,8 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="tool-bar">
-					<a class="btn btn-success" href="javascript:;" id="add-column">新增</a>
-					<a class="btn btn-danger" href="javascript:;" id="del-column">删除</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="add-column">新增</a>
+					<a class="btn btn-danger" href="javascript:void(0);" id="del-column">删除</a>
 					<span class="site-tip">选择站点：</span>
 					<select id="site-form" class="form-control">
 						<option value="0" selected="selected">全部</option>
@@ -22,7 +22,7 @@
 						<option value="2">健康社区</option>
 						<option value="3">支柱产业</option>
 					</select>
-					<a class="btn btn-default" href="javascript:;" id="search">查询</a>
+					<a class="btn btn-default" href="javascript:void(0);" id="search">查询</a>
 				</div>
 			</div>
 		</div>
@@ -84,29 +84,29 @@
 								<ul id="img-list" class="validate required" flag="img-wrap">
 									<li>
 										<a href="http://www.baidu.com" target="_blank" title="点击预览" class="img-item">第一张图</a>
-										<a href="javascript:;" class="img-item-del" id="1">删除</a>
+										<a href="javascript:void(0);" class="img-item-del" id="1">删除</a>
 									</li>
 									<li>
 										<a href="http://www.baidu.com" target="_blank" title="点击预览" class="img-item">第二张图</a>
-										<a href="javascript:;" class="img-item-del" id="2">删除</a>
+										<a href="javascript:void(0);" class="img-item-del" id="2">删除</a>
 									</li>
 									<li>
 										<a href="http://www.baidu.com" target="_blank" title="点击预览" class="img-item">第三张图</a>
-										<a href="javascript:;" class="img-item-del" id="3">删除</a>
+										<a href="javascript:void(0);" class="img-item-del" id="3">删除</a>
 									</li>
 								</ul>
 								
 							</div>
 							<input type="file" name="file" id="img_url">
-							<a href="javascript:;" id="upload" class="btn btn-default">上传</a>
+							<a href="javascript:void(0);" id="upload" class="btn btn-default">上传</a>
 							<p id="upload-result">正在上传...</p>
 						</td>
 						<td class="err-lable">aaaa</td>
 					</tr>
 				</table>
 				<div class="btn-wrap">
-					<a class="btn btn-success" href="javascript:;" id="sure">提交</a>
-					<a class="btn btn-default" href="javascript:;" id="cancel">取消</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="sure">提交</a>
+					<a class="btn btn-default" href="javascript:void(0);" id="cancel">取消</a>
 				</div>
 				<label id="result">添加成功</label>
 			</div>

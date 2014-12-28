@@ -13,12 +13,12 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="tool-bar">
-					<a class="btn btn-success" href="javascript:;" id="add-order">新增</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="add-order">新增</a>
 					<span class="start-tip">开始时间：</span>
 					<input id="start-date" type="text" class="date-pick form-control" value=""/>
 					<span class="end-tip">结束时间：</span>
 					<input id="end-date" type="text" class="date-pick form-control" value=""/>
-					<a class="btn btn-default" href="javascript:;" id="search">查询</a>
+					<a class="btn btn-default" href="javascript:void(0);" id="search">查询</a>
 				</div>
 			</div>
 		</div>
@@ -102,8 +102,8 @@
 					</tr>
 				</table>
 				<div class="btn-wrap">
-					<a class="btn btn-success" href="javascript:;" id="sure">提交</a>
-					<a class="btn btn-default" href="javascript:;" id="cancel">取消</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="sure">提交</a>
+					<a class="btn btn-default" href="javascript:void(0);" id="cancel">取消</a>
 				</div>
 				<label id="result">添加成功</label>
 			</div>

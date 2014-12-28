@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="0">
 <title>欢迎访问龙颜后台系统</title>
 
 	<script src="/Longyan/static/js/lib/jquery-1.9.1.js" ></script>

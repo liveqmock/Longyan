@@ -6,7 +6,7 @@
 	</div>
 	<div class="top-bar">
 		<#if bbsLz.bbs.status == 2>
-			<a class="add-bbs-reply" href="javascript:;">回复</a>
+			<a class="add-bbs-reply" href="javascript:void(0);">回复</a>
 		</#if>
 		<div class="top-pager">
 			<a class="return-list" href="/Longyan/pages/news/${dim}">« 返回列表</a>
@@ -104,7 +104,7 @@
 	</div>
 	<div class="footer-bar">
 		<#if bbsLz.bbs.status == 2>
-			<a class="add-bbs-reply" href="javascript:;">回复</a>
+			<a class="add-bbs-reply" href="javascript:void(0);">回复</a>
 		</#if>
 		<div class="footer-pager">
 			<a class="return-list" href="/Longyan/pages/news/${dim}">« 返回列表</a>
@@ -129,7 +129,7 @@
 	            五、不要使用侮辱、淫秽性词汇，拒绝人身攻击。
 	        </div>
 	        <div class="J_reply_ft" id="J_reply_ft">
-	            <a data-bid="${bbsLz.bbs.id}" href="javascript:;" id="J_reply_quick_btn">回复</a>
+	            <a data-bid="${bbsLz.bbs.id}" href="javascript:void(0);" id="J_reply_quick_btn">回复</a>
 	            <span class="err">eeeee</span>
 	        </div>
 		</div>

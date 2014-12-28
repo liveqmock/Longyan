@@ -13,7 +13,7 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="tool-bar">
-					<a class="btn btn-danger" href="javascript:;" id="del-message">删除</a>
+					<a class="btn btn-danger" href="javascript:void(0);" id="del-message">删除</a>
 					<span class="start-tip">开始时间：</span>
 					<input id="start-date" type="text" class="date-pick form-control" value=""/>
 					<span class="end-tip">结束时间：</span>
@@ -24,7 +24,7 @@
 						<option value="0">未回复</option>
 						<option value="1">已回复</option>
 					</select>
-					<a class="btn btn-default" href="javascript:;" id="search">查询</a>
+					<a class="btn btn-default" href="javascript:void(0);" id="search">查询</a>
 				</div>
 			</div>
 		</div>
@@ -53,8 +53,8 @@
 					<div class="reply-info">回复人：Tracy  时间：2014-9-23</div>
 				</div>
 				<div class="btn-wrap">
-					<a class="btn btn-success" href="javascript:;" id="sure">回复</a>
-					<a class="btn btn-default" href="javascript:;" id="cancel">取消</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="sure">回复</a>
+					<a class="btn btn-default" href="javascript:void(0);" id="cancel">取消</a>
 				</div>
 				<label id="result">添加成功</label>
 			</div>

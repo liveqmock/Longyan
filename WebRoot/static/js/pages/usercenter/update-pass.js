@@ -77,7 +77,7 @@ $(document).ready(function(){
 			}
 
 			$.ajax({
-				url: '/Longyan/customer/update-password',
+				url: '/Longyan/customer/update-password?_=' + new Date().getTime(),
 				data: {
 					password: $('#password').val(),
 					newPassword: $('#newpassword').val()

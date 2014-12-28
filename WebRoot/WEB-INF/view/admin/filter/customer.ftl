@@ -13,8 +13,8 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="tool-bar">
-					<a class="btn btn-success" href="javascript:;" id="add-customer">新增</a>
-					<a class="btn btn-danger" href="javascript:;" id="del-customer">删除</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="add-customer">新增</a>
+					<a class="btn btn-danger" href="javascript:void(0);" id="del-customer">删除</a>
 				</div>
 			</div>
 		</div>
@@ -88,8 +88,8 @@
 					</tr>
 				</table>
 				<div class="btn-wrap">
-					<a class="btn btn-success" href="javascript:;" id="sure">提交</a>
-					<a class="btn btn-default" href="javascript:;" id="cancel">取消</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="sure">提交</a>
+					<a class="btn btn-default" href="javascript:void(0);" id="cancel">取消</a>
 				</div>
 				<label id="result">添加成功</label>
 			</div>

@@ -3,6 +3,9 @@
   <head>
     <title>欢饮访问--龙颜集团</title>
     <meta http-equiv="keywords" content="龙颜,连锁超市,社区医院">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+	<META HTTP-EQUIV="expires" CONTENT="0">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="/Longyan/static/css/pages/index.css">
   </head>

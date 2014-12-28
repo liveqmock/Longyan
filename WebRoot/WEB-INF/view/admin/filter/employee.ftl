@@ -13,8 +13,8 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="tool-bar">
-					<a class="btn btn-success" href="javascript:;" id="add-employee">新增</a>
-					<a class="btn btn-danger" href="javascript:;" id="del-employee">删除</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="add-employee">新增</a>
+					<a class="btn btn-danger" href="javascript:void(0);" id="del-employee">删除</a>
 				</div>
 			</div>
 		</div>
@@ -103,7 +103,7 @@
 									<option value="2">2</option>
 									<option value="3">3</option>
 								</select>
-								<a href="javascript:;" class="right-tip">权限说明</a>
+								<a href="javascript:void(0);" class="right-tip">权限说明</a>
 								<span class="tip-content">
 									0-管理员权限<br />
 									1-有系统设置权限； <br />
@@ -116,8 +116,8 @@
 					</#if>
 				</table>
 				<div class="btn-wrap">
-					<a class="btn btn-success" href="javascript:;" id="sure">提交</a>
-					<a class="btn btn-default" href="javascript:;" id="cancel">取消</a>
+					<a class="btn btn-success" href="javascript:void(0);" id="sure">提交</a>
+					<a class="btn btn-default" href="javascript:void(0);" id="cancel">取消</a>
 				</div>
 				<label id="result">添加成功</label>
 			</div>

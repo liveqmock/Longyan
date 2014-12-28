@@ -30,14 +30,14 @@
 						</div>
 
 						<div id="loginBtnWrap">
-							<a href="javascript:;" class="inline-block" id="loginBtn">登录</a>
+							<a href="javascript:void(0);" class="inline-block" id="loginBtn">登录</a>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
 		<div class="copyright">
-			<div class="center">Copyright © 2007-2014 Longyan.com Inc. All rights reserved.龙颜集团版权所有</div>
+			<div class="center">Copyright © 2015 Longyan.com Inc. All rights reserved.龙颜集团版权所有</div>
 		</div>
 		<script type="text/javascript" src="/Longyan/static/js/lib/jquery-1.9.1.js"></script>
 		<script type="text/javascript" src="/Longyan/static/js/lib/jquery.MD5.js"></script>

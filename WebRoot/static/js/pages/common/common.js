@@ -11,7 +11,7 @@
 		
 		jQbtnLogout.on('click', function(){
 			$.ajax({
-				url: '/Longyan/logout'
+				url: '/Longyan/logout?_=' + new Date().getTime()
 			}).done(function(res){
 				var json = typeof res == 'string' ? JSON.parse(res) : res;
 

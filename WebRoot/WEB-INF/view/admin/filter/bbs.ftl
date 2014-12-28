@@ -28,7 +28,7 @@
 						<option value="4" <#if status == 4>selected=selected</#if>>已封贴</option>
 						<option value="5" <#if status == 5>selected=selected</#if>>已屏蔽</option>
 					</select>
-					<a class="btn btn-info" href="javascript:;" id="search">查询</a>
+					<a class="btn btn-info" href="javascript:void(0);" id="search">查询</a>
 				</div>
 			</div>
 		</div>

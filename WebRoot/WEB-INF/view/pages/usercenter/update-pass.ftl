@@ -28,7 +28,7 @@
 		</tr>
 	</table>
 	<div class="btn-wrap">
-		<a class="btn btn-success" href="javascript:;" id="update">确认修改</a>
+		<a class="btn btn-success" href="javascript:void(0);" id="update">确认修改</a>
 	</div>
 	<script src="/Longyan/static/js/pages/usercenter/update-pass.js"></script>
 </div>

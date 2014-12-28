@@ -163,21 +163,21 @@
         	switch(page){
         		case 'customer': 
         			link = function(field) {
-	    				return '<a href="javascript:;" class="btn btn-success edit-customer" id="' + 
+	    				return '<a href="javascript:void(0);" class="btn btn-success edit-customer" id="' + 
 						field.id + '">编辑</a>';
         			};
         			break;
         		case 'employee': 
         			link = function(field) {
-	    				return '<a href="javascript:;" class="btn btn-success edit-employee" id="' + 
+	    				return '<a href="javascript:void(0);" class="btn btn-success edit-employee" id="' + 
 						field.id + '">编辑</a>';
         			};
         			break;
         		case 'message': 
         			link = function(field) {
 	    				return field.status == 0 ? 
-	    						('<a href="javascript:;" class="btn btn-success reply-message" id="' + field.id + '">回复</a>') : 
-	    						('<a href="javascript:;" class="btn btn-warning look-reply" id="' + field.id + '">查看</a>');
+	    						('<a href="javascript:void(0);" class="btn btn-success reply-message" id="' + field.id + '">回复</a>') : 
+	    						('<a href="javascript:void(0);" class="btn btn-warning look-reply" id="' + field.id + '">查看</a>');
         			};
         			break;
         		case 'order': 
@@ -187,33 +187,33 @@
         			break;
         		case 'contact': 
         			link = function(field) {
-	    				return '<a href="javascript:;" class="btn btn-success edit-contact" id="' + 
+	    				return '<a href="javascript:void(0);" class="btn btn-success edit-contact" id="' + 
 						field.id + '">编辑</a>';
         			};
         			break;
         		case 'friendLinks': 
         			link = function(field) {
-	    				return '<a href="javascript:;" class="btn btn-success edit-friendLinks" id="' + 
+	    				return '<a href="javascript:void(0);" class="btn btn-success edit-friendLinks" id="' + 
 						field.id + '">编辑</a>';
         			};
         			break;
         		case 'column': 
         			link = function(field) {
-	    				return '<a href="javascript:;" class="btn btn-success edit-column" id="' + 
+	    				return '<a href="javascript:void(0);" class="btn btn-success edit-column" id="' + 
 						field.id + '">编辑栏目</a><a href="/Longyan/admin/filter/template?dim=column&id=' + 
 						field.id + '" class="btn btn-warning edit-template">编辑模板</a>';
         			};
         			break;
         		case 'content': 
         			link = function(field) {
-	    				return '<a href="javascript:;" class="btn btn-success edit-content" id="' + 
+	    				return '<a href="javascript:void(0);" class="btn btn-success edit-content" id="' + 
 						field.id + '">编辑内容</a><a href="/Longyan/admin/filter/template?dim=content&id=' + 
 						field.id + '" class="btn btn-warning edit-template">编辑模板</a>';
         			};
         			break;
         		case 'permission': 
         			link = function(field) {
-	    				return '<a href="javascript:;" class="btn btn-success edit-permission" emp_id="' + 
+	    				return '<a href="javascript:void(0);" class="btn btn-success edit-permission" emp_id="' + 
 						field.employee_id + '">更新</a>';
         			};
         			break;
@@ -231,23 +231,23 @@
 					link = function(field) {
 						var ret = '';
 						if(field.status == 1){
-							ret = '<a href="javascript:;" class="btn btn-success bbs-status-change" target-status="2" id="' + 
-								field.id + '">通过</a><a href="javascript:;" class="btn btn-danger bbs-status-change" target-status="3" id="' +
+							ret = '<a href="javascript:void(0);" class="btn btn-success bbs-status-change" target-status="2" id="' + 
+								field.id + '">通过</a><a href="javascript:void(0);" class="btn btn-danger bbs-status-change" target-status="3" id="' +
 								field.id + '">拒绝</a>';
 						}else if(field.status == 2) {
-							ret = '<a href="javascript:;" class="btn btn-danger bbs-status-change" target-status="5" id="' +
+							ret = '<a href="javascript:void(0);" class="btn btn-danger bbs-status-change" target-status="5" id="' +
 								field.id + '">屏蔽</a>';
 						}else if(field.status == 3){
-							ret = '<a href="javascript:;" class="btn btn-success bbs-status-change" target-status="2" id="' +
+							ret = '<a href="javascript:void(0);" class="btn btn-success bbs-status-change" target-status="2" id="' +
 								field.id + '">通过</a>';
 						}else if (field.status == 4) {
-							ret = '<a href="javascript:;" class="btn btn-danger bbs-status-change" target-status="5" id="' +
+							ret = '<a href="javascript:void(0);" class="btn btn-danger bbs-status-change" target-status="5" id="' +
 								field.id + '">屏蔽</a>';
 						}else if (field.status == 5) {
-							ret = '<a href="javascript:;" class="btn btn-warning bbs-status-change" target-status="1" id="' +
+							ret = '<a href="javascript:void(0);" class="btn btn-warning bbs-status-change" target-status="1" id="' +
 								field.id + '">取消屏蔽</a>';
 						}
-						ret += '<a href="javascript:;" class="btn btn-info bbs-reply-check" id="' +
+						ret += '<a href="javascript:void(0);" class="btn btn-info bbs-reply-check" id="' +
 						field.id + '">查看回复</a>';
 						
 	    				return ret;
@@ -257,10 +257,10 @@
 					link = function(field) {
 						var ret = '';
 						if(field.status == 1) {
-							ret = '<a href="javascript:;" class="btn btn-danger bbs-reply-status-change" target-status="2" id="' +
+							ret = '<a href="javascript:void(0);" class="btn btn-danger bbs-reply-status-change" target-status="2" id="' +
 								field.id + '">屏蔽</a>';
 						}else {
-							ret = '<a href="javascript:;" class="btn btn-warning bbs-reply-status-change" target-status="1" id="' +
+							ret = '<a href="javascript:void(0);" class="btn btn-warning bbs-reply-status-change" target-status="1" id="' +
 								field.id + '">取消屏蔽</a>';
 						}
 	    				return ret;

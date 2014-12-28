@@ -220,7 +220,7 @@ $(document).ready(function(){
                     	data = data.trim();
                     	template = '<li>' + 
 										'<a href="' + data + '" target="_blank" title="点击预览" class="img-item">' + data + '</a>' + 
-										'<a href="javascript:;" class="img-item-del" path="' + data + '" onclick="$(this).parent().remove();">删除</a>' +
+										'<a href="javascript:void(0);" class="img-item-del" path="' + data + '" onclick="$(this).parent().remove();">删除</a>' +
 									'</li>';
                     	$("#upload-result").hide();
                     	$('#img-list', me.jQcolumnInfoPop).append(template);
@@ -241,7 +241,7 @@ $(document).ready(function(){
 			for(var i = 0, len = imgArr.length; i < len; i++){
 				ret += '<li>' + 
 							'<a href="' + imgArr[i] + '" target="_blank" title="点击预览" class="img-item">' + imgArr[i] + '</a>' + 
-							'<a href="javascript:;" class="img-item-del" path="' + imgArr[i] + '" onclick="$(this).parent().remove();">删除</a>' +
+							'<a href="javascript:void(0);" class="img-item-del" path="' + imgArr[i] + '" onclick="$(this).parent().remove();">删除</a>' +
 						'</li>';
 			}
 

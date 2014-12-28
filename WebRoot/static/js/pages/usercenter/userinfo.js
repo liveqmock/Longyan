@@ -99,7 +99,7 @@ $(document).ready(function(){
 			}
 
 			$.ajax({
-				url: '/Longyan/customer/update-customer',
+				url: '/Longyan/customer/update-customer?_=' + new Date().getTime(),
 				data: {
 					username: $('#username').val(),
 					telephone: $('#telephone').val(),

@@ -4,6 +4,9 @@
     <title>龙颜集团--用户登录</title>
     <meta http-equiv="keywords" content="龙颜,连锁超市,社区医院">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+	<META HTTP-EQUIV="expires" CONTENT="0">
     <link rel="stylesheet" type="text/css" href="/Longyan/static/css/pages/login.css">
   </head>
   <body>
@@ -33,7 +36,7 @@
               <span class="pass icon"></span>
               <input type="password" name="password" id="password" placeholder="密码"/>
             </p>
-            <a href="javascript:;" id="commit">立即登录</a>
+            <a href="javascript:void(0);" id="commit">立即登录</a>
           </div>
           <div class="ft">
             还没有账号？

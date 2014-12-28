@@ -2,6 +2,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+	<META HTTP-EQUIV="expires" CONTENT="0">
 	<title>龙颜集团--${pageTitle!""}</title>
 	<link href="/Longyan/static/css/pages/page-common.css" rel="stylesheet" />
 	<link href="/Longyan/static/css/lib/jquery.img-scroller.css" rel="stylesheet" />
@@ -25,7 +28,7 @@
 					<a href="/Longyan/join" target="_blank" id="btn-register">注册</a>
 				<#else>
 					<a href="/Longyan/usercenter/userinfo" target="_blank" id="btn-user-center" data-cid="${customer_id}">${customer_name}</a>
-					<a href="javascript:;" target="_blank" id="btn-logout">退出</a>
+					<a href="javascript:void(0);" id="btn-logout">退出</a>
 				</#if>
 			</div>
 		</div>

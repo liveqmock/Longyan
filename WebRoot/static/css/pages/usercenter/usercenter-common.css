@@ -43,7 +43,11 @@ ul, ol, li {
 	top: 8px;
 	left: 0px;
 }
-
+.page-top-bar .logo img {
+	display: block;
+	width: 90px;
+	height: 90px;
+}
 /**************************************page-main************************************************/
 .page-main {
 	width: 1010px;
