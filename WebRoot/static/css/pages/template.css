@@ -24,3 +24,10 @@
 	padding-top: 5px;
 	position: relative;
 }
+.template-wrap p {
+	width: 880px; 
+	margin: 0 auto;
+}
+.template-wrap p span {
+	padding-left: 5px;
+}

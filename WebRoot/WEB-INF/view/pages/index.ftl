@@ -30,7 +30,7 @@
           <a href="/Longyan/pages/news" class="icon" target="_blank">
             <div class="inner">
               <span class="icon"></span>
-              <span class="txt">健康社区</span>
+              <span class="txt">龙颜社区</span>
             </div>
           </a>
         </li>
